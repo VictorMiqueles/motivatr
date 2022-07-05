@@ -38,6 +38,11 @@ public class UsersController {
   @PostMapping("/users")
   public RedirectView signup(@ModelAttribute User user, RedirectAttributes redirAttrs) {
     // TODO: validation class?
+    // TODO: move logic etc to a service class
+    // TODO: check username is unique
+    // TODO: check email is unique
+    // TODO: check passwords match
+
     if (userRepository.existsByEmail(user.getEmail())) {
       redirAttrs.addFlashAttribute("message", "Email already exists!");
       return new RedirectView("/users/new");
@@ -80,5 +85,10 @@ public class UsersController {
     List<User> users = userRepository.findByUsernameContains(keyword);
     model.addAttribute("users", users);
     return "users/search";
+  }
+
+  @GetMapping("/dashboard")
+  public String dashboard() {
+    return "users/dashboard";
   }
 }

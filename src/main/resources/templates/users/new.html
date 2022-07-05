@@ -5,7 +5,7 @@
   <link th:href="@{/main.css}" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/5f58b769bf.js" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
-  <title>Acebook</title>
+  <title>Motivatr</title>
 </head>
 
 <body>
@@ -15,12 +15,14 @@
     <div class="new-user">
       <h2>New account</h2>
       <form class="new-user-form" action="#" th:action="@{/users}" th:object="${user}" method="post">
+        <label for="username">Username:</label>
+        <input type="text" th:field="*{username}" name="username">
         <label for="email">Email:</label>
         <input type="text" th:field="*{email}" name="email">
-        <label for="username">Name:</label>
-        <input type="text" th:field="*{username}" name="username">
         <label for="password">Password:</label>
         <input type="password" th:field="*{password}" name="password">
+        <label for="password">Confirm Password:</label>
+        <input type="password" th:field="*{passwordConfirm}" name="passwordConfirm">
         <ul class="new-user-form-buttons">
           <li><button class="btn" type="submit" id="submit">Submit</button></li>
           <li><button class="btn" type="reset" value="Reset">Reset</button></li>
