@@ -7,7 +7,7 @@ CREATE TABLE challenges (
   description TEXT NOT NULL,
   image_url TEXT,
   video_url TEXT,
-  published_on DATE,
+  published_on TIMESTAMP,
 
   created_at TIMESTAMP NOT NULL,
   updated_at TIMESTAMP NOT NULL
