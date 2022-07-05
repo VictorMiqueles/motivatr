@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+  <div>
+    <nav th:fragment="header">
+      <ul>
+        <li>
+          <a class="tooltip active" data-tooltip="Home" th:href="@{/}" id="home">
+            <i class="fas fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <form class="search-form" th:action="@{/users/search}" method="get">
+            <div class="nav-search-bar">
+              <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+              <input type="text" name="keyword" th:value="${keyword}" class="search-form-text">
+            </div>
+          </form>
+        </li>
+        <li id="space1"></li>
+        <li>
+          <a th:href="@{'/users/'+${#authentication.name}}">
+            <div class="nav-profile-link tooltip" data-tooltip="Profile">
+              <button id="btn_profile">
+                <img class="post-icon" src="/images/fb-user-icon.png">
+              </button>
+              <span class="nav-profile-name" sec:authentication="name">Name</span>
+            </div>
+          </a>
+        </li>
+        <li id="space1"></li>
+        <li>
+          <a class="tooltip" data-tooltip="Friends" id="btn_friends" th:href="@{'/friends/'+${#authentication.name}}">
+            <i class="fa-solid fa-user-group"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="tooltip" data-tooltip="Message" id="btn_msg">
+            <i class="fab fa-facebook-messenger"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="tooltip" data-tooltip="Notification" id="btn_bell">
+            <i class="fas fa-bell"></i>
+          </a>
+        </li>
+        <li>
+          <a class="tooltip" data-tooltip="Settings" id="btn_profile" th:href="@{/users/settings}">
+            <i class="fas fa-user-cog"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div>
+    <nav th:fragment="header-not-logged-in">
+      <ul>
+        <li>
+          <a class="tooltip active" data-tooltip="Home" th:href="@{/users/new}" id="home">
+            <i class="fas fa-home"></i>
+          </a>
+        </li>
+        <li id="space1"></li>
+        <li id="space1"></li>
+        <li>
+          <a th:href="@{/users/new}" class="tooltip" data-tooltip="Sign Up" id="btn_signup">
+            Sign Up
+          </a>
+        </li>
+        <li>
+          <a class="tooltip" data-tooltip="Log In" id="btn_login" th:href="@{/login}">
+            Log In
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <footer th:fragment="footer">
+    <p>&copy; 2022 VEDoT</p>
+  </footer>
+</body>
+
+</html>
