@@ -2,8 +2,7 @@ package com.davmt.motivatr.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,18 +15,16 @@ import com.davmt.motivatr.service.UserService;
 public class ChallengeServiceTests {
 
   @Autowired
-  ChallengeService challengeService;
+  private ChallengeService challengeService;
 
   @Autowired
-  UserService userService;
+  private UserService userService;
 
-  @Disabled
   @Test
   public void shouldReturnUnpublishedChallengeTitle() {
     Challenge challenge = new Challenge();
-    User user = new User("xxx", "xxx", "xxx", "xxx");
-
-    userService.save(user);
+    User user = new User("xxx", "xxx", "xxx", "xxx", "xxx");
+    userService.createUser(user);
 
     challenge.setTitle("Challenge 1");
     challenge.setDescription("Challenge description 1");

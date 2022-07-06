@@ -18,6 +18,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import lombok.Data;
 
 @Data
@@ -56,14 +59,14 @@ public class User {
     this.enabled = TRUE;
   }
 
-  public User(String firstName, String lastName, String username, String email) {
+  public User(String firstName, String lastName, String username, String email, String password) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
+    this.password = password;
     this.email = email;
     this.createdAt = LocalDateTime.now();
     this.updatedAt = LocalDateTime.now();
     this.enabled = TRUE;
   }
-
 }

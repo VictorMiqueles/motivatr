@@ -27,6 +27,10 @@ public class UserService {
 
   private String statusMessage;
 
+  private void save(User user) {
+    userRepository.save(user);
+  }
+
   public Boolean validateUserDetails(User userForm) {
     if (userRepository.existsByEmail(userForm.getEmail())) {
       statusMessage = "Email already exists!";
@@ -46,9 +50,9 @@ public class UserService {
   }
 
   public void createUser(User userForm) {
-    User user = new User(userForm.getFirstName(), userForm.getLastName(), userForm.getUsername(), userForm.getEmail());
-    user.setPassword(getPasswordEncoder.encode(userForm.getPassword()));
-
+    User user = new User(userForm.getFirstName(), userForm.getLastName(), userForm.getUsername(), userForm.getEmail(),
+        userForm.getPassword());
+    user.setPassword(getPasswordEncoder.encode(user.getPassword()));
     UsersData usersData = usersDataService.createUsersData();
 
     user.setUsersData(usersData);
@@ -73,12 +77,7 @@ public class UserService {
     return users;
   }
 
-  public void save(User user) {
-    userRepository.save(user);
-  }
-
   public String getStatusMessage() {
     return statusMessage;
   }
-
 }
