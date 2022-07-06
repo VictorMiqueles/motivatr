@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.davmt.motivatr.service.ChallengeService;
+import com.davmt.motivatr.service.UserService;
 
 @Controller
 public class HomeController {
 
   @Autowired
-  ChallengeService challengeService;
+  private ChallengeService challengeService;
+  @Autowired
+  private UserService userService;
 
   @RequestMapping(value = "/")
   public RedirectView index() {
@@ -24,16 +27,9 @@ public class HomeController {
 
   @GetMapping("/home")
   public String home(Model model, Principal principal) {
-
     model.addAttribute("challenge", challengeService.getTodaysChallenge());
-
-    // return current user object
-    // so we can pass it to the template
-    // and access points/streak, etc
-
-    // get the top 10 players
-    // pass it to the template
-
+    model.addAttribute("principal", userService.getUserFromPrincipal(principal));
+    model.addAttribute("topten", userService.getTopTenUsers());
     return "home";
   }
 

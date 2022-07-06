@@ -1,12 +1,13 @@
 package com.davmt.motivatr;
 
-import org.junit.jupiter.api.Test;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-public class MotivatrApplicationTests {
+// @SpringBootTest
+// public class MotivatrApplicationTests {
 
-  @Test
-  public void contextLoads() {
-  }
+// @Test
+// public void contextLoads() {
+// }
 
-}
+// }
