@@ -1,18 +1,22 @@
 package com.davmt.motivatr.model;
 
+import static java.lang.Boolean.TRUE;
+
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import lombok.Data;
-
-import javax.persistence.GenerationType;
-
-import static java.lang.Boolean.TRUE;
 
 @Data
 @Entity
@@ -32,6 +36,13 @@ public class User {
   private Boolean enabled;
   @Transient
   private String passwordConfirm;
+
+  @OneToMany(mappedBy = "author")
+  private Set<Challenge> challenges;
+
+  @ManyToMany
+  @JoinTable(name = "challenges_completions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "challenge_id"))
+  private Set<Challenge> completedChallenges;
 
   public User() {
     this.createdAt = LocalDateTime.now();

@@ -5,11 +5,13 @@ CREATE TABLE users (
   username varchar(50) NOT NULL UNIQUE,
   password varchar(60) NOT NULL,
   email TEXT NOT NULL UNIQUE,
+  mobile TEXT,
   first_name varchar(50) NOT NULL,
-  last_name TEXT NULL,
-  image_url TEXT NULL,
+  last_name TEXT,
+  image_url TEXT,
   enabled BOOLEAN NOT NULL,
-  created_at TIMESTAMP NOT NULL
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP
 );
 
 CREATE TABLE authorities (
