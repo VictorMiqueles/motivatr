@@ -49,7 +49,7 @@ public class UsersController {
     }
 
     user.setPassword(getPasswordEncoder.encode(user.getPassword()));
-    user.setUsername(user.getEmail());
+    user.setUsername(user.getUsername());// chaange this to username not email!
 
     userRepository.save(user);
 

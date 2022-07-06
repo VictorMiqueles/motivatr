@@ -45,14 +45,18 @@ public class User {
   private Set<Challenge> completedChallenges;
 
   public User() {
-
+    this.createdAt = LocalDateTime.now();
+    this.enabled = TRUE;
   }
 
-  public User(String username, String email, String password) {
+  public User(String firstName, String lastName, String username, String email, String password) {
+    this.firstName = firstName;
+    this.lastName = lastName;
     this.username = username;
     this.email = email;
     this.password = password;
     this.createdAt = LocalDateTime.now();
     this.enabled = TRUE;
   }
+
 }

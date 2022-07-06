@@ -10,6 +10,14 @@ import org.springframework.web.servlet.view.RedirectView;
 public class HomeController {
   @RequestMapping(value = "/")
   public RedirectView index() {
-    return new RedirectView("/users/new");
+    return new RedirectView("/login");
   }
+
+  @GetMapping("/home")
+  public String home() {
+    return "home";
+  }
+
 }
+
+

@@ -14,17 +14,42 @@ body {
   font-family: 'Roboto Flex', sans-serif;
   font-weight: 100;
   margin: 0;
+  margin-top: 100px;
   background-color: #F0F2F5;
   line-height: 1.3rem;
 }
 
-.container {
+.challenge {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin: 5rem auto;
-  max-width: 600px;
+  max-width: 100%;
+  position: relative;
+  margin: 0px;
+
 }
+
+.chalenge_content {
+  justify-content: left;
+  width: 40%;
+  /* position: relative; */
+  
+}
+
+.challenge_media {
+ width: 30px;
+}
+
+
+
+
+
+
+
+
+/* OLD STUFF  */
+
 
 .profile {
   display: flex;
@@ -368,6 +393,8 @@ input[type="file"] {
 /*
 Nav Bar
 */
+
+
 nav {
   margin-left: auto;
   position: fixed;
@@ -549,3 +576,4 @@ nav ul li #btn_profile::after {
   border-radius: 50%;
   box-shadow: 0px 5px 15px #ccc;
 }
+

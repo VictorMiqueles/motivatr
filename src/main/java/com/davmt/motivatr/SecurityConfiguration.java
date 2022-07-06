@@ -34,6 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .and()
         .formLogin()
         .loginPage("/login")
+        .defaultSuccessUrl("/home", true)
         .and()
         .logout()
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
