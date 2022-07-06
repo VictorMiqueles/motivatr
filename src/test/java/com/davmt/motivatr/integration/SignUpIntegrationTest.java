@@ -31,7 +31,10 @@ public class SignUpIntegrationTest {
 
     @After
     public void tearDown() {
+      if (driver != null) {
         driver.close();
+      }
+        driver.quit();
     }
 
     @Test
@@ -44,8 +47,7 @@ public class SignUpIntegrationTest {
         driver.findElement(By.id("username")).sendKeys(faker.name().username());
         driver.findElement(By.id("password")).sendKeys(faker.internet().password());
         driver.findElement(By.id("submit")).click();
-        WebElement title = driver.findElement(By.tagName("h2"));
-        System.out.println(title);
-        Assert.assertEquals("Login", title);
+        String title = driver.getTitle();
+        Assert.assertEquals("Expect title to equal Login","Login", title);
     }
 }
