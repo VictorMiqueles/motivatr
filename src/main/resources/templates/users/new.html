@@ -17,26 +17,26 @@
       <form class="new-user-form" action="#" th:action="@{/users}" th:object="${user}" method="post">
 
         <label for="firstName">First Name:</label>
-        <input type="text" th:field="*{firstName}" name="firstName">
+        <input type="text" id="firstName" th:field="*{firstName}" name="firstName">
 
         <label for="lastName">Last Name:</label>
-        <input type="text" th:field="*{lastName}" name="lastName">
+        <input type="text" id="lastName" th:field="*{lastName}" name="lastName">
 
         <label for="email">Email:</label>
-        <input type="text" th:field="*{email}" name="email">
+        <input type="text" id="email" th:field="*{email}" name="email">
 
         <label for="username">Username:</label>
-        <input type="text" th:field="*{username}" name="username">
+        <input type="text" id="username" th:field="*{username}" name="username">
 
         <label for="password">Password:</label>
-        <input type="password" th:field="*{password}" name="password">
+        <input type="password" id="password" th:field="*{password}" name="password">
 
         <label for="password">Confirm Password:</label>
         <input type="password" th:field="*{passwordConfirm}" name="passwordConfirm">
 
         <ul class="new-user-form-buttons">
           <li><button class="btn" type="submit" id="submit">Submit</button></li>
-          <li><button class="btn" type="reset" value="Reset">Reset</button></li>
+          <li><button class="btn" type="reset" id="reset" value="Reset">Reset</button></li>
         </ul>
       </form>
     </div>
