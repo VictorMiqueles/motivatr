@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -21,8 +22,11 @@ public class SignUpIntegrationTest {
 
     @Before
     public void setup() {
-        driver = new ChromeDriver();
-        faker = new Faker();
+      ChromeOptions options = new ChromeOptions();
+      options.addArguments("--no-sandbox");
+      options.addArguments("--disable-dev-shm-usage");
+      driver = new ChromeDriver(options);
+      faker = new Faker();
     }
 
     @After
