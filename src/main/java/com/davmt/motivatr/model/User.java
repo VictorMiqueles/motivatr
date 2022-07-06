@@ -5,6 +5,7 @@ import static java.lang.Boolean.TRUE;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -44,18 +46,23 @@ public class User {
   @JoinTable(name = "challenges_completions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "challenge_id"))
   private Set<Challenge> completedChallenges;
 
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "users_data_id", referencedColumnName = "id")
+  private UsersData usersData;
+
   public User() {
     this.createdAt = LocalDateTime.now();
+    this.updatedAt = LocalDateTime.now();
     this.enabled = TRUE;
   }
 
-  public User(String firstName, String lastName, String username, String email, String password) {
+  public User(String firstName, String lastName, String username, String email) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
     this.email = email;
-    this.password = password;
     this.createdAt = LocalDateTime.now();
+    this.updatedAt = LocalDateTime.now();
     this.enabled = TRUE;
   }
 

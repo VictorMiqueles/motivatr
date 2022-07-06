@@ -8,10 +8,10 @@
 		<version>2.7.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.motivatr</groupId>
-	<artifactId>dvamt</artifactId>
+	<groupId>com.dvamt</groupId>
+	<artifactId>motivatr</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>dvamt</name>
+	<name>Motivatr</name>
 	<description>Motivatr</description>
 	<properties>
 		<java.version>18</java.version>
@@ -85,12 +85,14 @@
       <version>1.18.24</version>
       <scope>provided</scope>
 	  </dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
-			<scope>test</scope>
-		</dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
 	</dependencies>
 
 	<build>
@@ -101,5 +103,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
