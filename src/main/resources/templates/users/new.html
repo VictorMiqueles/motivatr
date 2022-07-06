@@ -15,7 +15,7 @@
     <div class="new-user">
       <h2>New account</h2>
       <form class="new-user-form" action="#" th:action="@{/users}" th:object="${user}" method="post">
-        
+
         <label for="firstName">First Name:</label>
         <input type="text" th:field="*{firstName}" name="firstName">
 
@@ -30,6 +30,9 @@
 
         <label for="password">Password:</label>
         <input type="password" th:field="*{password}" name="password">
+
+        <label for="password">Confirm Password:</label>
+        <input type="password" th:field="*{passwordConfirm}" name="passwordConfirm">
 
         <ul class="new-user-form-buttons">
           <li><button class="btn" type="submit" id="submit">Submit</button></li>

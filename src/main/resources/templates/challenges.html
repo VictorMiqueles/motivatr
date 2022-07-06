@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head land="en">
+  <link th:href="@{/main.css}" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/5f58b769bf.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <title>Motivatr</title>
+</head>
+
+
+<body>
+  <div th:insert="fragments/general :: header"></div>
+  <!--challenge div-->
+  <div class="challenge">
+    <div class="chalenge_content">
+      <h1> Todays Challenge</h1>
+
+      <h1 th:text="${challenge.description}"></h1>
+
+      <h1>Hey <span th:text="${principal.username}"></span></h1>
+      <h1>You have: <span th:text="${principal.usersData.points}"></span> points!</h1>
+      <h1>Your Streak is: <span th:text="${principal.usersData.streak}"></span> days</h1>
+      <h1>You are Level: <span th:text="${principal.usersData.level}"></span></h1>
+
+      <ul>
+        <li th:each="toptenuser: ${topten}">
+          <span th:text="${toptenuser.firstName}"></span>:
+          <span th:text="${toptenuser.usersData.points}"></span>
+        </li>
+      </ul>
+
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet vero quibusdam,
+        doloremque debitis voluptatem aspernatur ipsam alias ratione nisi at odit officiis error q
+        uisquam? Dignissimos qui voluptate accusamus rerum ducimus.</p>
+      <button type="submit" id="mark_as_done" class="button">Mark as done</button>
+      <img class="profile_pick" src="/images/no_profile_pick.jpeg">
+    </div>
+    <div class="challenge_media">
+      <img src="/images/challenge1.png" alt="LALALA">
+    </div>
+  </div>
+
+  <br>
+  <div class="progression_stats">
+    <p>YOU HAVE CODED FOR 30 DAYS IN A ROW</p>
+  </div>
+  <br>
+  <ul>
+    <li class="top_player_list">
+      <div class="top_players">
+        <img class="profile_pick" src="/images/no_profile_pick.jpeg">
+        <h1 class="username">Joe Blogs</h1>
+        <p class="position">Number 1</p>
+      </div>
+      <div class="top_players">
+        <img class="profile_pick" src="/images/no_profile_pick.jpeg">
+        <h1 class="username">Joe Blogs</h1>
+        <p class="position">Number 2</p>
+      </div>
+      <div class="top_players">
+        <img class="profile_pick" src="/images/no_profile_pick.jpeg">
+        <h1 class="username">Joe Blogs</h1>
+        <p class="position">Number 3</p>
+      </div>
+      <div class="top_players">
+        <img class="profile_pick" src="/images/no_profile_pick.jpeg">
+        <h1 class="username">Joe Blogs</h1>
+        <p class="position">Number 4</p>
+      </div>
+    </li>
+  </ul>
+
+</body>
+
+</html>

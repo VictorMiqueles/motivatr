@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.davmt.motivatr.repository.AuthoritiesRepository;
 import com.davmt.motivatr.repository.UserRepository;
+import com.davmt.motivatr.service.UserService;
 import com.davmt.motivatr.model.Authority;
 import com.davmt.motivatr.model.User;
 
@@ -23,11 +24,7 @@ import java.security.Principal;
 public class UsersController {
 
   @Autowired
-  UserRepository userRepository;
-  @Autowired
-  PasswordEncoder getPasswordEncoder;
-  @Autowired
-  AuthoritiesRepository authoritiesRepository;
+  UserService userService;
 
   @GetMapping("/users/new")
   public String signup(Model model) {
@@ -36,59 +33,36 @@ public class UsersController {
   }
 
   @PostMapping("/users")
-  public RedirectView signup(@ModelAttribute User user, RedirectAttributes redirAttrs) {
-    // TODO: validation class?
-    // TODO: move logic etc to a service class
-    // TODO: check username is unique
-    // TODO: check email is unique
-    // TODO: check passwords match
-
-    if (userRepository.existsByEmail(user.getEmail())) {
-      redirAttrs.addFlashAttribute("message", "Email already exists!");
+  public RedirectView signup(@ModelAttribute User userForm, RedirectAttributes redirAttrs) {
+    if (!userService.validateUserDetails(userForm)) {
+      redirAttrs.addFlashAttribute("message", userService.getStatusMessage());
       return new RedirectView("/users/new");
     }
 
-    user.setPassword(getPasswordEncoder.encode(user.getPassword()));
-    user.setUsername(user.getUsername());// chaange this to username not email!
+    userService.createUser(userForm);
 
-    userRepository.save(user);
-
-    Authority authority = new Authority(user.getUsername(),
-        "ROLE_USER");
-    authoritiesRepository.save(authority);
     return new RedirectView("/login");
   }
 
-  @GetMapping("/users/all")
-  public String all(Model model) {
-    model.addAttribute("users", userRepository.findAll());
-    return "users/all";
-  }
+  // @GetMapping("users/settings")
+  // public String settings(Model model, Principal principal) {
+  // User currentUser = userRepository.findByUsername(principal.getName()).get(0);
+  // model.addAttribute("user", currentUser);
+  // model.addAttribute("image", currentUser.getImageUrl());
+  // return "users/settings";
+  // }
 
-  @GetMapping("users/settings")
-  public String settings(Model model, Principal principal) {
-    User currentUser = userRepository.findByUsername(principal.getName()).get(0);
-    model.addAttribute("user", currentUser);
-    model.addAttribute("image", currentUser.getImageUrl());
-    return "users/settings";
-  }
+  // @GetMapping("/users/editDetails")
+  // public String showDetails(Model model, Principal principal) {
+  // User currentUser = userRepository.findByUsername(principal.getName()).get(0);
+  // model.addAttribute("user", currentUser);
+  // return "users/editDetails";
+  // }
 
-  @GetMapping("/users/editDetails")
-  public String showDetails(Model model, Principal principal) {
-    User currentUser = userRepository.findByUsername(principal.getName()).get(0);
-    model.addAttribute("user", currentUser);
-    return "users/editDetails";
-  }
-
-  @GetMapping("/users/search")
-  public String showSearchResults(Model model, String keyword) {
-    List<User> users = userRepository.findByUsernameContains(keyword);
-    model.addAttribute("users", users);
-    return "users/search";
-  }
-
-  @GetMapping("/dashboard")
-  public String dashboard() {
-    return "users/dashboard";
-  }
+  // @GetMapping("/users/search")
+  // public String showSearchResults(Model model, String keyword) {
+  // List<User> users = userRepository.findByUsernameContains(keyword);
+  // model.addAttribute("users", users);
+  // return "users/search";
+  // }
 }

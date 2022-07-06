@@ -14,4 +14,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
   Boolean existsByEmail(String email);
 
+  Boolean existsByUsername(String username);
+
+  List<User> findTop10ByOrderByUsersData_PointsDesc();
+
 }
