@@ -49,9 +49,7 @@ public class UserService {
     return true;
   }
 
-  public void createUser(User userForm) {
-    User user = new User(userForm.getFirstName(), userForm.getLastName(), userForm.getUsername(), userForm.getEmail(),
-        userForm.getPassword());
+  public void createUser(User user) {
     user.setPassword(getPasswordEncoder.encode(user.getPassword()));
     UsersData usersData = usersDataService.createUsersData();
 
