@@ -16,6 +16,9 @@ public class ChallengeService {
 
   public Challenge getTodaysChallenge() {
     List<Challenge> unpublishedChallenges = challengeRepository.findAllByPublishedOnIsNull();
+    if (unpublishedChallenges.size() == 0) {
+      return null;
+    }
     return unpublishedChallenges.get(0);
   }
 

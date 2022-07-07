@@ -14,13 +14,13 @@
   <!--challenge div-->
   <div class="challenge">
     <div class="challenge-content">
-      <h1> Todays Challenge</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet vero quibusdam,
-        doloremque debitis voluptatem aspernatur ipsam alias ratione nisi at odit officiis error q
-        uisquam? Dignissimos qui voluptate accusamus rerum ducimus.</p>
+      <h1 th:text="${challenge.title}"></h1>
+      <p th:text="${challenge.description}"></p>
       <div class="user-profile-small">
         <img class="profile-picture" src="/images/no_profile_pick.jpeg">
-        <p class="user-name">Joe Blogs
+        <p class="user-name">
+          <span th:text="${principal.firstName}"></span>
+          <span th:text="${principal.lastName}"></span>
         <p>
       </div>
       <div class="challenge-button">
@@ -56,7 +56,7 @@
   </div>
   <br>
   <div class="top-player-list">
-    <h1>TOP PLAYER</h1>
+    <h1>TOP PLAYERS</h1>
     <ul>
       <li class="top-player" th:each="toptenuser, iter: ${topten}">
         <p class="position">Number <span th:text="${iter.index + 1}"></p>
