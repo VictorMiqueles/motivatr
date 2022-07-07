@@ -49,7 +49,7 @@ public class User {
   @JoinTable(name = "challenges_completions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "challenge_id"))
   private Set<Challenge> completedChallenges;
 
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "users_data_id", referencedColumnName = "id")
   private UsersData usersData;
 
