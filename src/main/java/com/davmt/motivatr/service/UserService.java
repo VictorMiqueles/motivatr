@@ -27,7 +27,7 @@ public class UserService {
 
   private String statusMessage;
 
-  private void save(User user) {
+  public void save(User user) {
     userRepository.save(user);
   }
 

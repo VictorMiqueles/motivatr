@@ -1,6 +1,7 @@
 package com.davmt.motivatr.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,12 @@ public class ChallengeService {
 
   public void save(Challenge challenge) {
     challengeRepository.save(challenge);
+  }
+
+  public Challenge getChallengeFromId(Long id) {
+    Optional<Challenge> challengeOptional = challengeRepository.findById(id);
+    Challenge challenge = challengeOptional.get();
+
+    return challenge;
   }
 }

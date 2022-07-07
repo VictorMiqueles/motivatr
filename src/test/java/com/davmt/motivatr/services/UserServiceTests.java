@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -13,8 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.davmt.motivatr.MotivatrApplication;
 import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.service.UserService;
-import com.davmt.motivatr.service.UsersDataService;
 
+import java.security.Principal;
 import java.util.List;
 
 @ActiveProfiles("test")
@@ -24,9 +25,6 @@ public class UserServiceTests {
 
   @Autowired
   private UserService userService;
-
-  @Autowired
-  private UsersDataService usersDataService;
 
   @Before
   public void init() {
@@ -90,8 +88,9 @@ public class UserServiceTests {
 
   @Test
   public void getUserFromPrincipalReturnsListOfOneUserObject() {
-    // mock Principal
-    // assertThat(userService.getUserByUsername("jjames").getEmail()).isEqualTo("jjames@gmail.com");
+    Principal mockPrincipal = Mockito.mock(Principal.class);
+    Mockito.when(mockPrincipal.getName()).thenReturn("jjames");
+    assertThat(userService.getUserFromPrincipal(mockPrincipal).getEmail()).isEqualTo("jjames@gmail.com");
   }
 
   @Test
