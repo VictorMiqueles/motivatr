@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.davmt.motivatr.model.Challenge;
 import com.davmt.motivatr.service.ChallengeService;
 import com.davmt.motivatr.service.UserService;
 
@@ -21,10 +22,13 @@ public class ChallengesController {
 
   @GetMapping("/challenges")
   public String listChallenges(Model model, Principal principal) {
-    model.addAttribute("challenge", challengeService.getTodaysChallenge());
-    model.addAttribute("principal", userService.getUserFromPrincipal(principal));
-    model.addAttribute("topten", userService.getTopTenUsers());
+    // model.addAttribute("challenge", challengeService.getMyChallengeHistory());
     return "challenges";
   }
 
+  @GetMapping("/challenges/new")
+  public String signup(Model model) {
+    model.addAttribute("challenge", new Challenge());
+    return "challenges/new";
+  }
 }
