@@ -76,6 +76,8 @@ public class UserService {
   }
 
   public String getStatusMessage() {
-    return statusMessage;
+    String message = statusMessage;
+    this.statusMessage = null;
+    return message;
   }
 }
