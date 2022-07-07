@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head land="en">
+  <link th:href="@{/main.css}" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/5f58b769bf.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <title>Profile</title>
+</head>
+<body>
+  <div class="profile">
+    <div class="profile-content">
+      <h1 th:text="${principal.user-name}"></h1>
+      <div class="user-profile-small">
+        <img class="profile-picture" src="/images/no_profile_pick.jpeg">
+        <p class="user-name">
+          <span th:text="${principal.firstName}"></span>
+          <span th:text="${principal.lastName}"></span>
+        <p>
+      </div>
+  </div>
+</body>
+</html>

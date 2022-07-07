@@ -1,6 +1,7 @@
 package com.davmt.motivatr.integration;
 
 import java.time.Duration;
+import java.lang.Thread;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -17,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 
 import com.davmt.motivatr.MotivatrApplication;
 import com.davmt.motivatr.model.User;
@@ -60,7 +60,7 @@ public class ProfileTest {
   }
 
   @Test
-    public void profileDisplaysCorrectUser() {
+    public void profileDisplaysCorrectUser() throws InterruptedException {
     driver.get("http://localhost:8080");
     driver.findElement(By.id("username")).sendKeys("user");
     driver.findElement(By.id("password")).sendKeys("password");
@@ -69,6 +69,11 @@ public class ProfileTest {
           .until(driver -> driver.findElement(By.id("btn_profile")));
     driver.findElement(By.id("btn_profile")).click();
     String title = driver.getTitle();
+    try {
+      Thread.sleep(1500);
+  } catch(InterruptedException e) {
+      System.out.println("got interrupted!");
+  }
     Assert.assertNotEquals("Expect title to equal Profile", "HTTP Status 404 – Not Found", title);
     
   }
