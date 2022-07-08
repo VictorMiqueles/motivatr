@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -34,8 +35,9 @@ public class Challenge {
   @JoinColumn(name = "author_id", nullable = false)
   private User author;
 
-  @ManyToMany(mappedBy = "completedChallenges")
-  Set<User> users;
+  @OneToMany(mappedBy = "challenge")
+    Set<CompletedChallenge> compleatedChallenges;
+
 
   public Challenge() {
     this.createdAt = LocalDateTime.now();
