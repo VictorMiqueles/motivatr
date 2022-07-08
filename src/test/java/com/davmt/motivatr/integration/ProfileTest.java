@@ -60,7 +60,7 @@ public class ProfileTest {
   }
 
   @Test
-    public void profileDisplaysCorrectUser() throws InterruptedException {
+    public void profileButtonNavigatesToCorrectURL() throws InterruptedException {
     driver.get("http://localhost:8080");
     driver.findElement(By.id("username")).sendKeys("user");
     driver.findElement(By.id("password")).sendKeys("password");
