@@ -25,9 +25,20 @@
         <p>
       </div>
       <div class="challenge-button">
-        <form action="#" th:action="@{/completedChallenges}" method="post">
-            <button type="submit" value="Post" id="mark_as_done" th:action="@{/challenge}" method="post" class="btn">Mark as done</button>
-        </form>
+        <!-- Not usre if this is the right argument -->
+        <div th:switch="${todaysChallengeCheck}">
+            <p th:case="FALSE">
+                <form action="#" th:action="@{/completedChallenges}" method="post">
+                    <button type="submit" value="Post" id="mark_as_done" th:action="@{/challenge}" method="post" class="btn">Mark as done</button>
+                </form>
+            </p>
+            <p th:case="TRUE">
+                <form action="#" th:action="@{/notCompletedChallenges}" method="post">
+                    <button type="submit" value="Post" id="mark_as_done" th:action="@{/challenge}" method="post" class="btn"> NOT done WOOPS</button>
+                </form>
+            </p>
+
+        </div>
       </div>
 
 
@@ -41,14 +52,14 @@
   <div class="progression-stats">
     <div class="stat-1">
       <p class="stat-number"><span th:text="${principal.usersData.points}"></p>
-      <p class="stat-description">total contributions</p>
+      <p class="stat-description">total challenges</p>
       <p class="stat-date">April 9 - Present</p>
     </div>
     <div class="stat-1">
       <div class="stat-circle">
         <p class="stat-streak"> <span th:text="${principal.usersData.level}"> </p>
       </div>
-      <p class="stat-description">total contributions</p>
+      <p class="stat-description">current streak</p>
       <p class="stat-date">April 9 - Present</p>
     </div>
     <div class="stat-1">

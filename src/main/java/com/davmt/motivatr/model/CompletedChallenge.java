@@ -43,4 +43,5 @@ public class CompletedChallenge {
     this.completedAt = LocalDateTime.now();
   }
 
+
 }
