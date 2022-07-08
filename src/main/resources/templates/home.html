@@ -5,6 +5,7 @@
   <link th:href="@{/main.css}" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/5f58b769bf.js" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
+  
   <title>Motivatr</title>
 </head>
 
@@ -13,6 +14,8 @@
   <div th:insert="fragments/general :: header"></div>
   <!--challenge div-->
   <div class="challenge">
+   
+
     <div class="challenge-content">
       <h1 th:text="${challenge.title}"></h1>
       <p th:text="${challenge.description}"></p>
@@ -24,11 +27,13 @@
         <p>
       </div>
       <div class="challenge-button">
-        <button type="submit" id="mark_as_done" class="btn">Mark as done</button>
+        <button onclick="confetti({particleCount: 130, spread: 180, origin: {x: 0.5,y:0.6} });
+        " type="submit" id="mark_as_done" class="btn">Mark as done</button>
+         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+         <script src="index.js"></script>
       </div>
-
-
-
+   
+     
 
     </div>
     <img class="challenge-media" src="/images/challenge1.png" alt="LALALA">
@@ -66,12 +71,15 @@
           <p class="user-name">Points: <span th:text="${toptenuser.usersData.points}"></span></p>
           <p class="user-name">Level: <span th:text="${toptenuser.usersData.level}"></span></p>
           <p class="user-name">Streak: <span th:text="${toptenuser.usersData.streak}"></span></p>
-
+       
         </div>
       </li>
     </ul>
 
   </div>
+   
+ 
+  
 </body>
 
 </html>
