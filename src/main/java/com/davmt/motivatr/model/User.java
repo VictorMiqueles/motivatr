@@ -45,9 +45,8 @@ public class User {
   @OneToMany(mappedBy = "author")
   private Set<Challenge> challenges;
 
-  @ManyToMany
-  @JoinTable(name = "challenges_completions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "challenge_id"))
-  private Set<Challenge> completedChallenges;
+  @OneToMany(mappedBy = "user")
+  Set<CompletedChallenge> completedChallenges;
 
   @OneToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "users_data_id", referencedColumnName = "id")
