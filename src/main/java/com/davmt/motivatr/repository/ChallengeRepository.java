@@ -9,4 +9,6 @@ import com.davmt.motivatr.model.Challenge;
 public interface ChallengeRepository extends CrudRepository<Challenge, Long> {
 
   public List<Challenge> findAllByPublishedOnIsNull();
+
+  public List<Challenge> findAllByPublishedOnIsNotNullOrderByPublishedOnDesc();
 }

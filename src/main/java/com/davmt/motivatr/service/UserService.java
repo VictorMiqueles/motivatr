@@ -21,9 +21,9 @@ public class UserService {
   @Autowired
   private UsersDataService usersDataService;
   @Autowired
-  AuthoritiesRepository authoritiesRepository;
+  private AuthoritiesRepository authoritiesRepository;
   @Autowired
-  PasswordEncoder getPasswordEncoder;
+  private PasswordEncoder getPasswordEncoder;
 
   private String statusMessage;
 

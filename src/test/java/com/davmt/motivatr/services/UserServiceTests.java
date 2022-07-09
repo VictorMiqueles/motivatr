@@ -26,14 +26,42 @@ public class UserServiceTests {
   @Autowired
   private UserService userService;
 
+  private static Boolean setupDone = false;
+
   @Before
   public void init() {
+    if (setupDone)
+      return;
+
     User user = new User("John",
         "James",
         "jjames",
         "jjames@gmail.com",
         "password");
     userService.createUser(user);
+
+    User user1 = new User("a", "a", "a", "a", "a");
+    User user2 = new User("b", "a", "b", "b", "a");
+    User user3 = new User("c", "a", "c", "c", "a");
+    User user4 = new User("d", "a", "d", "d", "a");
+    User user5 = new User("e", "a", "e", "e", "a");
+    User user6 = new User("f", "a", "f", "f", "a");
+    User user7 = new User("g", "a", "g", "g", "a");
+    User user8 = new User("h", "a", "h", "h", "a");
+    User user9 = new User("i", "a", "i", "i", "a");
+    User user10 = new User("j", "a", "j", "j", "a");
+    userService.createUser(user1);
+    userService.createUser(user2);
+    userService.createUser(user3);
+    userService.createUser(user4);
+    userService.createUser(user5);
+    userService.createUser(user6);
+    userService.createUser(user7);
+    userService.createUser(user8);
+    userService.createUser(user9);
+    userService.createUser(user10);
+
+    setupDone = true;
   }
 
   @Test
@@ -100,27 +128,6 @@ public class UserServiceTests {
 
   @Test
   public void getTopTenUsersReturnsListOfTenUserObjects() {
-    User user1 = new User("a", "a", "a", "a", "a");
-    User user2 = new User("b", "a", "b", "b", "a");
-    User user3 = new User("c", "a", "c", "c", "a");
-    User user4 = new User("d", "a", "d", "d", "a");
-    User user5 = new User("e", "a", "e", "e", "a");
-    User user6 = new User("f", "a", "f", "f", "a");
-    User user7 = new User("g", "a", "g", "g", "a");
-    User user8 = new User("h", "a", "h", "h", "a");
-    User user9 = new User("i", "a", "i", "i", "a");
-    User user10 = new User("j", "a", "j", "j", "a");
-    userService.createUser(user1);
-    userService.createUser(user2);
-    userService.createUser(user3);
-    userService.createUser(user4);
-    userService.createUser(user5);
-    userService.createUser(user6);
-    userService.createUser(user7);
-    userService.createUser(user8);
-    userService.createUser(user9);
-    userService.createUser(user10);
-
     List<User> users = userService.getTopTenUsers();
     assertThat(users.size()).isEqualTo(10);
   }

@@ -1,5 +1,7 @@
 package com.davmt.motivatr.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,10 +18,15 @@ public class ChallengeService {
   private ChallengeRepository challengeRepository;
 
   public Challenge getTodaysChallenge() {
-    List<Challenge> unpublishedChallenges = challengeRepository.findAllByPublishedOnIsNull();
-    if (unpublishedChallenges.size() == 0) {
-      return null;
+    List<Challenge> unpublishedChallenges = getUnpublishedChallenges();
+    List<Challenge> publishedChallenges = getPublishedChallenges();
+    LocalDate today = LocalDateTime.now().toLocalDate();
+    LocalDate mostRecentChallengeDate = publishedChallenges.get(0).getPublishedOn().toLocalDate();
+
+    if (today.equals(mostRecentChallengeDate) || unpublishedChallenges.size() == 0) {
+      return publishedChallenges.get(0);
     }
+
     return unpublishedChallenges.get(0);
   }
 
@@ -32,5 +39,13 @@ public class ChallengeService {
     Challenge challenge = challengeOptional.get();
 
     return challenge;
+  }
+
+  public List<Challenge> getUnpublishedChallenges() {
+    return challengeRepository.findAllByPublishedOnIsNull();
+  }
+
+  public List<Challenge> getPublishedChallenges() {
+    return challengeRepository.findAllByPublishedOnIsNotNullOrderByPublishedOnDesc();
   }
 }
