@@ -1,13 +1,9 @@
 package com.davmt.motivatr.controller;
 
 import java.security.Principal;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -22,33 +18,33 @@ import com.davmt.motivatr.service.UserService;
 @Controller
 public class CompletedChallengesController {
 
-    @Autowired
-    ChallengeService challengeService;
+  @Autowired
+  ChallengeService challengeService;
 
-    @Autowired
-    UserRepository userRepository;
+  @Autowired
+  UserRepository userRepository;
 
-    @Autowired
-    CompletedChallengeRepository completedChallengeRepository;
+  @Autowired
+  CompletedChallengeRepository completedChallengeRepository;
 
-    @Autowired
-    UserService userService;
+  @Autowired
+  UserService userService;
 
-    @PostMapping("/completedChallenges")
-    public RedirectView create(Principal principal) {
-        
-        User user = userService.getUserFromPrincipal(principal);
-        Long userId = user.getId();
-        Challenge challenge = challengeService.getTodaysChallenge();
+  @PostMapping("/completedChallenges")
+  public RedirectView create(Principal principal) {
 
-        CompletedChallenge completedChallenge = new CompletedChallenge();
+    User user = userService.getUserFromPrincipal(principal);
+    // Long userId = user.getId();
+    Challenge challenge = challengeService.getTodaysChallenge();
 
-        completedChallenge.setUser(user);
-        completedChallenge.setChallenge(challenge);
+    CompletedChallenge completedChallenge = new CompletedChallenge();
 
-        completedChallengeRepository.save(completedChallenge);
-        
-        return new RedirectView("/home");
-    }
+    completedChallenge.setUser(user);
+    completedChallenge.setChallenge(challenge);
+
+    completedChallengeRepository.save(completedChallenge);
+
+    return new RedirectView("/home");
+  }
 
 }
