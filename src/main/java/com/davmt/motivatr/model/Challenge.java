@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -35,8 +34,7 @@ public class Challenge {
   private User author;
 
   @OneToMany(mappedBy = "challenge")
-    Set<CompletedChallenge> compleatedChallenges;
-
+  Set<CompletedChallenge> compleatedChallenges;
 
   public Challenge() {
     this.createdAt = LocalDateTime.now();

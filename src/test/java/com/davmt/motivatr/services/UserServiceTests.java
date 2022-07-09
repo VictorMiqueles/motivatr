@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.davmt.motivatr.MotivatrApplication;
 import com.davmt.motivatr.model.User;
+import com.davmt.motivatr.repository.AuthoritiesRepository;
 import com.davmt.motivatr.service.UserService;
 
 import java.security.Principal;
@@ -25,6 +26,9 @@ public class UserServiceTests {
 
   @Autowired
   private UserService userService;
+
+  @Autowired
+  private AuthoritiesRepository authoritiesRepository;
 
   private static Boolean setupDone = false;
 
@@ -62,6 +66,11 @@ public class UserServiceTests {
     userService.createUser(user10);
 
     setupDone = true;
+  }
+
+  @Test
+  public void checkThatTheFirstUserCreatedHasAdminRights() {
+    assertThat(authoritiesRepository.findByUsername("jjames").get(0).getAuthority()).isEqualTo("ROLE_ADMIN");
   }
 
   @Test
