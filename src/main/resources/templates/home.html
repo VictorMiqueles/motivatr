@@ -12,70 +12,68 @@
 <body>
   <div th:insert="fragments/general :: header"></div>
   <div class="margin">
-  <!--challenge div-->
-  <div class="challenge">
-    <div class="challenge-content">
-      <h1 th:text="${challenge.title}"></h1>
-      <p th:text="${challenge.description}"></p>
-      <div class="user-profile-small">
-        <img class="profile-picture" src="/images/no_profile_pick.jpeg">
-        <p class="user-name">
-          <span th:text="${principal.firstName}"></span>
-          <span th:text="${principal.lastName}"></span>
-        <p>
-      </div>
-      <div class="challenge-button">
-        <form action="#" th:action="@{/completedChallenges}" method="post">
-            <button type="submit" value="Post" id="mark_as_done" th:action="@{/challenge}" method="post" class="btn">Mark as done</button>
-        </form>
-      </div>
-
-
-
-
-    </div>
-    <img class="challenge-media" src="/images/challenge1.png" alt="LALALA">
-  </div>
-
-  <br>
-  <div class="progression-stats">
-    <div class="stat-1">
-      <p class="stat-number"><span th:text="${principal.usersData.points}"></p>
-      <p class="stat-description">total contributions</p>
-      <p class="stat-date">April 9 - Present</p>
-    </div>
-    <div class="stat-1">
-      <div class="stat-circle">
-        <p class="stat-streak"> <span th:text="${principal.usersData.level}"> </p>
-      </div>
-      <p class="stat-description">total contributions</p>
-      <p class="stat-date">April 9 - Present</p>
-    </div>
-    <div class="stat-1">
-      <p class="stat-number"><span th:text="${principal.usersData.streak}"></p>
-      <p class="stat-description">longest streak</p>
-      <p class="stat-date">May 9 - June 2</p>
-    </div>
-  </div>
-  <br>
-  <div class="top-player-list">
-    <h1>TOP PLAYERS</h1>
-    <ul>
-      <li class="top-player" th:each="toptenuser, iter: ${topten}">
-        <p class="position">Number <span th:text="${iter.index + 1}"></p>
+    <!--challenge div-->
+    <div class="challenge">
+      <h1 th:if="${challenge==null}">No challenges posted yet!</h1>
+      <div class="challenge-content" th:if="${challenge!=null}">
+        <h1 th:text="${challenge.title}"></h1>
+        <p th:text="${challenge.description}"></p>
         <div class="user-profile-small">
           <img class="profile-picture" src="/images/no_profile_pick.jpeg">
-          <p class="user-name"><span th:text="${toptenuser.firstName}"></span></p>
-          <p class="user-name">Points: <span th:text="${toptenuser.usersData.points}"></span></p>
-          <p class="user-name">Level: <span th:text="${toptenuser.usersData.level}"></span></p>
-          <p class="user-name">Streak: <span th:text="${toptenuser.usersData.streak}"></span></p>
-
+          <p class="user-name">
+            <span th:text="${principal.firstName}"></span>
+            <span th:text="${principal.lastName}"></span>
+          <p>
         </div>
-      </li>
-    </ul>
+        <div class="challenge-button">
+          <form action="#" th:action="@{/completedChallenges}" method="post">
+            <button type="submit" value="Post" id="mark_as_done" th:action="@{/challenge}" method="post"
+              class="btn">Mark as done</button>
+          </form>
+        </div>
+        <img class="challenge-media" src="/images/challenge1.png" alt="LALALA">
+      </div>
+    </div>
 
+    <br>
+    <div class="progression-stats">
+      <div class="stat-1">
+        <p class="stat-number"><span th:text="${principal.usersData.points}"></p>
+        <p class="stat-description">total contributions</p>
+        <p class="stat-date">April 9 - Present</p>
+      </div>
+      <div class="stat-1">
+        <div class="stat-circle">
+          <p class="stat-streak"> <span th:text="${principal.usersData.level}"> </p>
+        </div>
+        <p class="stat-description">total contributions</p>
+        <p class="stat-date">April 9 - Present</p>
+      </div>
+      <div class="stat-1">
+        <p class="stat-number"><span th:text="${principal.usersData.streak}"></p>
+        <p class="stat-description">longest streak</p>
+        <p class="stat-date">May 9 - June 2</p>
+      </div>
+    </div>
+    <br>
+    <div class="top-player-list">
+      <h1>TOP PLAYERS</h1>
+      <ul>
+        <li class="top-player" th:each="toptenuser, iter: ${topten}">
+          <p class="position">Number <span th:text="${iter.index + 1}"></p>
+          <div class="user-profile-small">
+            <img class="profile-picture" src="/images/no_profile_pick.jpeg">
+            <p class="user-name"><span th:text="${toptenuser.firstName}"></span></p>
+            <p class="user-name">Points: <span th:text="${toptenuser.usersData.points}"></span></p>
+            <p class="user-name">Level: <span th:text="${toptenuser.usersData.level}"></span></p>
+            <p class="user-name">Streak: <span th:text="${toptenuser.usersData.streak}"></span></p>
+
+          </div>
+        </li>
+      </ul>
+
+    </div>
   </div>
-</div>
 </body>
 
 </html>

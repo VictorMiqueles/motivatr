@@ -18,6 +18,10 @@ public class ChallengeService {
   private ChallengeRepository challengeRepository;
 
   public Challenge getTodaysChallenge() {
+    if (challengeRepository.count() == 0) {
+      return null;
+    }
+
     List<Challenge> unpublishedChallenges = getUnpublishedChallenges();
     List<Challenge> publishedChallenges = getPublishedChallenges();
     LocalDate today = LocalDateTime.now().toLocalDate();
