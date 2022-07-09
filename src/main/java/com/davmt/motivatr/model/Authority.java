@@ -2,6 +2,7 @@ package com.davmt.motivatr.model;
 
 import javax.persistence.*;
 
+@SuppressWarnings("unused")
 @Entity
 @Table(name = "AUTHORITIES")
 public class Authority {
