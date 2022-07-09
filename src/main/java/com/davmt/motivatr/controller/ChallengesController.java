@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.davmt.motivatr.model.Challenge;
-import com.davmt.motivatr.model.User;
-import com.davmt.motivatr.repository.UserRepository;
+
 import com.davmt.motivatr.service.ChallengeService;
 import com.davmt.motivatr.service.UserService;
 
@@ -23,16 +22,18 @@ public class ChallengesController {
   ChallengeService challengeService;
 
   @Autowired
-  UserRepository userRepository;
-
-  @Autowired
   UserService userService;
 
   @GetMapping("/challenges")
   public String listChallenges(Model model, Principal principal) {
-    model.addAttribute("challenge", challengeService.getTodaysChallenge());
-    model.addAttribute("principal", userService.getUserFromPrincipal(principal));
-    model.addAttribute("topten", userService.getTopTenUsers());
+    // model.addAttribute("challenge", challengeService.getMyChallengeHistory());
     return "challenges";
   }
+
+  @GetMapping("/challenges/new")
+  public String signup(Model model) {
+    model.addAttribute("challenge", new Challenge());
+    return "challenges/new";
+  }
+
 }

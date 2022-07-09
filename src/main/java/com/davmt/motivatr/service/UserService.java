@@ -21,13 +21,13 @@ public class UserService {
   @Autowired
   private UsersDataService usersDataService;
   @Autowired
-  AuthoritiesRepository authoritiesRepository;
+  private AuthoritiesRepository authoritiesRepository;
   @Autowired
-  PasswordEncoder getPasswordEncoder;
+  private PasswordEncoder getPasswordEncoder;
 
   private String statusMessage;
 
-  private void save(User user) {
+  public void save(User user) {
     userRepository.save(user);
   }
 
@@ -76,6 +76,8 @@ public class UserService {
   }
 
   public String getStatusMessage() {
-    return statusMessage;
+    String message = statusMessage;
+    this.statusMessage = null;
+    return message;
   }
 }

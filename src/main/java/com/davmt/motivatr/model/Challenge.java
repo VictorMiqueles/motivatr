@@ -1,7 +1,6 @@
 package com.davmt.motivatr.model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -27,7 +26,7 @@ public class Challenge {
   private String description;
   private String imageUrl;
   private String videoUrl;
-  private Date publishedOn;
+  private LocalDateTime publishedOn;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
 
