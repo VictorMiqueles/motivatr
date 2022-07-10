@@ -18,17 +18,21 @@ public class ChallengeService {
   private ChallengeRepository challengeRepository;
 
   public Challenge getTodaysChallenge() {
+    List<Challenge> unpublishedChallenges = getUnpublishedChallenges();
+    List<Challenge> publishedChallenges = getPublishedChallenges();
+    LocalDate today = LocalDateTime.now().toLocalDate();
+    LocalDate mostRecentChallengeDate;
+
     if (challengeRepository.count() == 0) {
       return null;
     }
 
-    List<Challenge> unpublishedChallenges = getUnpublishedChallenges();
-    List<Challenge> publishedChallenges = getPublishedChallenges();
-    LocalDate today = LocalDateTime.now().toLocalDate();
-    LocalDate mostRecentChallengeDate = publishedChallenges.get(0).getPublishedOn().toLocalDate();
+    if (publishedChallenges.size() > 0) {
+      mostRecentChallengeDate = publishedChallenges.get(0).getPublishedOn().toLocalDate();
 
-    if (today.equals(mostRecentChallengeDate) || unpublishedChallenges.size() == 0) {
-      return publishedChallenges.get(0);
+      if (today.equals(mostRecentChallengeDate) || unpublishedChallenges.size() == 0) {
+        return publishedChallenges.get(0);
+      }
     }
 
     return unpublishedChallenges.get(0);
