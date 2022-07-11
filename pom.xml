@@ -15,7 +15,7 @@
 	<description>Motivatr</description>
 	<properties>
 		<java.version>18</java.version>
-	</properties>
+	</properties>	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -92,6 +92,18 @@
         <version>4.13.2</version>
         <scope>test</scope>
     </dependency>
+
+	<dependency>
+        <groupId>com.twilio.sdk</groupId>
+        <artifactId>twilio</artifactId>
+        <version>8.8.0</version>
+    </dependency>
+
+	<dependency>
+		<groupId>io.github.cdimascio</groupId>
+		<artifactId>dotenv-java</artifactId>
+		<version>2.2.4</version>
+	</dependency>
 
 	</dependencies>
 
