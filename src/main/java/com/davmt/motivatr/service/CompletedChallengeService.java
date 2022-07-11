@@ -22,7 +22,7 @@ public class CompletedChallengeService {
   @Autowired
   ChallengeService challengeService;
 
-  private Boolean isChallengeCompleted;
+  private Boolean isChallengeCompleted = false;
 
   public void addToDb(User user, Challenge todaysChallenge) {
     CompletedChallenge completedChallenge = new CompletedChallenge();
