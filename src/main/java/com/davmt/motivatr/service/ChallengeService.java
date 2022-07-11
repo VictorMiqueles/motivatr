@@ -2,6 +2,7 @@ package com.davmt.motivatr.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.davmt.motivatr.model.Challenge;
+import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.repository.ChallengeRepository;
+import com.davmt.motivatr.repository.CompletedChallengeRepository;
 
 @Service
 public class ChallengeService {
@@ -60,17 +63,20 @@ public class ChallengeService {
     return challengeRepository.findAllByPublishedOnIsNotNullOrderByPublishedOnDesc();
   }
 
-  public List<HashMap<Challenge, Boolean>> getPublishedChallengesWithStatus() {
-    List<HashMap<Challenge, Boolean>>  returnList;
+  public List<HashMap<Challenge, Boolean>> getPublishedChallengesWithStatus(User user) {
+    List<HashMap<Challenge, Boolean>> returnList;
     List<Challenge> challenges = getPublishedChallenges();
 
-    for (challenge : challenges) {
-      if (completedChallengeRepository.findByUserIdAndChallengeId(id, challenge.getId())) {
-        returnList.put(challenge, true);
-      } else {
-        returnList.put(challenge, false);
-      }
-    }
-    return returnList;
+    // for (Challenge challenge : challenges) {
+    // if (completedChallengeRepository.findByUserIdAndChallengeId(user.id,
+    // challenge.getId())) {
+    // returnList.add(challenge, true);
+    // } else {
+    // returnList.put(challenge, false);
+    // }
+    // }
+    // return returnList;
+
+    return null;
   }
 }
