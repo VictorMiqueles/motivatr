@@ -21,13 +21,13 @@ public class UserService {
   @Autowired
   private UsersDataService usersDataService;
   @Autowired
-  AuthoritiesRepository authoritiesRepository;
+  private AuthoritiesRepository authoritiesRepository;
   @Autowired
-  PasswordEncoder getPasswordEncoder;
+  private PasswordEncoder getPasswordEncoder;
 
   private String statusMessage;
 
-  private void save(User user) {
+  public void save(User user) {
     userRepository.save(user);
   }
 
@@ -50,13 +50,19 @@ public class UserService {
   }
 
   public void createUser(User user) {
+    String role = "ROLE_USER";
+
+    if (userRepository.count() == 0) {
+      role = "ROLE_ADMIN";
+    }
+
     user.setPassword(getPasswordEncoder.encode(user.getPassword()));
     UsersData usersData = usersDataService.createUsersData();
 
     user.setUsersData(usersData);
     save(user);
 
-    Authority authority = new Authority(user.getUsername(), "ROLE_USER");
+    Authority authority = new Authority(user.getUsername(), role);
     authoritiesRepository.save(authority);
   }
 
@@ -76,6 +82,8 @@ public class UserService {
   }
 
   public String getStatusMessage() {
-    return statusMessage;
+    String message = statusMessage;
+    this.statusMessage = null;
+    return message;
   }
 }

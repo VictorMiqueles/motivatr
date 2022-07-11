@@ -8,6 +8,9 @@
 
 :root {
   --btn-width-100: 100px;
+  --streak-cold: #0000ff;
+  --streak-warm: #bb9900;
+  --streak-hot: #ff0000;
 }
 
 body {
@@ -31,9 +34,9 @@ body {
   position: relative;
   background-color: #ffffff;
   border-radius: 3rem;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
+  box-shadow: 3px 3px 5px 6px #ccc;
 
 }
 
@@ -43,13 +46,13 @@ body {
   flex-direction: column;
   justify-content: left;
   padding-right: 3.5rem;
-  
+
 }
 
 .challenge-media {
- width: 30%;
- border: 4rem;
- justify-content: right;
+  width: 30%;
+  border: 4rem;
+  justify-content: right;
 
 }
 
@@ -68,7 +71,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin:2rem;
+  margin: 2rem;
 }
 
 .user-name {
@@ -83,6 +86,7 @@ body {
   width: 20rem;
   align-self: center;
 }
+
 .progression_stats {
   display: flex;
   flex-direction: row;
@@ -93,11 +97,12 @@ body {
   margin: 5rem;
   background-color: #ffffff;
   border-radius: 3rem;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
+  box-shadow: 3px 3px 5px 6px #ccc;
 
 }
+
 .top-player-list {
   display: flex;
   flex-direction: column;
@@ -107,9 +112,9 @@ body {
   position: relative;
   background-color: #ffffff;
   border-radius: 3rem;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
+  box-shadow: 3px 3px 5px 6px #ccc;
 
 }
 
@@ -117,9 +122,9 @@ body {
   padding: 1rem;
   background-color: #ffffff;
   border-radius: 3rem;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
+  box-shadow: 3px 3px 5px 6px #ccc;
 }
 
 .position {
@@ -130,6 +135,7 @@ body {
   text-align: center;
 
 }
+
 .progression-stats {
   display: flex;
   flex-direction: row;
@@ -137,9 +143,9 @@ body {
   padding: 3rem;
   background-color: #ffffff;
   border-radius: 3rem;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
+  box-shadow: 3px 3px 5px 6px #ccc;
   max-width: 100%;
 }
 
@@ -160,6 +166,7 @@ body {
   text-align: center;
 
 }
+
 .stat-description {
   font-size: 2rem;
   font-weight: lighter;
@@ -193,8 +200,21 @@ body {
   vertical-align: middle;
 }
 
+.streak-cold {
+  color: var(--streak-cold);
+}
 
 
+.streak-warm {
+  color: var(--streak-warm);
+}
+
+
+.streak-hot {
+  color: var(--streak-hot);
+}
+
+/* button */
 
 
 
@@ -739,4 +759,3 @@ nav ul li #btn_profile::after {
   display: flex;
   justify-content: center;
 }
-
