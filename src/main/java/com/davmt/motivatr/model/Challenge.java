@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -28,6 +29,8 @@ public class Challenge {
   private LocalDateTime publishedOn;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
+  @Transient
+  private Boolean isDone;
 
   @ManyToOne
   @JoinColumn(name = "author_id", nullable = false)
@@ -37,6 +40,7 @@ public class Challenge {
   Set<CompletedChallenge> compleatedChallenges;
 
   public Challenge() {
+    this.isDone = false;
     this.createdAt = LocalDateTime.now();
     this.updatedAt = LocalDateTime.now();
   }

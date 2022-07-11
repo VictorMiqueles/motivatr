@@ -3,6 +3,7 @@ package com.davmt.motivatr.services;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,14 +17,12 @@ import com.davmt.motivatr.MotivatrApplication;
 import com.davmt.motivatr.model.Challenge;
 import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.service.ChallengeService;
+import com.davmt.motivatr.service.CompletedChallengesService;
 import com.davmt.motivatr.service.UserService;
-import com.github.springtestdbunit.annotation.DatabaseSetup;
 
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = MotivatrApplication.class)
-@DatabaseSetup("users-entries.xml")
-@DatabaseSetup("challenge-entries.xml")
 public class ChallengeServiceTests {
 
   @Autowired
@@ -32,10 +31,13 @@ public class ChallengeServiceTests {
   @Autowired
   private UserService userService;
 
+  @Autowired
+  private CompletedChallengesService completedChallengesService;
+
   private User user;
-  private Challenge challenge0 = new Challenge();
   private Challenge challenge1 = new Challenge();
   private Challenge challenge2 = new Challenge();
+  private Challenge challenge3 = new Challenge();
   private LocalDateTime today = LocalDateTime.now();
   private LocalDateTime yesterday = today.minusDays(1);
   private LocalDateTime dayBeforeYesterday = today.minusDays(2);
@@ -54,51 +56,51 @@ public class ChallengeServiceTests {
         "password");
     userService.createUser(user);
 
-    challenge0.setTitle("Challenge 0");
-    challenge0.setDescription("Challenge description 0");
-    challenge0.setAuthor(user);
-    challenge0.setPublishedOn(dayBeforeYesterday);
-    challengeService.save(challenge0);
-
     challenge1.setTitle("Challenge 1");
     challenge1.setDescription("Challenge description 1");
     challenge1.setAuthor(user);
-    challenge1.setPublishedOn(yesterday);
+    challenge1.setPublishedOn(dayBeforeYesterday);
     challengeService.save(challenge1);
 
     challenge2.setTitle("Challenge 2");
     challenge2.setDescription("Challenge description 2");
     challenge2.setAuthor(user);
-    challenge2.setPublishedOn(today);
+    challenge2.setPublishedOn(yesterday);
     challengeService.save(challenge2);
+
+    challenge3.setTitle("Challenge 3");
+    challenge3.setDescription("Challenge description 3");
+    challenge3.setAuthor(user);
+    challenge3.setPublishedOn(today);
+    challengeService.save(challenge3);
 
     setupDone = true;
   }
 
   @Test
   public void returnTodaysChallengeIfLatestChallengesDateIsSameAsTodaysDate() {
-    assertThat(challengeService.getTodaysChallenge().getTitle()).isEqualTo("Challenge 2");
+    assertThat(challengeService.getTodaysChallenge().getTitle()).isEqualTo("Challenge 3");
   }
 
   @Test
   public void returnNewChallengeIfLatestChallengesDateIsNotTodaysDate() {
-    Challenge challenge = challengeService.getChallengeFromId(2L);
+    Challenge challenge = challengeService.getChallengeFromId(3L);
     challenge.setPublishedOn(null);
     challengeService.save(challenge);
-    assertThat(challengeService.getTodaysChallenge().getTitle()).isEqualTo("Challenge 2");
+    assertThat(challengeService.getTodaysChallenge().getTitle()).isEqualTo("Challenge 3");
   }
 
   @Test
   public void returnYesterdaysChallengeIfThereAreNoNewChallenges() {
-    Challenge challenge = challengeService.getChallengeFromId(2L);
-    challenge.setPublishedOn(null);
+    Challenge challenge = challengeService.getChallengeFromId(3L);
+    challenge.setPublishedOn(dayBeforeYesterday);
     challengeService.save(challenge);
     assertThat(challengeService.getTodaysChallenge().getTitle()).isEqualTo("Challenge 2");
   }
 
   @Test
   public void returnListOfUnpublishedChallenges() {
-    Challenge challenge = challengeService.getChallengeFromId(2L);
+    Challenge challenge = challengeService.getChallengeFromId(3L);
     challenge.setPublishedOn(today);
     challengeService.save(challenge);
     assertThat(challengeService.getUnpublishedChallenges().size()).isEqualTo(0);
@@ -109,12 +111,39 @@ public class ChallengeServiceTests {
 
   @Test
   public void returnListOfPublishedChallenges() {
-    Challenge challenge = challengeService.getChallengeFromId(2L);
+    Challenge challenge = challengeService.getChallengeFromId(3L);
     challenge.setPublishedOn(yesterday);
     challengeService.save(challenge);
     assertThat(challengeService.getPublishedChallenges().size()).isEqualTo(3);
     challenge.setPublishedOn(null);
     challengeService.save(challenge);
     assertThat(challengeService.getPublishedChallenges().size()).isEqualTo(2);
+  }
+
+  @Test
+  public void returnFalseForAllThreeUncompletedChallenges() {
+    User user = userService.getUserByUsername("jjames");
+    Challenge challenge = challengeService.getChallengeFromId(3L);
+    challenge.setPublishedOn(yesterday);
+    challengeService.save(challenge);
+    List<Challenge> challenges = challengeService.getPublishedChallengesWithStatus(user);
+
+    assertThat(challenges.get(0).getIsDone()).isFalse();
+    assertThat(challenges.get(1).getIsDone()).isFalse();
+    assertThat(challenges.get(2).getIsDone()).isFalse();
+  }
+
+  @Test
+  public void returnFalseForUncompletedChallengesAndTrueForMarkedAsComplete() {
+    Challenge challenge = challengeService.getChallengeFromId(3L);
+    User user = userService.getUserByUsername("jjames");
+
+    completedChallengesService.completeChallenge(user, challenge);
+
+    List<Challenge> challenges = challengeService.getPublishedChallengesWithStatus(user);
+
+    assertThat(challenges.get(0).getIsDone()).isTrue();
+    assertThat(challenges.get(1).getIsDone()).isFalse();
+    assertThat(challenges.get(2).getIsDone()).isFalse();
   }
 }

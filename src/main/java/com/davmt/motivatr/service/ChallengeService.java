@@ -2,7 +2,6 @@ package com.davmt.motivatr.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,20 +62,15 @@ public class ChallengeService {
     return challengeRepository.findAllByPublishedOnIsNotNullOrderByPublishedOnDesc();
   }
 
-  public List<HashMap<Challenge, Boolean>> getPublishedChallengesWithStatus(User user) {
-    List<HashMap<Challenge, Boolean>> returnList;
+  public List<Challenge> getPublishedChallengesWithStatus(User user) {
     List<Challenge> challenges = getPublishedChallenges();
 
-    // for (Challenge challenge : challenges) {
-    // if (completedChallengeRepository.findByUserIdAndChallengeId(user.id,
-    // challenge.getId())) {
-    // returnList.add(challenge, true);
-    // } else {
-    // returnList.put(challenge, false);
-    // }
-    // }
-    // return returnList;
-
-    return null;
+    for (Challenge challenge : challenges) {
+      if (completedChallengeRepository.existsByUserIdAndChallengeId(user.getId(),
+          challenge.getId())) {
+        challenge.setIsDone(true);
+      }
+    }
+    return challenges;
   }
 }
