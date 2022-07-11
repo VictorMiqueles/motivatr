@@ -1,6 +1,7 @@
 package com.davmt.motivatr.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,14 @@ public class ChallengesController {
   public String newChallenge(Model model) {
     model.addAttribute("challenge", new Challenge());
     return "challenges/new";
+  }
+
+  @GetMapping("/challenges/all")
+  public String listChallenges(Model model, Principal principal) {
+    User user = userService.getUserFromPrincipal(principal);
+    List<Challenge> challenges = challengeService.getPublishedChallengesWithStatus(user);
+    model.addAttribute("challenges", challenges);
+    return "challenges/list";
   }
 
 }

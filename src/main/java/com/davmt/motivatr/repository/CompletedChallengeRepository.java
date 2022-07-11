@@ -8,8 +8,7 @@ import com.davmt.motivatr.model.CompletedChallenge;
 
 public interface CompletedChallengeRepository extends CrudRepository<CompletedChallenge, Long> {
 
-  public List<CompletedChallenge> findByUserId(Long user_id);
+  public List<CompletedChallenge> findByUserId(Long userId);
 
-  public Boolean existsByUserIdAndChallengeId(Long user_id, Long Challenge_id);
-
+  public Boolean existsByUserIdAndChallengeId(Long userId, Long challengeId);
 }
