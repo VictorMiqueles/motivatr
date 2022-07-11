@@ -187,7 +187,6 @@ body {
   display: table;
   height: 10rem;
   width: 10rem;
-  margin-left: 2.5rem;
   margin-bottom: 2rem;
   border-radius: 50%;
   border: 3px solid rgb(7, 201, 0);
@@ -205,13 +204,17 @@ body {
   color: var(--streak-cold);
 }
 
+
 .streak-warm {
   color: var(--streak-warm);
 }
 
+
 .streak-hot {
   color: var(--streak-hot);
 }
+
+/* button */
 
 
 

@@ -3,6 +3,7 @@ package com.davmt.motivatr.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.model.UsersData;
 import com.davmt.motivatr.repository.UsersDataRepository;
 
@@ -20,6 +21,9 @@ public class UsersDataService {
 
   public void save(UsersData usersData) {
     usersDataRepository.save(usersData);
+  }
+
+  public void addPoint(User User, Integer points) {
   }
 
 }

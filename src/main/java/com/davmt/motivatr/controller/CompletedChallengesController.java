@@ -4,6 +4,13 @@ import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.DeleteMapping;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -13,13 +20,14 @@ import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.repository.CompletedChallengeRepository;
 import com.davmt.motivatr.repository.UserRepository;
 import com.davmt.motivatr.service.ChallengeService;
+import com.davmt.motivatr.service.CompletedChallengeService;
 import com.davmt.motivatr.service.UserService;
 
 @Controller
 public class CompletedChallengesController {
 
-  @Autowired
-  ChallengeService challengeService;
+    @Autowired
+    CompletedChallengeService completedChallengeService;
 
   @Autowired
   UserRepository userRepository;
@@ -30,21 +38,9 @@ public class CompletedChallengesController {
   @Autowired
   UserService userService;
 
-  @PostMapping("/completedChallenges")
-  public RedirectView create(Principal principal) {
-
-    User user = userService.getUserFromPrincipal(principal);
-    // Long userId = user.getId();
-    Challenge challenge = challengeService.getTodaysChallenge();
-
-    CompletedChallenge completedChallenge = new CompletedChallenge();
-
-    completedChallenge.setUser(user);
-    completedChallenge.setChallenge(challenge);
-
-    completedChallengeRepository.save(completedChallenge);
-
-    return new RedirectView("/home");
-  }
-
+    @GetMapping("/completedChallenges/{id}")
+    public RedirectView listCompletedChallenges(Model model, Principal principal, @PathVariable Long id) {
+        model.addAttribute("checkIfChallengeDone", completedChallengeService.checkIfChallengeDone(principal, id));
+        return new RedirectView("home");
+    }
 }
