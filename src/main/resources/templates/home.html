@@ -12,51 +12,51 @@
 
 <body>
   <div th:insert="fragments/general :: header"></div>
-  <!--challenge div-->
-  <div class="challenge">
-   
 
-    <div class="challenge-content">
-      <h1 th:text="${challenge.title}"></h1>
-      <p th:text="${challenge.description}"></p>
-      <div class="user-profile-small">
-        <img class="profile-picture" src="/images/no_profile_pick.jpeg">
-        <p class="user-name">
-          <span th:text="${principal.firstName}"></span>
-          <span th:text="${principal.lastName}"></span>
-        <p>
-      </div>
-      <div class="challenge-button">
-        <button onclick="confetti({particleCount: 130, spread: 180, origin: {x: 0.5,y:0.6} });
-        " type="submit" id="mark_as_done" class="btn">Mark as done</button>
+  <div class="margin">
+    <!--challenge div-->
+    <div class="challenge">
+      <h1 th:if="${challenge==null}">No challenges posted yet!</h1>
+      <div class="challenge-content" th:if="${challenge!=null}">
+        <h1 th:text="${challenge.title}"></h1>
+        <p th:text="${challenge.description}"></p>
+        <div class="user-profile-small">
+          <img class="profile-picture" src="/images/no_profile_pick.jpeg">
+          <p class="user-name">
+            <span th:text="${principal.firstName}"></span>
+            <span th:text="${principal.lastName}"></span>
+          <p>
+        </div>
+        <div class="challenge-button">
+          <form action="#" th:action="@{/completedChallenges}" method="post">
+            <button onclick="confetti({particleCount: 130, spread: 180, origin: {x: 0.5,y:0.6} });" type="submit" id="mark_as_done" class="btn">Mark as done</button>
          <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
          <script src="index.js"></script>
+          </form>
+        </div>
+        <img class="challenge-media" src="/images/challenge1.png" alt="LALALA">
       </div>
-   
-     
-
     </div>
-    <img class="challenge-media" src="/images/challenge1.png" alt="LALALA">
-  </div>
 
-  <br>
-  <div class="progression-stats">
-    <div class="stat-1">
-      <p class="stat-number"><span th:text="${principal.usersData.points}"></p>
-      <p class="stat-description">total contributions</p>
-      <p class="stat-date">April 9 - Present</p>
-    </div>
-    <div class="stat-1">
-      <div class="stat-circle">
-        <p class="stat-streak"> <span th:text="${principal.usersData.level}"> </p>
+    <br>
+    <div class="progression-stats">
+      <div class="stat-1">
+        <p class="stat-number"><span th:text="${principal.usersData.points}"></p>
+        <p class="stat-description">total contributions</p>
+        <p class="stat-date">April 9 - Present</p>
       </div>
-      <p class="stat-description">total contributions</p>
-      <p class="stat-date">April 9 - Present</p>
-    </div>
-    <div class="stat-1">
-      <p class="stat-number"><span th:text="${principal.usersData.streak}"></p>
-      <p class="stat-description">longest streak</p>
-      <p class="stat-date">May 9 - June 2</p>
+      <div class="stat-1">
+        <div class="stat-circle">
+          <p class="stat-streak"> <span th:text="${principal.usersData.level}"> </p>
+        </div>
+        <p class="stat-description">total contributions</p>
+        <p class="stat-date">April 9 - Present</p>
+      </div>
+      <div class="stat-1">
+        <p class="stat-number"><span th:text="${principal.usersData.streak}"></p>
+        <p class="stat-description">longest streak</p>
+        <p class="stat-date">May 9 - June 2</p>
+      </div>
     </div>
   </div>
   <br>
@@ -75,11 +75,8 @@
         </div>
       </li>
     </ul>
-
+    </div>
   </div>
-   
- 
-  
 </body>
 
 </html>
