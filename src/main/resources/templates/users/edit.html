@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+  <link th:href="@{/main.css}" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/5f58b769bf.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <title>Edit my profile</title>
+</head>
+
+<body>
+  <div th:insert="fragments/general :: header"></div>
+  <div class="profile_edit">
+    <form class="profile_edit_form" action="#" th:action="@{/users/edit}" th:object="${user}" method="post">
+      <h2>Edit my details</h2>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" th:field="*{firstName}" th:value="${principal.first_name}" name="firstName">
+      <br>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" th:field="*{lastName}" th:value="${principal.last_name}" name="lastName">
+      <br>  
+      <label for="email">Email:</label>
+      <input type="text" id="email" th:field="*{email}" th:value="${principal.email}" name="email">
+      <br>
+      <label for="phone">Phone:</label>
+      <input type="text" id="phone" th:field="*{mobile}" th:value="${principal.mobile}" name="mobile">
+      <br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" th:field="*{password}" name="password">
+      <br>
+      <label for="password">Confirm Password:</label>
+      <input type="password" th:field="*{passwordConfirm}" name="passwordConfirm">
+      <br>
+      <div class="edit_user_buttons">
+        <li><button class="submit_btn" type="submit" id="submit">Submit</button></li>
+      </div>  
+    </form>
+      </div>
+</body>
+</html>

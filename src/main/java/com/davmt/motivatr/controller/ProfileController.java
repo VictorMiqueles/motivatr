@@ -26,7 +26,14 @@ public class ProfileController {
   @GetMapping("/users/profile")
   public String profile(Model model, Principal principal) {
     model.addAttribute("principal", userService.getUserFromPrincipal(principal));
-    return "profile";
+    return "/users/profile";
+  }
+
+  @GetMapping("/users/edit")
+  public String edit(Model model, Principal principal) {
+    model.addAttribute("user", new User());
+    model.addAttribute("principal", userService.getUserFromPrincipal(principal));
+    return "/users/edit";
   }
 
 }

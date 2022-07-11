@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head land="en">
+<head lang="en">
   <link th:href="@{/main.css}" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/5f58b769bf.js" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
-  <title>Profile</title>
+  <title>My profile</title>
 </head>
+
 <body>
+  <div th:insert="fragments/general :: header"></div>
+
   <div class="profile">
+    <div class="user-profile-small">
+      <img class="profile-picture" src="/images/no_profile_pick.jpeg">
+    </div>
     <div class="profile-content">
-      <h1 th:text="${principal.user-name}"></h1>
-      <div class="user-profile-small">
-        <img class="profile-picture" src="/images/no_profile_pick.jpeg">
-        <p class="user-name">
-          <span th:text="${principal.firstName}"></span>
-          <span th:text="${principal.lastName}"></span>
-        <p>
-      </div>
+        <h1 id="username" th:text="${principal.username}"></h1>
+        <!-- source should be th:src="@{${principal.image_url}}" but I can't get it working-->
+        <br>
+        <div class="my_details">
+          <span>My details</span>
+          <p class="user-details">
+          <p>First name:</p>
+          <span id="first_name" th:text="${principal.firstName}"></span>
+          <br>
+          <p>Last name:</p>
+          <span id ="last_name" th:text="${principal.lastName}"></span>
+          <br>
+          <p>Email:</p>
+          <span id ="email" th:text="${principal.email}"></span>
+          <p>Phone number:</p>
+          <span id ="mobile" th:text="${principal.mobile}"></span>
+        </div>
+        <div class="profile-buttons">
+          <button type="button" class="edit_profile_btn" id="edit_profile_btn">Edit my profile</button>
+          <br>
+          <button type="button"class="edit_notifications_btn" id="edit_notifications_btn">Edit notification settings</button>
+        </div>
+    </div>
   </div>
 </body>
 </html>

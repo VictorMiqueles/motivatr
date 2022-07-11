@@ -47,7 +47,8 @@ public class ProfileTest {
       "last", 
       "user", 
       "user@email.com", 
-      "password");
+      "password",
+      "11111 111 111");
     userService.createUser(user);
   }
 
@@ -69,11 +70,14 @@ public class ProfileTest {
           .until(driver -> driver.findElement(By.id("btn_profile")));
     driver.findElement(By.id("btn_profile")).click();
     String title = driver.getTitle();
+    /*
+    Thread sleep just so I could see where I was ending up!
     try {
       Thread.sleep(1500);
   } catch(InterruptedException e) {
       System.out.println("got interrupted!");
   }
+   */
     Assert.assertNotEquals("Expect title to equal Profile", "HTTP Status 404 – Not Found", title);
     
   }

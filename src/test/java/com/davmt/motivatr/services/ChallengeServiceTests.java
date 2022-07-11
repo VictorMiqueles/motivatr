@@ -29,7 +29,7 @@ public class ChallengeServiceTests {
   @Test
   public void shouldReturnUnpublishedChallengeTitle() {
     Challenge challenge = new Challenge();
-    User user = new User("xxx", "xxx", "xxx", "xxx", "xxx");
+    User user = new User("xxx", "xxx", "xxx", "xxx", "xxx", "xxx");
     userService.createUser(user);
 
     challenge.setTitle("Challenge 1");

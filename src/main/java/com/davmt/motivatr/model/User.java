@@ -36,6 +36,7 @@ public class User {
   private String firstName;
   private String lastName;
   private String imageUrl;
+  private String mobile;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
   private Boolean enabled;
@@ -59,12 +60,13 @@ public class User {
     this.enabled = TRUE;
   }
 
-  public User(String firstName, String lastName, String username, String email, String password) {
+  public User(String firstName, String lastName, String username, String email, String password, String mobile) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
     this.password = password;
     this.email = email;
+    this.mobile = mobile;
     this.createdAt = LocalDateTime.now();
     this.updatedAt = LocalDateTime.now();
     this.enabled = TRUE;
