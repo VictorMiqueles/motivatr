@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
@@ -18,13 +19,14 @@ import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.repository.CompletedChallengeRepository;
 import com.davmt.motivatr.repository.UserRepository;
 import com.davmt.motivatr.service.ChallengeService;
+import com.davmt.motivatr.service.CompletedChallengeService;
 import com.davmt.motivatr.service.UserService;
 
 @Controller
 public class CompletedChallengesController {
 
     @Autowired
-    ChallengeService challengeService;
+    CompletedChallengeService completedChallengeService;
 
     @Autowired
     UserRepository userRepository;
@@ -69,57 +71,11 @@ public class CompletedChallengesController {
     // watermark to appear on top of the challenge div
     
     // Sorry for the mini essay! Hope it makes some sense.
+
+    @GetMapping("/completedChallenges/{id}")
+    public RedirectView listCompletedChallenges(Model model, Principal principal, @PathVariable Long id) {
+        model.addAttribute("checkIfChallengeDone", completedChallengeService.checkIfChallengeDone(principal, id));
+        return new RedirectView("home");
+    }
     
-    
-    @PostMapping("/completedChallenges")
-    public RedirectView markAsDone(Principal principal) {
-        
-        User user = userService.getUserFromPrincipal(principal);
-        Challenge challenge = challengeService.getTodaysChallenge();
-
-        CompletedChallenge completedChallenge = new CompletedChallenge();
-
-        completedChallenge.setUser(user);
-        completedChallenge.setChallenge(challenge);
-
-        completedChallengeRepository.save(completedChallenge);
-        
-        return new RedirectView("/home");
-    }
-
-    @DeleteMapping("/notCompletedChallenges")
-    public RedirectView markAsNotDone(Principal principal) {
-        User user = userService.getUserFromPrincipal(principal);
-        Challenge challenge = challengeService.getTodaysChallenge();
-
-        CompletedChallenge completedChallenge = new CompletedChallenge();
-
-        completedChallenge.setUser(user);
-        completedChallenge.setChallenge(challenge);
-
-        completedChallengeRepository.delete(completedChallenge);
-        
-        return new RedirectView("/home");
-    }
-
-
-
-    @GetMapping("/completedChallenges/check")
-    public String checkIfdone(Model model, Principal principal) {
-        Challenge todaysChallenge = challengeService.getTodaysChallenge();
-        User user = userService.getUserFromPrincipal(principal);
-
-        Long todaysChallengeId = todaysChallenge.getId();
-        Long userId = user.getId();
-
-        List<CompletedChallenge> usersCompletedChallenges = completedChallengeRepository.findByUserId(userId);
-
-        String completedChallengeToday = "FALSE"; 
-
-        if (usersCompletedChallenges.contains(todaysChallengeId)) {
-                String completedChallengeToday = "TRUE";
-        }
-        model.addAttribute("todaysChallengeCheck", completedChallengeToday);
-    }
-
 }

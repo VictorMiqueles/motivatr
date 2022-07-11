@@ -12,4 +12,6 @@ public interface CompletedChallengeRepository extends CrudRepository<CompletedCh
 
   public List<CompletedChallenge> findByUserId(Long user_id);
 
+  public Boolean existsByUserIdAndChallengeId(Long user_id, Long Challenge_id);
+
 }

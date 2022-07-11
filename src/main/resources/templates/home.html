@@ -24,22 +24,13 @@
           <span th:text="${principal.lastName}"></span>
         <p>
       </div>
-      <div class="challenge-button">
+      
         <!-- Not usre if this is the right argument -->
-        <div th:switch="${todaysChallengeCheck}">
-            <p th:case="FALSE">
-                <form action="#" th:action="@{/completedChallenges}" method="post">
-                    <button type="submit" value="Post" id="mark_as_done" th:action="@{/challenge}" method="post" class="btn">Mark as done</button>
-                </form>
-            </p>
-            <p th:case="TRUE">
-                <form action="#" th:action="@{/notCompletedChallenges}" method="post">
-                    <button type="submit" value="Post" id="mark_as_done" th:action="@{/challenge}" method="post" class="btn"> NOT done WOOPS</button>
-                </form>
-            </p>
-
-        </div>
-      </div>
+        <a th:href="@{/completedChallenges/{challenge_id}(challenge_id=${challenge.id})}"></a>
+        <button th:text="${checkIfChallengeDone} ? 'Mark as not done' : 'Mark as done'"></button>
+        <!-- </a> -->
+        <!-- </p> ? 'Mark as Not Done' : 'Mark As Done'}"  class="btn" > Mark as done</p> -->
+      
 
 
 
