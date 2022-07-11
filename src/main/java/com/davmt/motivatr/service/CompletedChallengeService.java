@@ -10,6 +10,7 @@ import com.davmt.motivatr.model.CompletedChallenge;
 import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.repository.CompletedChallengeRepository;
 
+// TODO: Write test for CompletedChallengeService class
 @Service
 public class CompletedChallengeService {
 
