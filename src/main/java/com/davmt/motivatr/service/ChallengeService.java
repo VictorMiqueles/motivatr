@@ -19,9 +19,16 @@ public class ChallengeService {
 
   @Autowired
   private ChallengeRepository challengeRepository;
-
-  @Autowired
+  
+    @Autowired
   private CompletedChallengeRepository completedChallengeRepository;
+
+
+  public Challenge getChallengeFromId (Long challenge_id) {
+    Optional<Challenge> challengeOptionsl = challengeRepository.findById(challenge_id);
+    Challenge challenge = challengeOptionsl.get();
+    return challenge;
+  }
 
   public Challenge getTodaysChallenge() {
     List<Challenge> unpublishedChallenges = getUnpublishedChallenges();
