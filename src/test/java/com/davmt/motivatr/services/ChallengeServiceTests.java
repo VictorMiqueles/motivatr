@@ -17,7 +17,7 @@ import com.davmt.motivatr.MotivatrApplication;
 import com.davmt.motivatr.model.Challenge;
 import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.service.ChallengeService;
-import com.davmt.motivatr.service.CompletedChallengesService;
+import com.davmt.motivatr.service.CompletedChallengeService;
 import com.davmt.motivatr.service.UserService;
 
 @ActiveProfiles("test")
@@ -32,7 +32,7 @@ public class ChallengeServiceTests {
   private UserService userService;
 
   @Autowired
-  private CompletedChallengesService completedChallengesService;
+  private CompletedChallengeService completedChallengeService;
 
   private User user;
   private Challenge challenge1 = new Challenge();
@@ -138,7 +138,7 @@ public class ChallengeServiceTests {
     Challenge challenge = challengeService.getChallengeFromId(3L);
     User user = userService.getUserByUsername("jjames");
 
-    completedChallengesService.completeChallenge(user, challenge);
+    completedChallengeService.completeChallenge(user, challenge);
 
     List<Challenge> challenges = challengeService.getPublishedChallengesWithStatus(user);
 

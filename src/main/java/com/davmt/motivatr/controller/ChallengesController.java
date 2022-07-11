@@ -45,5 +45,4 @@ public class ChallengesController {
     model.addAttribute("challenges", challenges);
     return "challenges/list";
   }
-
 }

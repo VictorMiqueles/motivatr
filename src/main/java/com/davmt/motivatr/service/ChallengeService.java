@@ -18,12 +18,11 @@ public class ChallengeService {
 
   @Autowired
   private ChallengeRepository challengeRepository;
-  
-    @Autowired
+
+  @Autowired
   private CompletedChallengeRepository completedChallengeRepository;
 
-
-  public Challenge getChallengeFromId (Long challenge_id) {
+  public Challenge getChallengeFromId(Long challenge_id) {
     Optional<Challenge> challengeOptionsl = challengeRepository.findById(challenge_id);
     Challenge challenge = challengeOptionsl.get();
     return challenge;
@@ -52,13 +51,6 @@ public class ChallengeService {
 
   public void save(Challenge challenge) {
     challengeRepository.save(challenge);
-  }
-
-  public Challenge getChallengeFromId(Long id) {
-    Optional<Challenge> challengeOptional = challengeRepository.findById(id);
-    Challenge challenge = challengeOptional.get();
-
-    return challenge;
   }
 
   public List<Challenge> getUnpublishedChallenges() {

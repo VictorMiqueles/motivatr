@@ -17,7 +17,7 @@ import com.davmt.motivatr.model.Challenge;
 import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.repository.CompletedChallengeRepository;
 import com.davmt.motivatr.service.ChallengeService;
-import com.davmt.motivatr.service.CompletedChallengesService;
+import com.davmt.motivatr.service.CompletedChallengeService;
 import com.davmt.motivatr.service.UserService;
 
 @ActiveProfiles("test")
@@ -35,7 +35,7 @@ public class CompletedChallengesTests {
   private UserService userService;
 
   @Autowired
-  private CompletedChallengesService completedChallengesService;
+  private CompletedChallengeService completedChallengeService;
 
   private User user = new User();
   private Challenge challenge0 = new Challenge();
@@ -65,7 +65,7 @@ public class CompletedChallengesTests {
     challenge0.setPublishedOn(dayBeforeYesterday);
     challengeService.save(challenge0);
 
-    completedChallengesService.completeChallenge(user, challenge0);
+    completedChallengeService.completeChallenge(user, challenge0);
 
     challenge1.setTitle("Challenge 1");
     challenge1.setDescription("Challenge description 1");
