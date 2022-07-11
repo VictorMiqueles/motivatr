@@ -50,7 +50,7 @@ public class CompletedChallengeService {
       addToDb(user, todaysChallenge);
     }
 
-    isChallengeCompleted = completedChallengeToday;
+    isChallengeCompleted = !completedChallengeToday;
   }
 
   public Boolean getIsChallengeCompleted() {
