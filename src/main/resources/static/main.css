@@ -205,13 +205,17 @@ body {
   color: var(--streak-cold);
 }
 
+
 .streak-warm {
   color: var(--streak-warm);
 }
 
+
 .streak-hot {
   color: var(--streak-hot);
 }
+
+/* button */
 
 
 
