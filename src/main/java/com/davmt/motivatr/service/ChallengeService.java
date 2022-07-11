@@ -17,6 +17,9 @@ public class ChallengeService {
   @Autowired
   private ChallengeRepository challengeRepository;
 
+  @Autowired
+  private CompletedChallengeRepository completedChallengeRepository;
+
   public Challenge getTodaysChallenge() {
     List<Challenge> unpublishedChallenges = getUnpublishedChallenges();
     List<Challenge> publishedChallenges = getPublishedChallenges();
@@ -55,5 +58,19 @@ public class ChallengeService {
 
   public List<Challenge> getPublishedChallenges() {
     return challengeRepository.findAllByPublishedOnIsNotNullOrderByPublishedOnDesc();
+  }
+
+  public List<HashMap<Challenge, Boolean>> getPublishedChallengesWithStatus() {
+    List<HashMap<Challenge, Boolean>>  returnList;
+    List<Challenge> challenges = getPublishedChallenges();
+
+    for (challenge : challenges) {
+      if (completedChallengeRepository.findByUserIdAndChallengeId(id, challenge.getId())) {
+        returnList.put(challenge, true);
+      } else {
+        returnList.put(challenge, false);
+      }
+    }
+    return returnList;
   }
 }
