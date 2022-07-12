@@ -11,27 +11,32 @@
 }
 
 body {
+  background-image: url("/images/guitarr.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin-top: 100px;
+  line-height: 1.3rem;
+  border: 2px solid #f03e03;
   font-family: 'Roboto Flex', sans-serif;
   font-weight: 100;
-  margin: 0;
-  margin-top: 100px;
-  background-color: #F0F2F5;
-  line-height: 1.3rem;
-  padding: 5rem;
 }
+
 
 .challenge {
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color:  #F4DB7D;
+  opacity: 0.8;
   padding: 3rem;
   max-width: 100%;
   position: relative;
-  background-color: #ffffff;
+  border-top: 2rem;
   border-radius: 3rem;
   -moz-box-shadow:    3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;  
 
 }
 
@@ -80,8 +85,10 @@ body {
 .challenge-button {
   width: 20rem;
   align-self: center;
+  
+  
 }
-.progression_stats {
+.progression-stats {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -89,11 +96,11 @@ body {
   max-width: 100%;
   position: relative;
   margin: 5rem;
-  background-color: #ffffff;
+  background-color:  #d4d4dc;
   border-radius: 3rem;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  /* -moz-box-shadow:    3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc; */
 
 }
 .top-player-list {
@@ -103,7 +110,7 @@ body {
   padding: 3rem;
   max-width: 100%;
   position: relative;
-  background-color: #ffffff;
+  /* background-color:    #feda6a; */
   border-radius: 3rem;
   -moz-box-shadow:    3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
@@ -113,8 +120,12 @@ body {
 
 .top-player {
   padding: 1rem;
-  background-color: #ffffff;
+  background-color:  #F4DB7D;
+  opacity: 0.8;
+  /* background-color:   #feda6a; */
   border-radius: 3rem;
+  background-image: cover;
+
   -moz-box-shadow:    3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
   box-shadow:         3px 3px 5px 6px #ccc;
@@ -133,11 +144,12 @@ body {
   flex-direction: row;
   justify-content: center;
   padding: 3rem;
-  background-color: #ffffff;
+  backdrop-filter: blur(14px);
   border-radius: 3rem;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  background-color: #F4DB7D;
+-moz-box-shadow:    3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc; 
   max-width: 100%;
 }
 
@@ -148,6 +160,8 @@ body {
   object-position: center;
   color: #1A7FE9;
   margin: 0 2rem 0 2rem;
+  background-color: #F4DB7D;
+ 
 }
 
 
@@ -184,6 +198,63 @@ body {
   border: 3px solid rgb(7, 201, 0);
 
 }
+/* circle flamestarts: */
+.stat-circle,.stat-circle:before,.stat-circle:after{
+  top:0;
+  bottom:0;
+  left:0;
+  right:0; 
+  content:"";
+  position:absolute;
+  border-radius:50%;
+}
+
+.stat-circle{
+  position:fixed;
+  width:100px;
+  height:100px;
+  margin:auto;
+  animation:spin 4s linear infinite;
+}
+
+@keyframes spin{
+  100%{transform:rotate(360deg);filter:hue-rotate(360deg)}
+}
+
+.stat-circle:before{
+  border:5px solid #aaa;
+  border-bottom:5px solid orange;
+  border-left:5px solid orange;
+  animation:spin1 1s linear infinite;
+}
+
+.stat-circle:after{
+  border:5px solid #aaa;
+  border-top:5px solid transparent;
+  border-right:5px solid transparent;
+  animation:spin2 1s linear infinite;
+}
+
+@keyframes spin1{
+  20%{transform:rotate(150deg)}
+  40%{transform:rotate(300deg)}
+  80%{transform:rotate(300deg)}
+  100%{transform:rotate(360deg)}
+}
+
+@keyframes spin2{
+  0%{transform:rotate(-30deg)}
+  20%{transform:rotate(-30deg);
+      border-color:transparent transparent #aaa #aaa}
+  21%{border-color:orange orange transparent transparent}
+  40%{transform:rotate(-30deg)}
+  60%{transform:rotate(120deg);
+      border-color:orange orange transparent transparent}
+  61%{border-color:transparent transparent #aaa #aaa}
+  80%{transform:rotate(270deg)}
+  100%{transform:rotate(330deg);}
+}
+/* circle flame finishes: */
 
 .stat-streak {
   font-size: 5rem;
@@ -191,22 +262,6 @@ body {
   display: table-cell;
   vertical-align: middle;
 }
-
-
-/* button */
-
-
-/* button */
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -577,6 +632,7 @@ nav {
   margin: 0;
   padding: 0;
   z-index: 1;
+
 }
 
 nav ul {
@@ -584,8 +640,9 @@ nav ul {
   padding: 0.5rem 1rem;
   list-style: none;
   display: flex;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
+  box-shadow: 0 1px 8px rgba(220, 13, 13, 0.823);
+  opacity: 9.5;
+ /* background-color: #b11a21; */
 }
 
 nav ul li {
@@ -597,7 +654,7 @@ nav ul li a {
   text-decoration: none;
 }
 
-nav ul li #fb {
+/* nav ul li #fb {
   background: #0B84ED;
   color: #fff;
   width: 2.5rem;
@@ -607,7 +664,7 @@ nav ul li #fb {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-}
+} */
 
 nav ul li#space1 {
   flex: 1;
