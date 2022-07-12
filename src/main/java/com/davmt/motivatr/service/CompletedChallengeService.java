@@ -25,30 +25,30 @@ public class CompletedChallengeService {
 
   private Boolean isChallengeCompleted = false;
 
-  public void addToDb(User user, Challenge todaysChallenge) {
+  public void addToDb(User user, Challenge currentChallenge) {
     CompletedChallenge completedChallenge = new CompletedChallenge();
 
     completedChallenge.setUser(user);
-    completedChallenge.setChallenge(todaysChallenge);
+    completedChallenge.setChallenge(currentChallenge);
     completedChallengeRepository.save(completedChallenge);
   }
 
-  public void removeFromDb(Long userId, Long challengeId) {
+  public void removeFromDb(User user, Challenge curreChallenge) {
     CompletedChallenge completedChallenge = completedChallengeRepository
-        .findByUserIdAndChallengeId(userId, challengeId).get(0);
+        .findByUserIdAndChallengeId(user.getId(), curreChallenge.getId()).get(0);
     completedChallengeRepository.delete(completedChallenge);
   }
 
   public void checkIfChallengeDone(Principal principal, Long challengeId) {
-    Challenge todaysChallenge = challengeService.getChallengeFromId(challengeId);
+    Challenge currentChallenge = challengeService.getChallengeFromId(challengeId);
     User user = userService.getUserFromPrincipal(principal);
     Long userId = user.getId();
     Boolean completedChallengeToday = completedChallengeRepository.existsByUserIdAndChallengeId(userId, challengeId);
 
     if (completedChallengeToday) {
-      removeFromDb(userId, challengeId);
+      removeFromDb(user, currentChallenge);
     } else {
-      addToDb(user, todaysChallenge);
+      addToDb(user, currentChallenge);
     }
 
     isChallengeCompleted = !completedChallengeToday;
