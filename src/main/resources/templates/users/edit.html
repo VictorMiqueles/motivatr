@@ -13,16 +13,19 @@
     <form class="profile_edit_form" action="#" th:action="@{/users/edit}" th:object="${user}" method="post">
       <h2>Edit my details</h2>
       <label for="firstName">First Name:</label>
-      <input type="text" id="firstName" th:field="*{firstName}" th:value="${principal.first_name}" name="firstName">
+      <input type="text" id="firstName" name="firstName"  th:id="*{firstName}" th:name="*{firstName}" th:value="${principal.firstName}">
       <br>
       <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" th:field="*{lastName}" th:value="${principal.last_name}" name="lastName">
+      <input type="text" id="lastName" name="lastName" th:id="*{lastName}" th:name="*{lastName}" th:value="${principal.lastName}">
       <br>  
       <label for="email">Email:</label>
-      <input type="text" id="email" th:field="*{email}" th:value="${principal.email}" name="email">
+      <input type="text" id="email" name="email" th:id="*{email}" th:name="*{email}" th:value="${principal.email}">
       <br>
       <label for="phone">Phone:</label>
-      <input type="text" id="phone" th:field="*{mobile}" th:value="${principal.mobile}" name="mobile">
+      <input type="text" id="phone" name="mobile" th:id="*{mobile}" th:name="*{mobile}" th:value="${principal.mobile}">
+      <br>
+      <label for="image_url">Profile image:</label>
+      <input type="text" id="image_url" name="image_url" th:id="*{imageUrl}" th:name="*{imageUrl}" th:value="${principal.imageUrl}">
       <br>
       <label for="password">Password:</label>
       <input type="password" id="password" th:field="*{password}" name="password">
@@ -31,9 +34,13 @@
       <input type="password" th:field="*{passwordConfirm}" name="passwordConfirm">
       <br>
       <div class="edit_user_buttons">
-        <li><button class="submit_btn" type="submit" id="submit">Submit</button></li>
+        <button class="submit_btn" type="submit" id="submit">Submit</button>
       </div>  
     </form>
       </div>
 </body>
 </html>
+
+<!--
+
+-->

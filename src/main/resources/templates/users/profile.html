@@ -12,14 +12,12 @@
 
   <div class="profile">
     <div class="user-profile-small">
-      <img class="profile-picture" src="/images/no_profile_pick.jpeg">
+      <img class="profile-picture" th:src="@{${principal.imageUrl}}"  onerror="this.onerror=null;this.src='/images/no_profile_pick.jpeg';">
     </div>
     <div class="profile-content">
         <h1 id="username" th:text="${principal.username}"></h1>
-        <!-- source should be th:src="@{${principal.image_url}}" but I can't get it working-->
-        <br>
         <div class="my_details">
-          <span>My details</span>
+          <h2>My details</h2>
           <p class="user-details">
           <p>First name:</p>
           <span id="first_name" th:text="${principal.firstName}"></span>
@@ -33,11 +31,15 @@
           <span id ="mobile" th:text="${principal.mobile}"></span>
         </div>
         <div class="profile-buttons">
-          <button type="button" class="edit_profile_btn" id="edit_profile_btn">Edit my profile</button>
+            <button type="button" class="btn edit_profile_btn" id="edit_profile_btn" th:href="@{/users/edit}">Edit my profile</button>
           <br>
-          <button type="button"class="edit_notifications_btn" id="edit_notifications_btn">Edit notification settings</button>
+            <button type="button"class="btn edit_notifications_btn" id="edit_notifications_btn" th:href="@{/users/notifcations}">Edit notification settings</button>
         </div>
     </div>
   </div>
 </body>
 </html>
+
+<!--
+  src="/images/no_profile_pick.jpeg"
+-->

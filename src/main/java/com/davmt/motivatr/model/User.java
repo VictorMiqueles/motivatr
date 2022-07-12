@@ -66,7 +66,6 @@ public class User {
     this.username = username;
     this.password = password;
     this.email = email;
-    this.mobile = mobile;
     this.createdAt = LocalDateTime.now();
     this.updatedAt = LocalDateTime.now();
     this.enabled = TRUE;

@@ -70,15 +70,9 @@ public class ProfileTest {
           .until(driver -> driver.findElement(By.id("btn_profile")));
     driver.findElement(By.id("btn_profile")).click();
     String title = driver.getTitle();
-    /*
-    Thread sleep just so I could see where I was ending up!
-    try {
-      Thread.sleep(1500);
-  } catch(InterruptedException e) {
-      System.out.println("got interrupted!");
-  }
-   */
     Assert.assertNotEquals("Expect title to equal Profile", "HTTP Status 404 – Not Found", title);
-    
+    WebElement firstName = new WebDriverWait(driver, Duration.ofSeconds(3))
+    .until(driver -> driver.findElement(By.id("first_name")));
+    Assert.assertEquals("First name should be displayed","firstName", firstName.getText());
   }
 }
