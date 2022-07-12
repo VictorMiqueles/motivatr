@@ -5,12 +5,13 @@
   <link th:href="@{/main.css}" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/5f58b769bf.js" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
   <title>Motivatr</title>
 </head>
 
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <!-- <img class="guitar" src="/images/dark-rider.jpg"></div> -->
   <div th:insert="fragments/general :: header"></div>
   <img th:if="${isChallengeCompleted}" th:src="@{/images/no_profile_pick.jpeg}"
     th:onload="confetti({particleCount: 130, spread: 180, origin: {x: 0.5,y:0.6} });" style="display: none;">
@@ -28,7 +29,6 @@
             <span th:text="${principal.lastName}"></span>
           <p>
         </div>
-
         <div class="challenge-button">
           <a th:text="${isChallengeCompleted} ? 'Mark as not done' : 'Mark as done'"
             th:href="@{/challenge/complete/{challenge_id}(challenge_id=${challenge.id})}" class="btn"></a>
