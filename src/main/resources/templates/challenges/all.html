@@ -16,10 +16,9 @@
       <h1>All Challenges</h1>
       <ul>
         <li class="top-player" th:each="challenge: ${challenges}">
-          <div class="user-profile-small">
-            <img class="profile-picture" src="/images/no_profile_pick.jpeg">
-            <p class="user-name"><span th:text="${challenge.title}"></span></p>
-            <p class="user-name"><span th:text="${challenge.description}"></span></p>
+          <div>
+            <p><span th:text="${challenge.title}"></span></p>
+            <p><span th:text="${challenge.description}"></span></p>
           </div>
         </li>
       </ul>
