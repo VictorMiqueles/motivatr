@@ -21,7 +21,7 @@ public class CompletedChallengesController {
 
   @GetMapping("/challenge/complete/{id}")
   public RedirectView listCompletedChallenges(Model model, Principal principal, @PathVariable Long id) {
-    completedChallengeService.checkIfChallengeDone(principal, id);
+    completedChallengeService.toggleChallengeStatus(principal, id);
     return new RedirectView("/home");
   }
 }

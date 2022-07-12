@@ -1,7 +1,6 @@
 package com.davmt.motivatr.service;
 
 import java.security.Principal;
-import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +23,6 @@ public class CompletedChallengeService {
   @Autowired
   ChallengeService challengeService;
 
-  private LocalDate currentChallengeDate;
-  private Boolean isChallengeCompleted = false;
-
   public void addToDb(User user, Challenge currentChallenge) {
     CompletedChallenge completedChallenge = new CompletedChallenge();
 
@@ -41,28 +37,23 @@ public class CompletedChallengeService {
     completedChallengeRepository.delete(completedChallenge);
   }
 
-  public void checkIfChallengeDone(Principal principal, Long challengeId) {
+  public void toggleChallengeStatus(Principal principal, Long challengeId) {
     Challenge currentChallenge = challengeService.getChallengeFromId(challengeId);
     User user = userService.getUserFromPrincipal(principal);
-    Long userId = user.getId();
-    Boolean completedChallengeToday = completedChallengeRepository.existsByUserIdAndChallengeId(userId, challengeId);
-
-    if (completedChallengeToday) {
+    if (checkChallengeStatus(principal, currentChallenge)) {
       removeFromDb(user, currentChallenge);
-      currentChallengeDate = null;
-      isChallengeCompleted = false;
     } else {
       addToDb(user, currentChallenge);
-      currentChallengeDate = currentChallenge.getPublishedOn().toLocalDate();
-      isChallengeCompleted = true;
     }
   }
 
-  public Boolean getIsChallengeCompleted() {
-    if (currentChallengeDate == null || LocalDate.now().isAfter(currentChallengeDate)) {
-      isChallengeCompleted = false;
-    }
-    return isChallengeCompleted;
+  public Boolean checkChallengeStatus(Principal principal, Challenge challenge) {
+    User user = userService.getUserFromPrincipal(principal);
+    Long userId = user.getId();
+    Long challengeId = challenge.getId();
+    Boolean isCurrentChallengeCompleted = completedChallengeRepository.existsByUserIdAndChallengeId(userId,
+        challengeId);
+    return isCurrentChallengeCompleted;
   }
 
   public void completeChallenge(User user, Challenge challenge) {
