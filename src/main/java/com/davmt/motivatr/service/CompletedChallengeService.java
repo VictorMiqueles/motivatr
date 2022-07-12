@@ -59,7 +59,7 @@ public class CompletedChallengeService {
   }
 
   public Boolean getIsChallengeCompleted() {
-    if (currentChallengeDate == null || currentChallengeDate.isAfter(LocalDate.now())) {
+    if (currentChallengeDate == null || LocalDate.now().isAfter(currentChallengeDate)) {
       isChallengeCompleted = false;
     }
     return isChallengeCompleted;
