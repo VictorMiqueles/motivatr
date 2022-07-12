@@ -46,6 +46,10 @@ public class ChallengeService {
       }
     }
 
+    Challenge unpublishedChallenge = unpublishedChallenges.get(0);
+    unpublishedChallenge.setPublishedOn(LocalDateTime.now());
+    save(unpublishedChallenge);
+
     return unpublishedChallenges.get(0);
   }
 

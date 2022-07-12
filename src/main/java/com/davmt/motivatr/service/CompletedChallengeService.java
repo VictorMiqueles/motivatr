@@ -1,6 +1,8 @@
 package com.davmt.motivatr.service;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,7 @@ public class CompletedChallengeService {
   @Autowired
   ChallengeService challengeService;
 
+  private LocalDate currentChallengeDate;
   private Boolean isChallengeCompleted = false;
 
   public void addToDb(User user, Challenge currentChallenge) {
@@ -47,15 +50,19 @@ public class CompletedChallengeService {
 
     if (completedChallengeToday) {
       removeFromDb(user, currentChallenge);
+      currentChallengeDate = null;
+      isChallengeCompleted = false;
     } else {
       addToDb(user, currentChallenge);
+      currentChallengeDate = currentChallenge.getPublishedOn().toLocalDate();
+      isChallengeCompleted = true;
     }
-
-    isChallengeCompleted = !completedChallengeToday;
   }
 
   public Boolean getIsChallengeCompleted() {
-    // TODO: check if the date is the same as today
+    if (currentChallengeDate == null || currentChallengeDate.isAfter(LocalDate.now())) {
+      isChallengeCompleted = false;
+    }
     return isChallengeCompleted;
   }
 
