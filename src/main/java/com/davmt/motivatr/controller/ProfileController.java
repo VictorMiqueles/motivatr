@@ -36,4 +36,10 @@ public class ProfileController {
     return "/users/edit";
   }
 
+  @GetMapping("/users/notifications")
+  public String notifications(Model model, Principal principal) {
+    model.addAttribute("principal", userService.getUserFromPrincipal(principal));
+    return "/users/notifications";
+  }
+
 }

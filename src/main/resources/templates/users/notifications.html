@@ -8,4 +8,42 @@
 </head>
 
 <body>
-  <div th:insert="fragments/general :: header"></div>
+  <body>
+    <div th:insert="fragments/general :: header"></div>
+    <div class="notification_settings">
+      <form class="noticiation_settings_form" action="#" th:action="@{/users/notificatons}" th:object="${notification_settings}" method="post">
+        <h2>Notification settings</h2>
+        <label for="dailyNotificationsYes">Daily reminders:</label>
+        <p>Yes</p>
+        <input type="checkbox" id="dailyYes" name="dailyYes" >
+        <p>No</p>
+        <input type="checkbox" id="dailyNo" name="dailyno">
+        <br>
+        <label for="mobileNotificationsYes">Mobile notifications:</label>
+        <p>Yes</p>
+        <input type="checkbox" id="mobileYes" name="mobileYes" >
+        <p>No</p>
+        <input type="checkbox" id="mobileNo" name="mobileNo" >
+        <br>
+        <br>  
+        <label for="emailNotifications">Email notifications:</label>
+        <p>Yes</p>
+        <input type="checkbox" id="dailyYes" name="dailyYes"  >
+        <p>No</p>
+        <input type="checkbox" id="dailyNo" name="dailyno" >
+        <br>
+        <div class="edit_notification_buttons">
+          <button class="submit_btn" type="submit" id="submit">Submit</button>
+        </div>  
+      </form>
+    </div>
+  </body>
+
+  <!--
+    th:id="*{dailyNotificationsYes}" th:name="*{dailyNotificationsYes}" 
+    th:id="*{dailyNotificationsNo}" th:name="*{dailyNotificationsNo}" 
+    th:id="*{mobileNotificationsYes}" th:name="*{mobileNotificationsYes}" 
+    th:id="*{mobileNotificationsNo}" th:name="*{mobileNotificationsNo}" 
+    th:id="*{emailNotificationsYes}" th:name="*{emailNotificationsYes}" 
+    th:id="*{emailNotificationsNo}" th:name="*{emailNotificationsNo}" 
+  -->
