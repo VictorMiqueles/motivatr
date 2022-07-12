@@ -37,24 +37,16 @@
           </a>
         </li>
         <li id="space1"></li>
+
         <li>
-          <a class="tooltip" data-tooltip="Friends" id="btn_friends" th:href="@{'/friends/'+${#authentication.name}}">
-            <i class="fa-solid fa-user-group"></i>
+          <a th:href="@{/challenges/all}" class="tooltip" data-tooltip="Challenges" id="btn_challenges">
+            <i class="fa-solid fa-guitar"></i>
           </a>
         </li>
+
         <li>
-          <a href="#" class="tooltip" data-tooltip="Message" id="btn_msg">
-            <i class="fab fa-facebook-messenger"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="tooltip" data-tooltip="Notification" id="btn_bell">
-            <i class="fas fa-bell"></i>
-          </a>
-        </li>
-        <li>
-          <a class="tooltip" data-tooltip="Settings" id="btn_profile" th:href="@{/users/settings}">
-            <i class="fas fa-user-cog"></i>
+          <a class="tooltip" data-tooltip="Logout" id="btn_logout" th:href="@{/logout}">
+            <i class="fa-solid fa-right-from-bracket"></i>
           </a>
         </li>
       </ul>
@@ -91,4 +83,4 @@
   </footer>
 </body>
 
-</html> 
+</html>
