@@ -67,10 +67,12 @@ public class ChallengeService {
 
   public List<Challenge> getPublishedChallengesWithStatus(User user) {
     List<Challenge> challenges = getPublishedChallenges();
+    Long userId = user.getId();
 
     for (Challenge challenge : challenges) {
-      if (completedChallengeRepository.existsByUserIdAndChallengeId(user.getId(),
-          challenge.getId())) {
+      Long challengeId = challenge.getId();
+      Boolean isDone = completedChallengeRepository.existsByUserIdAndChallengeId(userId, challengeId);
+      if (isDone) {
         challenge.setIsDone(true);
       }
     }
