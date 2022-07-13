@@ -29,6 +29,19 @@ public class ProfileController {
   @Autowired
   NotificationService notificationService;
 
+  @GetMapping("/users/notifications")
+  public String getNotifications(Model model, Principal principal, NotificationSetting notificationSetting) {
+    model.addAttribute("principal", userService.getUserFromPrincipal(principal));
+    model.addAttribute("notificationSetting", notificationService.getNotificationSettingsFromPrincipal(principal));
+    return "/users/notifications";
+  }
+
+  @PostMapping("/users/notifications")
+    public String setNotifications(Model model, NotificationSetting notificationSettingPage, Principal principal){
+    notificationService.save(notificationSettingPage);
+    return "users/notifications";
+    }
+
   @GetMapping("/users/profile")
   public String profile(Model model, Principal principal) {
     model.addAttribute("principal", userService.getUserFromPrincipal(principal));
@@ -43,21 +56,9 @@ public class ProfileController {
   }
 
   @PostMapping("/users/edit")
-  public RedirectView setProfile(@ModelAttribute User profileForm, RedirectAttributes redirAttrs) {
+  public RedirectView updateProfile(@ModelAttribute User profileForm, RedirectAttributes redirAttrs) {
     userService.updateUser(profileForm);
     return new RedirectView("/users/profile");
   }
 
-  @GetMapping("/users/notifications")
-  public String getNotifications(Model model, Principal principal, NotificationSetting notificationSetting) {
-    model.addAttribute("principal", userService.getUserFromPrincipal(principal));
-    model.addAttribute("notificationSetting", notificationService.getNotificationSettingsFromPrincipal(principal));
-    return "/users/notifications";
-  }
-
-  @PostMapping("/users/notifications")
-    public String setNotifications(Model model, NotificationSetting notificationSettingPage){
-    notificationService.save(notificationSettingPage);
-    return "users/notifications";
-    }
 }

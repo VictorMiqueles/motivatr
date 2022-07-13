@@ -28,11 +28,16 @@ public class NotificationService {
   public void save(NotificationSetting notificationSetting) {
     notificationRepository.save(notificationSetting);
   }
+
+  public NotificationSetting getNotificationSettingsFromUserId(Long userId) {
+    NotificationSetting notificationSetting = notificationRepository.findByUserId(userId);
+    return notificationSetting;
+  }
   
   public NotificationSetting getNotificationSettingsFromPrincipal(Principal principal) {
     User user = userService.getUserFromPrincipal(principal);
     Long userId = user.getId();
-    NotificationSetting notificationSetting = notificationRepository.findByUserId(userId).get(0);
+    NotificationSetting notificationSetting = notificationRepository.findByUserId(userId);
     return notificationSetting;
   }
 }

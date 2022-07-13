@@ -56,7 +56,7 @@ public class User {
   private UsersData usersData;
 
   @OneToOne(cascade = CascadeType.MERGE)
-  @JoinColumn(name = "id", referencedColumnName = "id")
+  @JoinColumn(name = "notification_settings_id", referencedColumnName = "id")
   private NotificationSetting notificationSetting;
 
   public User() {

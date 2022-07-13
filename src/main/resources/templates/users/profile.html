@@ -31,9 +31,13 @@
           <span id ="mobile" th:text="${principal.mobile}"></span>
         </div>
         <div class="profile-buttons">
-            <button type="button" class="btn edit_profile_btn" id="edit_profile_btn" th:href="@{/users/edit}">Edit my profile</button>
+            <a href="/users/edit">
+              <button type="button" class="btn edit_profile_btn" id="edit_profile_btn">Edit my profile</button>
+            </a>
           <br>
-            <button type="button"class="btn edit_notifications_btn" id="edit_notifications_btn" th:href="@{/users/notifcations}">Edit notification settings</button>
+            <a href="/users/notifications">
+              <button type="button"class="btn edit_notifications_btn" id="edit_notifications_btn">Edit notification settings</button>
+            </a>
         </div>
     </div>
   </div>
