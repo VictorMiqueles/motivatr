@@ -33,8 +33,6 @@ public class ChallengeService {
   }
 
   public Challenge getTodaysChallenge() {
-    List<Challenge> unpublishedChallenges = getUnpublishedChallenges();
-    List<Challenge> publishedChallenges = getPublishedChallenges();
     LocalDate today = LocalDateTime.now().toLocalDate();
     LocalDate mostRecentChallengeDate;
 
@@ -45,9 +43,10 @@ public class ChallengeService {
       challenge.setTitle("Empty Challenge!");
       challenge.setDescription("Auto created first challenge.");
       save(challenge);
-      return null;
     }
 
+    List<Challenge> unpublishedChallenges = getUnpublishedChallenges();
+    List<Challenge> publishedChallenges = getPublishedChallenges();
     if (publishedChallenges.size() > 0) {
       mostRecentChallengeDate = publishedChallenges.get(0).getPublishedOn().toLocalDate();
 
