@@ -32,6 +32,7 @@ public class User {
   private String lastName;
   private String mobile;
   private String imageUrl;
+  private String mobile;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
   private Boolean enabled;
@@ -47,6 +48,10 @@ public class User {
   @OneToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "users_data_id", referencedColumnName = "id")
   private UsersData usersData;
+
+  @OneToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "notification_settings_id", referencedColumnName = "id")
+  private NotificationSetting notificationSetting;
 
   public User() {
     this.createdAt = LocalDateTime.now();

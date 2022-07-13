@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.davmt.motivatr.model.Challenge;
+import com.davmt.motivatr.model.CompletedChallenge;
 import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.repository.ChallengeRepository;
 import com.davmt.motivatr.repository.CompletedChallengeRepository;
+import com.davmt.motivatr.repository.UserRepository;
 
 @Service
 public class ChallengeService {
@@ -22,6 +24,9 @@ public class ChallengeService {
   @Autowired
   private CompletedChallengeRepository completedChallengeRepository;
 
+  @Autowired
+  private UserRepository userRepository;
+
   public Challenge getChallengeFromId(Long challenge_id) {
     Optional<Challenge> challengeOptionsl = challengeRepository.findById(challenge_id);
     Challenge challenge = challengeOptionsl.get();
@@ -29,15 +34,20 @@ public class ChallengeService {
   }
 
   public Challenge getTodaysChallenge() {
-    List<Challenge> unpublishedChallenges = getUnpublishedChallenges();
-    List<Challenge> publishedChallenges = getPublishedChallenges();
     LocalDate today = LocalDateTime.now().toLocalDate();
     LocalDate mostRecentChallengeDate;
 
     if (challengeRepository.count() == 0) {
-      return null;
+      User author = userRepository.findById(1L).get();
+      Challenge challenge = new Challenge();
+      challenge.setAuthor(author);
+      challenge.setTitle("Empty Challenge!");
+      challenge.setDescription("Auto created first challenge.");
+      save(challenge);
     }
 
+    List<Challenge> unpublishedChallenges = getUnpublishedChallenges();
+    List<Challenge> publishedChallenges = getPublishedChallenges();
     if (publishedChallenges.size() > 0) {
       mostRecentChallengeDate = publishedChallenges.get(0).getPublishedOn().toLocalDate();
 
@@ -65,7 +75,7 @@ public class ChallengeService {
     return challengeRepository.findAllByPublishedOnIsNotNullOrderByPublishedOnDesc();
   }
 
-  public List<Challenge> getPublishedChallengesWithStatus(User user) {
+  public List<Challenge> getPublishedChallengesWithStatusAndCompleted(User user) {
     List<Challenge> challenges = getPublishedChallenges();
     Long userId = user.getId();
 
@@ -75,7 +85,12 @@ public class ChallengeService {
       if (isDone) {
         challenge.setIsDone(true);
       }
+      
+      List<CompletedChallenge> completedChallengeList = completedChallengeRepository.findByChallengeId(challengeId);
+      challenge.setCompletedCount(completedChallengeList.size());
     }
+
     return challenges;
   }
+
 }

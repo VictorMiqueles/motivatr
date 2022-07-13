@@ -32,6 +32,7 @@ body {
 .container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   background-color:  #ffffff;
   padding: 3vw;
   border-radius: 2rem;
@@ -57,7 +58,7 @@ body {
 }
 
 .challenge-content {
-  width: 30%;
+  width: auto;
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -112,15 +113,12 @@ body {
 
 .challenge-media {
   border: 1rem;
-  width: 70%;
-  align-items: center;
-  justify-content: center;
+  width: 80%;
+  height: 420px;
+  max-width: 750px;
+  text-align: right;
 }
 
-.media-content {
-  height: 400px;
-  max-width: 750px;
-}
 
 .progression-container-top-player {
   display: flex;
@@ -324,6 +322,53 @@ body {
   display: table-cell;
   vertical-align: middle;
 }
+
+.challenge-list-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.challing-list-content-left {
+  width: 100%;
+}
+
+.completed-user-icon {
+  height: 0.8rem;
+}
+
+.challenge-tital-list {
+  font-size: 2rem;
+  line-height: normal;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.challenge-list-description {
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.completed-marker {
+  align-self: center;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.completed-class {
+  color: rgb(144, 78, 242);
+  font-weight: bold;
+}
+
+.not-done-class {
+  color: rgb(156, 156, 156);
+  font-weight: bold;
+}
+
+
+
 
 
 

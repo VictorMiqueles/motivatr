@@ -12,3 +12,4 @@ public interface ChallengeRepository extends CrudRepository<Challenge, Long> {
 
   public List<Challenge> findAllByPublishedOnIsNotNullOrderByPublishedOnDesc();
 }
+

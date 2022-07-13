@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.davmt.motivatr.model.Authority;
+import com.davmt.motivatr.model.NotificationSetting;
 import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.model.UsersData;
 import com.davmt.motivatr.repository.AuthoritiesRepository;
@@ -24,7 +25,11 @@ public class UserService {
   @Autowired
   private AuthoritiesRepository authoritiesRepository;
   @Autowired
-  private PasswordEncoder getPasswordEncoder;
+
+  PasswordEncoder getPasswordEncoder;
+  @Autowired
+  NotificationService notificationService;
+
 
   private String statusMessage;
 
@@ -59,8 +64,11 @@ public class UserService {
 
     user.setPassword(getPasswordEncoder.encode(user.getPassword()));
     UsersData usersData = usersDataService.createUsersData();
-
     user.setUsersData(usersData);
+
+    NotificationSetting notificationSetting = notificationService.createNotificationSetting();
+    notificationService.save(notificationSetting);
+    user.setNotificationSetting(notificationSetting);
     save(user);
 
     Authority authority = new Authority(user.getUsername(), role);
@@ -88,9 +96,29 @@ public class UserService {
     return message;
   }
 
+
   public List<User> notifyUserList() {
     List<User> users = new ArrayList<User>();
     userRepository.findAll().forEach(users::add);
     return users;
+
+  public void updateUser(User updateUser, Principal principal) {
+    User user = getUserFromPrincipal(principal);
+    if (updateUser.getPassword() != null) {
+      user.setPassword(updateUser.getPassword());
+    }
+    if (updateUser.getFirstName() != null) {
+      user.setFirstName(updateUser.getFirstName());
+    }
+    if (updateUser.getLastName() != null) {
+      user.setLastName(updateUser.getLastName());
+    }
+    if (updateUser.getImageUrl() != null) {
+      user.setImageUrl(updateUser.getImageUrl());
+    }
+    if (updateUser.getMobile() != null) {
+      user.setMobile(updateUser.getMobile());
+    }
+    save(user);
   }
 }
