@@ -5,6 +5,7 @@ import static java.lang.Boolean.TRUE;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import javax.management.Notification;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +32,7 @@ public class User {
   private String firstName;
   private String lastName;
   private String imageUrl;
+  private String mobile;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
   private Boolean enabled;
@@ -47,13 +49,17 @@ public class User {
   @JoinColumn(name = "users_data_id", referencedColumnName = "id")
   private UsersData usersData;
 
+  @OneToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "notification_settings_id", referencedColumnName = "id")
+  private NotificationSetting notificationSetting;
+
   public User() {
     this.createdAt = LocalDateTime.now();
     this.updatedAt = LocalDateTime.now();
     this.enabled = TRUE;
   }
 
-  public User(String firstName, String lastName, String username, String email, String password) {
+  public User(String firstName, String lastName, String username, String email, String password, String mobile) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;

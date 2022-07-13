@@ -6,13 +6,13 @@
     <nav th:fragment="header">
       <ul>
         <li>
-          <a class="tooltip active" data-tooltip="Home" th:href="@{/}" id="home">
+          <a class="tooltip active" data-tooltip="Home" th:href="@{/home}" id="home">
             <i class="fas fa-home"></i>
           </a>
         </li>
         <li id="space1"></li>
         <li>
-          <a th:href="@{'/users/'+${#authentication.name}}">
+          <a th:href="@{/users/profile}">
             <div class="nav-profile-link tooltip" data-tooltip="Profile">
               <button id="btn_profile">
                 <img class="post-icon">
@@ -31,8 +31,10 @@
         </li>
 
         <li>
+
           <a class="tooltip" data-tooltip="Logout" id="btn_logout" th:href="@{/logout}">
             <i class="fa-solid fa-right-from-bracket"></i>
+
           </a>
         </li>
       </ul>
@@ -43,19 +45,18 @@
     <nav th:fragment="header-not-logged-in">
       <ul>
         <li>
-          <a class="tooltip active" data-tooltip="Home" th:href="@{/users/new}" id="home">
+          <a class="tooltip active" data-tooltip="Home" th:href="@{/login}" id="home">
             <i class="fas fa-home"></i>
           </a>
         </li>
         <li id="space1"></li>
-        <li id="space1"></li>
         <li>
-          <a th:href="@{/users/new}" class="tooltip" data-tooltip="Sign Up" id="btn_signup">
+          <a class="tooltip" data-tooltip="Sign Up" th:href="@{/users/new}" id="btn_signup">
             Sign Up
           </a>
         </li>
         <li>
-          <a class="tooltip" data-tooltip="Log In" id="btn_login" th:href="@{/login}">
+          <a class="tooltip" data-tooltip="Log In" th:href="@{/login}" id="btn_login">
             Log In
           </a>
         </li>
