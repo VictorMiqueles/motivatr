@@ -1,7 +1,6 @@
 package com.davmt.motivatr.integration;
 
 import java.time.Duration;
-import java.lang.Thread;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -31,7 +30,7 @@ public class ProfileTest {
 
   @Autowired
   public UserService userService;
-  
+
   WebDriver driver;
   Faker faker;
 
@@ -43,12 +42,11 @@ public class ProfileTest {
     driver = new ChromeDriver(options);
     faker = new Faker();
     User user = new User(
-      "first", 
-      "last", 
-      "user", 
-      "user@email.com", 
-      "password",
-      "11111 111 111");
+        "first",
+        "last",
+        "user",
+        "user@email.com",
+        "password");
     userService.createUser(user);
   }
 
@@ -61,18 +59,18 @@ public class ProfileTest {
   }
 
   @Test
-    public void profileButtonNavigatesToCorrectURL() throws InterruptedException {
+  public void profileButtonNavigatesToCorrectURL() throws InterruptedException {
     driver.get("http://localhost:8080");
     driver.findElement(By.id("username")).sendKeys("user");
     driver.findElement(By.id("password")).sendKeys("password");
     driver.findElement(By.id("btnLogin")).click();
     WebElement profileButton = new WebDriverWait(driver, Duration.ofSeconds(3))
-          .until(driver -> driver.findElement(By.id("btn_profile")));
+        .until(driver -> driver.findElement(By.id("btn_profile")));
     driver.findElement(By.id("btn_profile")).click();
     String title = driver.getTitle();
     Assert.assertNotEquals("Expect title to equal Profile", "HTTP Status 404 – Not Found", title);
     WebElement firstName = new WebDriverWait(driver, Duration.ofSeconds(3))
-    .until(driver -> driver.findElement(By.id("first_name")));
-    Assert.assertEquals("First name should be displayed","firstName", firstName.getText());
+        .until(driver -> driver.findElement(By.id("first_name")));
+    Assert.assertEquals("First name should be displayed", "firstName", firstName.getText());
   }
 }

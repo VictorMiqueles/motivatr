@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -54,8 +55,8 @@ public class SignUpIntegrationTest {
     driver.findElement(By.id("passwordConfirm")).sendKeys(passwd);
     driver.findElement(By.id("submit")).click();
     WebElement loginButton = new WebDriverWait(driver, Duration.ofSeconds(3))
-          .until(driver -> driver.findElement(By.id("btnLogin")));
-    Assert.assertEquals("Log in", loginButton.getText());      
+        .until(driver -> driver.findElement(By.id("btnLogin")));
+    Assert.assertEquals("Log in", loginButton.getText());
     h2Element = driver.findElement(By.tagName("h2"));
     Assert.assertEquals("Login", h2Element.getText());
   }

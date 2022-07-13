@@ -59,7 +59,7 @@ public class User {
     this.enabled = TRUE;
   }
 
-  public User(String firstName, String lastName, String username, String email, String password, String mobile) {
+  public User(String firstName, String lastName, String username, String email, String password) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;

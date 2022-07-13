@@ -27,7 +27,7 @@ public class NotificationServiceTest {
 
   @Test
   public void notificationSettingsCanBeSaved() {
-    User user = new User("blah", "blah", "blah", "blah", "blah", "blah");
+    User user = new User("blah", "blah", "blah", "blah", "blah");
     userService.createUser(user);
 
     user.getNotificationSetting().setDailyNotifications(true);

@@ -12,6 +12,7 @@ import com.davmt.motivatr.model.Challenge;
 import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.repository.ChallengeRepository;
 import com.davmt.motivatr.repository.CompletedChallengeRepository;
+import com.davmt.motivatr.repository.UserRepository;
 
 @Service
 public class ChallengeService {
@@ -21,6 +22,12 @@ public class ChallengeService {
 
   @Autowired
   private CompletedChallengeRepository completedChallengeRepository;
+
+  @Autowired
+  private UserRepository userRepository;
+
+  @Autowired
+  private UserService userService;
 
   public Challenge getChallengeFromId(Long challenge_id) {
     Optional<Challenge> challengeOptionsl = challengeRepository.findById(challenge_id);
@@ -35,6 +42,12 @@ public class ChallengeService {
     LocalDate mostRecentChallengeDate;
 
     if (challengeRepository.count() == 0) {
+      User author = userRepository.findById(1L).get();
+      Challenge challenge = new Challenge();
+      challenge.setAuthor(author);
+      challenge.setTitle("Empty Challenge!");
+      challenge.setDescription("Auto created first challenge.");
+      save(challenge);
       return null;
     }
 
