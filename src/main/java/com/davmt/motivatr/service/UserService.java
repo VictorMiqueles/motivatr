@@ -30,7 +30,6 @@ public class UserService {
   @Autowired
   NotificationService notificationService;
 
-
   private String statusMessage;
 
   public void save(User user) {
@@ -96,11 +95,11 @@ public class UserService {
     return message;
   }
 
-
   public List<User> notifyUserList() {
     List<User> users = new ArrayList<User>();
-    userRepository.findAll().forEach(users::add);
+    userRepository.findByNotificationSetting_TextNotificationsIsTrue().forEach(users::add);
     return users;
+  }
 
   public void updateUser(User updateUser, Principal principal) {
     User user = getUserFromPrincipal(principal);

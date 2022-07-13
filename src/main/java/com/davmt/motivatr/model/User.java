@@ -32,7 +32,6 @@ public class User {
   private String lastName;
   private String mobile;
   private String imageUrl;
-  private String mobile;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
   private Boolean enabled;

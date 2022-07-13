@@ -18,6 +18,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
   List<User> findTop10ByOrderByUsersData_PointsDesc();
 
-  // List<User> findAllByNotificationIsTrue();
+  List<User> findByNotificationSetting_TextNotificationsIsTrue();
 
 }
