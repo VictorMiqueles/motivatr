@@ -38,6 +38,7 @@ body {
   -moz-box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.212);
   -webkit-box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
   box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
+  margin-bottom: 6rem;
 }
 
 .progression-container {
@@ -48,11 +49,11 @@ body {
   backdrop-filter: blur(14px);
   border-radius: 3rem;
   background-color: #ffffff;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc; 
-
+  -moz-box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.212);
+  -webkit-box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
+  box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
   max-width: 100%;
+  margin-bottom: 6rem;
 }
 
 .challenge-content {
@@ -99,7 +100,7 @@ body {
 .user-name {
   font-size: 1rem;
   font-weight: normal;
-  color: #3c8ee6;
+  color: rgb(144, 78, 242);
   margin-left: 0.5rem;
 }
 
@@ -121,6 +122,20 @@ body {
   max-width: 750px;
 }
 
+.progression-container-top-player {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.top-player-scores {
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 
 
@@ -134,20 +149,17 @@ body {
   margin: 5rem;
   background-color:  #d4d4dc;
   border-radius: 3rem;
-  -moz-box-shadow: 3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow: 3px 3px 5px 6px #ccc;
+  -moz-box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.212);
+  -webkit-box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
+  box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
 }
 
 .top-player-list {
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding: 3rem;
   max-width: 100%;
   position: relative;
-
-
 
 }
 
@@ -158,19 +170,41 @@ body {
   /* background-color:   #feda6a; */
   border-radius: 3rem;
   background-image: cover;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow: 3px 3px 5px 6px #ccc;
+  -moz-box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.212);
+  -webkit-box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
+  box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
+}
+
+
+.player {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.top-player-stats {
+  font-size: 3rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
 }
 
 .position {
   border: 2rem;
-  font-size: 3rem;
-  font-weight: bold;
-  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: lighter;
   text-align: center;
+  vertical-align: center;
+  padding-right: 1rem;
 
 }
+
+.user-profile-small-top-players {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
 
 
 .stat-1 {
@@ -205,7 +239,7 @@ body {
   font-size: 1rem;
   text-align: center;
   font-weight: lighter;
-  color: rgb(0, 179, 86);
+  color: rgb(144, 78, 242);
 }
 
 /* come abck and sort out the margin problem */
@@ -214,7 +248,7 @@ body {
   height: 8rem;
   width: 8rem;
   border-radius: 50%;
-  border: 3px solid rgb(7, 201, 0);
+  border: 3px solid rgb(144, 78, 242);
   margin:auto;
   animation:spin 4s linear infinite;
 }
@@ -323,7 +357,7 @@ h3 {
 }
 
 p {
-  color: #000000;
+  color: rgb(0, 0, 0);
 }
 
 .friend-list,
@@ -440,7 +474,7 @@ p {
 
 .post-likes .fa-thumbs-up {
   font-size: 1rem;
-  color: #1A7FE9;
+  color: rgb(144, 78, 242);
 }
 
 .post-name-time {

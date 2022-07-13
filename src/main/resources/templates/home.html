@@ -17,6 +17,7 @@
     th:onload="confetti({particleCount: 130, spread: 180, origin: {x: 0.5,y:0.6} });" style="display: none;">
   <div class="margin">
     <!--challenge div-->
+    <h1>TODAYS CHALLENGE</h1>
     <div class="container">
       
       <h1 th:if="${challenge==null}">No challenges posted yet!</h1>
@@ -53,7 +54,7 @@
 
     </div>
     <br>
-    
+    <h1>YOUR SCORE</h1>
     <div class="progression-container">
 
       <div class="stat-1">
@@ -85,26 +86,40 @@
 
     </div>
 
-  </div>
-  <br>
-  <div class="top-player-list">
-    <h1>TOP PLAYERS</h1>
-    <ul>
-      <li class="top-player" th:each="toptenuser, iter: ${topten}">
-        <p class="position">Number <span th:text="${iter.index + 1}"></p>
-        <div class="user-profile-small">
-          <img class="profile-picture" th:src="${toptenuser.imageUrl}"><img>
-          <p class="user-name">
-            <span th:text="${toptenuser.firstName}"></span>
-            <span th:text="${toptenuser.lastName}"></span>
-          </p>
-        </div>
-          <p class="user-name">Points: <span th:text="${toptenuser.usersData.points}"></span></p>
-          <p class="user-name">Level: <span th:text="${toptenuser.usersData.level}"></span></p>
-          <p class="user-name">Streak: <span th:text="${toptenuser.usersData.streak}"></span></p>
-      </li>
-    </ul>
-  </div>
+    <br>
+    <div class="top-player-list">
+      <h1>TOP PLAYERS</h1>
+      <ul>
+        <li class="top-player" th:each="toptenuser, iter: ${topten}">
+          <div class="player">
+            <p class="position">#<span th:text="${iter.index + 1}"></p>
+            <div class="user-profile-small-top-players">
+              <img class="profile-picture" th:src="${toptenuser.imageUrl}"><img>
+              <p class="user-name">
+                <span th:text="${toptenuser.firstName}"></span>
+                <span th:text="${toptenuser.lastName}"></span>
+              </p>
+            </div>
+            <div class="progression-container-top-player">
+              <div class="top-player-scores">
+                <p class="top-player-stats" th:text="${toptenuser.usersData.points}"></p>
+                <p class="user-name">Challenges Finished:</p>
+              </div>
+              <div class="top-player-scores">
+                <p class="top-player-stats" th:text="${toptenuser.usersData.level}"></p>
+                <p class="user-name">Current Streak:</p>
+              </div>
+              <div class="top-player-scores">
+                <p class="top-player-stats" th:text="${toptenuser.usersData.streak}"></p>
+                <p class="user-name">longest streak:</p>
+              </div>
+            </div>
+             
+          </div>
+        </li>
+      </ul>
+    </div>
+    </div>
   </div>
 </body>
 
