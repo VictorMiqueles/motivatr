@@ -23,6 +23,8 @@ public class CompletedChallengeService {
   @Autowired
   ChallengeService challengeService;
 
+  private Boolean highestStreakChanged = false;
+
   public void addToDb(User user, Challenge currentChallenge) {
     CompletedChallenge completedChallenge = new CompletedChallenge();
 
@@ -37,13 +39,45 @@ public class CompletedChallengeService {
     completedChallengeRepository.delete(completedChallenge);
   }
 
+  public void addToStreak(User user) {
+    Integer streak = user.getUsersData().getStreak();
+    user.getUsersData().setStreak(streak + 1);
+
+    Integer totalCompleted = user.getUsersData().getTotalCompleted();
+    user.getUsersData().setTotalCompleted(totalCompleted + 1);
+
+    Integer highestStreak = user.getUsersData().getHighestStreak();
+    if (streak + 1 > highestStreak) {
+      user.getUsersData().setHighestStreak(streak + 1);
+      highestStreakChanged = true;
+    }
+    userService.save(user);
+  }
+
+  public void removeFromStreak(User user) {
+    Integer streak = user.getUsersData().getStreak();
+    user.getUsersData().setStreak(streak - 1);
+
+    Integer totalCompleted = user.getUsersData().getTotalCompleted();
+    user.getUsersData().setTotalCompleted(totalCompleted - 1);
+
+    Integer highestStreak = user.getUsersData().getHighestStreak();
+    if (highestStreakChanged) {
+      user.getUsersData().setHighestStreak(highestStreak - 1);
+      highestStreakChanged = false;
+    }
+    userService.save(user);
+  }
+
   public void toggleChallengeStatus(Principal principal, Long challengeId) {
     Challenge currentChallenge = challengeService.getChallengeFromId(challengeId);
     User user = userService.getUserFromPrincipal(principal);
     if (checkChallengeStatus(principal, currentChallenge)) {
       removeFromDb(user, currentChallenge);
+      removeFromStreak(user);
     } else {
       addToDb(user, currentChallenge);
+      addToStreak(user);
     }
   }
 

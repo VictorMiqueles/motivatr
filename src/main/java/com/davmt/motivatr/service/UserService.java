@@ -85,7 +85,7 @@ public class UserService {
   }
 
   public List<User> getTopTenUsers() {
-    List<User> users = userRepository.findTop10ByOrderByUsersData_PointsDesc();
+    List<User> users = userRepository.findTop10ByOrderByUsersData_TotalCompletedDesc();
     return users;
   }
 

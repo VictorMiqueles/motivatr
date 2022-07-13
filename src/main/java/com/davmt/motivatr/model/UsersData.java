@@ -18,9 +18,9 @@ public class UsersData {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private Long points;
   private Integer streak;
-  private Integer level;
+  private Integer highestStreak;
+  private Integer totalCompleted;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
 
@@ -32,10 +32,10 @@ public class UsersData {
     this.updatedAt = LocalDateTime.now();
   }
 
-  public UsersData(Long points, Integer streak, Integer level) {
-    this.points = points;
+  public UsersData(Integer highestStreak, Integer streak, Integer totalCompleted) {
+    this.highestStreak = highestStreak;
     this.streak = streak;
-    this.level = level;
+    this.totalCompleted = totalCompleted;
     this.createdAt = LocalDateTime.now();
     this.updatedAt = LocalDateTime.now();
   }

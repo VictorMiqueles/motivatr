@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.davmt.motivatr.model.Challenge;
-import com.davmt.motivatr.model.CompletedChallenge;
 import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.repository.ChallengeRepository;
 import com.davmt.motivatr.repository.CompletedChallengeRepository;
@@ -85,12 +84,7 @@ public class ChallengeService {
       if (isDone) {
         challenge.setIsDone(true);
       }
-      
-      List<CompletedChallenge> completedChallengeList = completedChallengeRepository.findByChallengeId(challengeId);
-      challenge.setCompletedCount(completedChallengeList.size());
     }
-
     return challenges;
   }
-
 }

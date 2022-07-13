@@ -19,11 +19,11 @@
     <!--challenge div-->
     <h1>TODAYS CHALLENGE</h1>
     <div class="container">
-      
+
       <h1 th:if="${challenge==null}">No challenges posted yet!</h1>
-      
+
       <div class="challenge-content" th:if="${challenge!=null}">
-        
+
         <div>
           <h1 class="challenge-tital" th:text="${challenge.title}"></h1>
           <p class="challenge-description" th:text="${challenge.description}"></p>
@@ -46,8 +46,11 @@
       </div>
 
       <div class="challenge-media">
-            <!-- <img th:src="${challenge.imageUrl}" alt="LALALA"> -->
-            <iframe 2rem; width="100%" height="100%" th:src="${challenge.videoUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- <img th:src="${challenge.imageUrl}" alt="LALALA"> -->
+        <iframe 2rem; width="100%" height="100%" th:src="${challenge.videoUrl}" title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
       </div>
 
     </div>
@@ -57,16 +60,16 @@
 
       <div class="stat-1">
         <div class="stat-box">
-          <p class="stat-number"><span th:text="${principal.usersData.points}"></p>
-            <p class="stat-description">Challenges Finished</p>
-            <p class="stat-date">April 9 - Present</p>
+          <p class="stat-number"><span th:text="${principal.usersData.totalCompleted}"></p>
+          <p class="stat-description">Challenges Finished</p>
+          <p class="stat-date">April 9 - Present</p>
         </div>
       </div>
       <div class="stat-1">
         <div class="stat-box">
           <div class="center-stats">
             <div class="stat-circle">
-              <p class="stat-streak"> <span th:text="${principal.usersData.level}"> </p>
+              <p class="stat-streak"> <span th:text="${principal.usersData.streak}"> </p>
             </div>
           </div>
           <p class="stat-description">Current Streak</p>
@@ -75,10 +78,10 @@
       </div>
       <div class="stat-1">
         <div class="stat-box">
-          <p class="stat-number"><span th:text="${principal.usersData.streak}"></p>
+          <p class="stat-number"><span th:text="${principal.usersData.highestStreak}"></p>
           <p class="stat-description">longest streak</p>
           <p class="stat-date">May 9 - June 2</p>
-        </div>  
+        </div>
 
       </div>
 
@@ -100,24 +103,24 @@
             </div>
             <div class="progression-container-top-player">
               <div class="top-player-scores">
-                <p class="top-player-stats" th:text="${toptenuser.usersData.points}"></p>
+                <p class="top-player-stats" th:text="${toptenuser.usersData.totalCompleted}"></p>
                 <p class="user-name">Challenges Finished:</p>
               </div>
               <div class="top-player-scores">
-                <p class="top-player-stats" th:text="${toptenuser.usersData.level}"></p>
+                <p class="top-player-stats" th:text="${toptenuser.usersData.streak}"></p>
                 <p class="user-name">Current Streak:</p>
               </div>
               <div class="top-player-scores">
-                <p class="top-player-stats" th:text="${toptenuser.usersData.streak}"></p>
+                <p class="top-player-stats" th:text="${toptenuser.usersData.highestStreak}"></p>
                 <p class="user-name">longest streak:</p>
               </div>
             </div>
-             
+
           </div>
         </li>
       </ul>
     </div>
-    </div>
+  </div>
   </div>
 </body>
 

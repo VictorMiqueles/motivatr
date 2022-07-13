@@ -16,7 +16,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
   Boolean existsByUsername(String username);
 
-  List<User> findTop10ByOrderByUsersData_PointsDesc();
+  List<User> findTop10ByOrderByUsersData_TotalCompletedDesc();
 
   List<User> findByNotificationSetting_TextNotificationsIsTrue();
 

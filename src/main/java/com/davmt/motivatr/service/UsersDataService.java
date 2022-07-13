@@ -14,7 +14,7 @@ public class UsersDataService {
   UsersDataRepository usersDataRepository;
 
   public UsersData createUsersData() {
-    UsersData usersData = new UsersData(0L, 0, 0);
+    UsersData usersData = new UsersData(0, 0, 0);
     save(usersData);
     return usersData;
   }
