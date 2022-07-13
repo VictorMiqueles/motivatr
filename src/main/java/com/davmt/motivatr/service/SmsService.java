@@ -23,6 +23,7 @@ public class SmsService {
   @Autowired
   UserService userService;
 
+  // TODO: can change to: @Scheduled(cron="0 0 0 * * ?");
   @Scheduled(fixedRate = 15000)
   public void reportCurrentTime() {
     for (User user : userService.notifyUserList()) {
