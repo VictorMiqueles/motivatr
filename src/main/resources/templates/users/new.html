@@ -10,10 +10,10 @@
 
 <body>
   <div th:insert="fragments/general :: header-not-logged-in"></div>
-  <div class="container">
+  <div class="margin">
+    <h1>New account</h1>
     <p class="status-message" th:if="${message!=null}" th:text="${message}"></p>
     <div class="new-user">
-      <h2>New account</h2>
       <form class="new-user-form" action="#" th:action="@{/users}" th:object="${user}" method="post">
 
         <label for="firstName">First Name:</label>

@@ -10,9 +10,10 @@
 
 <body>
   <div th:insert="fragments/general :: header-not-logged-in"></div>
-  <div class="container">
+
+    <div class="margin">
+      <h1>Login</h1>
     <div class="login">
-      <h2>Login</h2>
       <form class="login-form" th:action="@{/login}" method="post">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" />

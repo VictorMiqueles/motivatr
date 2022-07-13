@@ -41,7 +41,7 @@ public class ChallengesController {
   @GetMapping("/challenges/all")
   public String listChallenges(Model model, Principal principal) {
     User user = userService.getUserFromPrincipal(principal);
-    List<Challenge> challenges = challengeService.getPublishedChallengesWithStatus(user);
+    List<Challenge> challenges = challengeService.getPublishedChallengesWithStatusAndCompleted(user);
     model.addAttribute("challenges", challenges);
     model.addAttribute("principal", userService.getUserFromPrincipal(principal));
     return "challenges/all";
