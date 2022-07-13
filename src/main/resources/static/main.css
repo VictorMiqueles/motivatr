@@ -323,6 +323,54 @@ body {
   vertical-align: middle;
 }
 
+.challenge-list-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.challing-list-content-left {
+  width: 100%;
+}
+
+.completed-user-icon {
+  height: 0.8rem;
+}
+
+.challenge-tital-list {
+  font-size: 2rem;
+  line-height: normal;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.challenge-list-description {
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.completed-marker {
+  align-self: center;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.completed-class {
+  color: rgb(144, 78, 242);
+  font-weight: bold;
+}
+
+.not-done-class {
+  color: rgb(156, 156, 156);
+  font-weight: bold;
+}
+
+
+
+
+
 
 /* OLD STUFF  */
 
