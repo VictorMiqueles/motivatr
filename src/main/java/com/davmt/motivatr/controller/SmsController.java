@@ -24,7 +24,6 @@ public class SmsController {
 
                 Dotenv dotenv = Dotenv.load();
                 Twilio.init(dotenv.get("TWILIO_ACCOUNT_SID"), dotenv.get("TWILIO_AUTH_TOKEN"));
-                // Twilio.init("AC444947d3a9b16b556fa8023312410c22", "4c2ab8ce8af6271ce2b9a6b551c834c1");
 
                 Message.creator(new PhoneNumber(dotenv.get("VICTOR_PHONE")),
                                 new PhoneNumber(dotenv.get("TWILIO_NUM")), "Hello from Twilio 📞").create();
