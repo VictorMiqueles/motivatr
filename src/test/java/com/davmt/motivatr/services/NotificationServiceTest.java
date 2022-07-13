@@ -10,7 +10,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.davmt.motivatr.MotivatrApplication;
-import com.davmt.motivatr.model.NotificationSetting;
 import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.service.NotificationService;
 import com.davmt.motivatr.service.UserService;
@@ -34,10 +33,13 @@ public class NotificationServiceTest {
     user.getNotificationSetting().setDailyNotifications(true);
     user.getNotificationSetting().setTextNotifications(true);
     user.getNotificationSetting().setEmailNotifications(true);
-    //user.getNotificationSetting().
+    notificationService.save(user.getNotificationSetting());
 
-    assertThat(notificationService.getNotificationSettingsFromUserId(user.getId()).getDailyNotifications()).isEqualTo(true);
-    assertThat(notificationService.getNotificationSettingsFromUserId(user.getId()).getTextNotifications()).isEqualTo(true);
-    assertThat(notificationService.getNotificationSettingsFromUserId(user.getId()).getEmailNotifications()).isEqualTo(true);
+    assertThat(notificationService.getNotificationSettingsFromUserId(user.getId()).getDailyNotifications())
+        .isEqualTo(true);
+    assertThat(notificationService.getNotificationSettingsFromUserId(user.getId()).getTextNotifications())
+        .isEqualTo(true);
+    assertThat(notificationService.getNotificationSettingsFromUserId(user.getId()).getEmailNotifications())
+        .isEqualTo(true);
   }
 }

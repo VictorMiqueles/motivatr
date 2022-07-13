@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.davmt.motivatr.model.NotificationSetting;
 
 public interface NotificationSettingsRepository extends CrudRepository<NotificationSetting, Long> {
-  NotificationSetting findByUsersId(Long userId);
+  NotificationSetting findByUserId(Long userId);
 }

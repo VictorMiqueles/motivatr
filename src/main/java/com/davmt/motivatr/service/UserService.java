@@ -8,12 +8,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.davmt.motivatr.model.Authority;
+import com.davmt.motivatr.model.NotificationSetting;
 import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.model.UsersData;
 import com.davmt.motivatr.repository.AuthoritiesRepository;
 import com.davmt.motivatr.repository.UserRepository;
-import com.davmt.motivatr.service.NotificationService;
-import com.davmt.motivatr.model.NotificationSetting;
 
 @Service
 public class UserService {
@@ -28,7 +27,6 @@ public class UserService {
   PasswordEncoder getPasswordEncoder;
   @Autowired
   NotificationService notificationService;
-
 
   private String statusMessage;
 
@@ -58,8 +56,10 @@ public class UserService {
     user.setPassword(getPasswordEncoder.encode(user.getPassword()));
     UsersData usersData = usersDataService.createUsersData();
     user.setUsersData(usersData);
+
     NotificationSetting notificationSetting = notificationService.createNotificationSetting();
     notificationService.save(notificationSetting);
+    user.setNotificationSetting(notificationSetting);
     save(user);
 
     Authority authority = new Authority(user.getUsername(), "ROLE_USER");
@@ -89,18 +89,18 @@ public class UserService {
     User user = getUserFromPrincipal(principal);
     if (updateUser.getPassword() != null) {
       user.setPassword(updateUser.getPassword());
-    } 
+    }
     if (updateUser.getFirstName() != null) {
-    user.setFirstName(updateUser.getFirstName());
-    } 
+      user.setFirstName(updateUser.getFirstName());
+    }
     if (updateUser.getLastName() != null) {
-    user.setLastName(updateUser.getLastName());
-    }  
+      user.setLastName(updateUser.getLastName());
+    }
     if (updateUser.getImageUrl() != null) {
-    user.setImageUrl(updateUser.getImageUrl());
-    } 
+      user.setImageUrl(updateUser.getImageUrl());
+    }
     if (updateUser.getMobile() != null) {
-    user.setMobile(updateUser.getMobile());
+      user.setMobile(updateUser.getMobile());
     }
     save(user);
   }
