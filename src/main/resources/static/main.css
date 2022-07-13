@@ -8,79 +8,137 @@
 
 :root {
   --btn-width-100: 100px;
+  --streak-cold: #0000ff;
+  --streak-warm: #bb9900;
+  --streak-hot: #ff0000;
 }
 
 body {
+  background-image: linear-gradient(to bottom right, rgb(242, 251, 255), rgba(144, 78, 242, 0.308));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin-top: 70px;
+  line-height: 1.3rem;
   font-family: 'Roboto Flex', sans-serif;
   font-weight: 100;
-  margin: 0;
-  margin-top: 100px;
-  background-color: #F0F2F5;
-  line-height: 1.3rem;
-  padding: 5rem;
 }
 
-.challenge {
+.margin {
+  padding: 3rem;
+}
+
+
+.container {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  padding: 3rem;
-  max-width: 100%;
-  position: relative;
-  background-color: #ffffff;
-  border-radius: 3rem;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
+  background-color:  #ffffff;
+  padding: 3vw;
+  border-radius: 2rem;
+  -moz-box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.212);
+  -webkit-box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
+  box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
+  margin-bottom: 6rem;
+}
 
+.progression-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 1rem;
+  backdrop-filter: blur(14px);
+  border-radius: 3rem;
+  background-color: #ffffff;
+  -moz-box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.212);
+  -webkit-box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
+  box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
+  max-width: 100%;
+  margin-bottom: 6rem;
 }
 
 .challenge-content {
-  width: 60%;
+  width: 30%;
+  height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  padding-right: 3.5rem;
+  padding-right: 2rem;
+  justify-content: space-between;
   
 }
 
-.challenge-media {
- width: 30%;
- border: 4rem;
- justify-content: right;
-
+.challenge-tital {
+  font-size: 2rem;
+  line-height: normal;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
-
-.profile-picture {
-  margin: 2rem 0;
-  width: 10rem;
-  height: 10rem;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0px 5px 15px #ccc;
+.challenge-description {
+  margin-bottom: 1rem;
 }
 
+.posted-by {
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  color: #9e9e9e;
+}
 
 .user-profile-small {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin:2rem;
+}
+
+.profile-picture {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0px 5px 15px #ccc;
 }
 
 .user-name {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  color: #3c8ee6;
-  margin-left: 3rem;
+  font-size: 1rem;
+  font-weight: normal;
+  color: rgb(144, 78, 242);
+  margin-left: 0.5rem;
 }
 
 .challenge-button {
   width: 20rem;
-  align-self: center;
+  text-align: center;
 }
+
+
+.challenge-media {
+  border: 1rem;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-content {
+  height: 400px;
+  max-width: 750px;
+}
+
+.progression-container-top-player {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.top-player-scores {
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 .progression_stats {
   display: flex;
   flex-direction: row;
@@ -89,101 +147,176 @@ body {
   max-width: 100%;
   position: relative;
   margin: 5rem;
-  background-color: #ffffff;
+  background-color:  #d4d4dc;
   border-radius: 3rem;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
-
+  -moz-box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.212);
+  -webkit-box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
+  box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
 }
+
 .top-player-list {
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding: 3rem;
   max-width: 100%;
   position: relative;
-  background-color: #ffffff;
-  border-radius: 3rem;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
 
 }
 
 .top-player {
-  padding: 1rem;
-  background-color: #ffffff;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  background-color:  #ffffff;
+  /* background-color:   #feda6a; */
   border-radius: 3rem;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
+  background-image: cover;
+  -moz-box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.212);
+  -webkit-box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
+  box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
+}
+
+
+.player {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.top-player-stats {
+  font-size: 3rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
 }
 
 .position {
   border: 2rem;
-  font-size: 3rem;
-  font-weight: bold;
-  margin-top: 2rem;
-  text-align: center;
-
-}
-.progression-stats {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 3rem;
-  background-color: #ffffff;
-  border-radius: 3rem;
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
-  max-width: 100%;
-}
-
-.stat-1 {
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  object-position: center;
-  color: #1A7FE9;
-  margin: 0 2rem 0 2rem;
-}
-
-
-.stat-number {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  text-align: center;
-
-}
-.stat-description {
   font-size: 2rem;
   font-weight: lighter;
-  margin-bottom: 2rem;
+  text-align: center;
+  vertical-align: center;
+  padding-right: 1rem;
+
+}
+
+.user-profile-small-top-players {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+
+
+.stat-1 {
+  text-align: center;
+  vertical-align: bottom;
+  /* width: 4rem; */
+  margin-left: 2rem;
+  margin-right: 2rem;
+  display: table;
+}
+
+.stat-box {
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+.stat-number {
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: 4rem;
   text-align: center;
 
+}
+
+.stat-description {
+  font-size: 1.5rem;
+  font-weight: lighter;
+  margin-bottom: 0.5rem;
 }
 
 .stat-date {
-  font-size: 2rem;
-  font-weight: lighter;
+  font-size: 1rem;
   text-align: center;
-  color: rgb(0, 179, 86);
+  font-weight: lighter;
+  color: rgb(144, 78, 242);
 }
 
 /* come abck and sort out the margin problem */
 .stat-circle {
   display: table;
-  height: 10rem;
-  width: 10rem;
-  margin-left: 2.5rem;
-  margin-bottom: 2rem;
+  height: 8rem;
+  width: 8rem;
   border-radius: 50%;
-  border: 3px solid rgb(7, 201, 0);
-
+  border: 3px solid rgb(144, 78, 242);
+  margin:auto;
+  animation:spin 4s linear infinite;
 }
+
+.center-stats {
+  margin-bottom: 1rem;
+}
+
+
+/* circle flamestarts: */
+
+
+
+.stat-circle:before{
+  border:5px solid #aaa;
+  border-bottom:5px solid orange;
+  border-left:5px solid orange;
+  animation:spin1 1s linear infinite;
+}
+
+.stat-circle:after{
+  border:5px solid #aaa;
+  border-top:5px solid transparent;
+  border-right:5px solid transparent;
+  animation:spin2 1s linear infinite;
+}
+
+
+@keyframes spin{
+  100%{transform:rotate(360deg);filter:hue-rotate(360deg)}
+}
+
+.streak-cold {
+  color: var(--streak-cold);
+}
+
+
+.streak-warm {
+  color: var(--streak-warm);
+}
+
+
+.streak-hot {
+  color: var(--streak-hot);
+}
+
+/* button */
+
+@keyframes spin1{
+  20%{transform:rotate(150deg)}
+  40%{transform:rotate(300deg)}
+  80%{transform:rotate(300deg)}
+  100%{transform:rotate(360deg)}
+}
+
+@keyframes spin2{
+  0%{transform:rotate(-30deg)}
+  20%{transform:rotate(-30deg);
+      border-color:transparent transparent #aaa #aaa}
+  21%{border-color:orange orange transparent transparent}
+  40%{transform:rotate(-30deg)}
+  60%{transform:rotate(120deg);
+      border-color:orange orange transparent transparent}
+  61%{border-color:transparent transparent #aaa #aaa}
+  80%{transform:rotate(270deg)}
+  100%{transform:rotate(330deg);}
+}
+/* circle flame finishes: */
 
 .stat-streak {
   font-size: 5rem;
@@ -191,22 +324,6 @@ body {
   display: table-cell;
   vertical-align: middle;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -240,7 +357,7 @@ h3 {
 }
 
 p {
-  color: #000000;
+  color: rgb(0, 0, 0);
 }
 
 .friend-list,
@@ -357,7 +474,7 @@ p {
 
 .post-likes .fa-thumbs-up {
   font-size: 1rem;
-  color: #1A7FE9;
+  color: rgb(144, 78, 242);
 }
 
 .post-name-time {
@@ -415,10 +532,11 @@ p {
   min-width: 7rem;
   border: none;
   cursor: pointer;
-  background-color: #eee;
+  background-color: rgb(144, 78, 242);
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 0.75rem;
+  font-weight: bold;
   text-align: center;
 }
 
@@ -574,6 +692,8 @@ nav {
   margin: 0;
   padding: 0;
   z-index: 1;
+  background-color: #ffffff;
+
 }
 
 nav ul {
@@ -581,8 +701,8 @@ nav ul {
   padding: 0.5rem 1rem;
   list-style: none;
   display: flex;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
+  box-shadow: 0 1px 8px rgb(113, 113, 113);
+ /* background-color: #b11a21; */
 }
 
 nav ul li {
@@ -594,7 +714,7 @@ nav ul li a {
   text-decoration: none;
 }
 
-nav ul li #fb {
+/* nav ul li #fb {
   background: #0B84ED;
   color: #fff;
   width: 2.5rem;
@@ -604,7 +724,7 @@ nav ul li #fb {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-}
+} */
 
 nav ul li#space1 {
   flex: 1;
@@ -663,7 +783,7 @@ nav ul li #btn_signup {
   align-items: center;
   font-size: 1rem;
   font-weight: bold;
-  color: #0B84ED;
+  color: rgb(144, 78, 242);
   background: rgba(0, 0, 0, 0.068);
   border: none;
   outline: none;
@@ -689,7 +809,7 @@ nav ul li:hover #friend {
 }
 
 .active {
-  color: #0B84ED !important;
+  color: rgb(144, 78, 242) !important;
 }
 
 .tooltip {
@@ -738,4 +858,3 @@ nav ul li #btn_profile::after {
   display: flex;
   justify-content: center;
 }
-

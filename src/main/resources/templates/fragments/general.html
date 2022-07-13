@@ -10,46 +10,31 @@
             <i class="fas fa-home"></i>
           </a>
         </li>
-        <li>
-          <form class="search-form" th:action="@{/users/search}" method="get">
-            <div class="nav-search-bar">
-              <button type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-              <input type="text" name="keyword" th:value="${keyword}" class="search-form-text">
-            </div>
-          </form>
-        </li>
         <li id="space1"></li>
         <li>
           <a th:href="@{/users/profile}">
             <div class="nav-profile-link tooltip" data-tooltip="Profile">
               <button id="btn_profile">
-                <img class="user-icon" th:src="@{${principal.imageUrl}}"  onerror="this.onerror=null;this.src='/images/no_profile_pick.jpeg';" heigh="50px" width="50px">
+                <img class="post-icon">
+                <img class="post-icon" th:src="${principal.imageUrl}">
               </button>
               <span class="nav-profile-name" sec:authentication="name">Name</span>
             </div>
           </a>
         </li>
         <li id="space1"></li>
+
         <li>
-          <a class="tooltip" data-tooltip="Friends" id="btn_friends" th:href="@{'/friends/'+${#authentication.name}}">
-            <i class="fa-solid fa-user-group"></i>
+          <a th:href="@{/challenges/all}" class="tooltip" data-tooltip="Challenges" id="btn_challenges">
+            <i class="fa-solid fa-guitar"></i>
           </a>
         </li>
+
         <li>
-          <a href="#" class="tooltip" data-tooltip="Message" id="btn_msg">
-            <i class="fab fa-facebook-messenger"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="tooltip" data-tooltip="Notification" id="btn_bell">
-            <i class="fas fa-bell"></i>
-          </a>
-        </li>
-        <li>
-          <a class="tooltip" data-tooltip="Settings" id="btn_settings" th:href="@{/users/settings}">
-            <i class="fas fa-user-cog"></i>
+
+          <a class="tooltip" data-tooltip="Logout" id="btn_logout" th:href="@{/logout}">
+            <i class="fa-solid fa-right-from-bracket"></i>
+
           </a>
         </li>
       </ul>

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.service.UserService;
+import com.davmt.motivatr.model.User;
 
 @Controller
 public class UsersController {
