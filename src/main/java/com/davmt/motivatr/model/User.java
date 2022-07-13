@@ -30,6 +30,7 @@ public class User {
   private String password;
   private String firstName;
   private String lastName;
+  private String mobile;
   private String imageUrl;
   private String mobile;
   private LocalDateTime createdAt;
