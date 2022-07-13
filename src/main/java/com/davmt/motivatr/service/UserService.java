@@ -1,6 +1,7 @@
 package com.davmt.motivatr.service;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,5 +86,11 @@ public class UserService {
     String message = statusMessage;
     this.statusMessage = null;
     return message;
+  }
+
+  public List<User> notifyUserList() {
+    List<User> users = new ArrayList<User>();
+    userRepository.findAll().forEach(users::add);
+    return users;
   }
 }
