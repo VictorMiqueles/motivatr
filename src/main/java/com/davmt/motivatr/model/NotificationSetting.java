@@ -22,7 +22,7 @@ public class NotificationSetting {
   private Boolean emailNotifications;
 
   @OneToOne(mappedBy = "notificationSetting")
-  private User user;
+  private User users;
 
   public NotificationSetting() {
     dailyNotifications = false;

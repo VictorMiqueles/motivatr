@@ -12,6 +12,8 @@ import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.model.UsersData;
 import com.davmt.motivatr.repository.AuthoritiesRepository;
 import com.davmt.motivatr.repository.UserRepository;
+import com.davmt.motivatr.service.NotificationService;
+import com.davmt.motivatr.model.NotificationSetting;
 
 @Service
 public class UserService {
@@ -24,6 +26,9 @@ public class UserService {
   AuthoritiesRepository authoritiesRepository;
   @Autowired
   PasswordEncoder getPasswordEncoder;
+  @Autowired
+  NotificationService notificationService;
+
 
   private String statusMessage;
 
@@ -52,8 +57,9 @@ public class UserService {
   public void createUser(User user) {
     user.setPassword(getPasswordEncoder.encode(user.getPassword()));
     UsersData usersData = usersDataService.createUsersData();
-
     user.setUsersData(usersData);
+    NotificationSetting notificationSetting = notificationService.createNotificationSetting();
+    notificationService.save(notificationSetting);
     save(user);
 
     Authority authority = new Authority(user.getUsername(), "ROLE_USER");
@@ -79,17 +85,21 @@ public class UserService {
     return statusMessage;
   }
 
-  public void updateUser(User updateUser) {
-    User user = getUserByUsername(updateUser.getUsername());
+  public void updateUser(User updateUser, Principal principal) {
+    User user = getUserFromPrincipal(principal);
     if (updateUser.getPassword() != null) {
       user.setPassword(updateUser.getPassword());
-    } else if (updateUser.getFirstName() != null) {
+    } 
+    if (updateUser.getFirstName() != null) {
     user.setFirstName(updateUser.getFirstName());
-    } else if (updateUser.getLastName() != null) {
+    } 
+    if (updateUser.getLastName() != null) {
     user.setLastName(updateUser.getLastName());
-    } else if (updateUser.getImageUrl() != null) {
+    }  
+    if (updateUser.getImageUrl() != null) {
     user.setImageUrl(updateUser.getImageUrl());
-    } else if (updateUser.getMobile() != null) {
+    } 
+    if (updateUser.getMobile() != null) {
     user.setMobile(updateUser.getMobile());
     }
     save(user);

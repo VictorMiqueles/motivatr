@@ -32,7 +32,7 @@ public class ProfileController {
   @GetMapping("/users/notifications")
   public String getNotifications(Model model, Principal principal, NotificationSetting notificationSetting) {
     model.addAttribute("principal", userService.getUserFromPrincipal(principal));
-    model.addAttribute("notificationSetting", notificationService.getNotificationSettingsFromPrincipal(principal));
+    //model.addAttribute("notificationSetting", notificationService.getNotificationSettingsFromPrincipal(principal));
     return "/users/notifications";
   }
 
@@ -56,8 +56,8 @@ public class ProfileController {
   }
 
   @PostMapping("/users/edit")
-  public RedirectView updateProfile(@ModelAttribute User profileForm, RedirectAttributes redirAttrs) {
-    userService.updateUser(profileForm);
+  public RedirectView updateProfile(@ModelAttribute User profileForm, RedirectAttributes redirAttrs, Principal principal) {
+    userService.updateUser(profileForm, principal);
     return new RedirectView("/users/profile");
   }
 

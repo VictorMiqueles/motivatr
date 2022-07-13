@@ -28,14 +28,13 @@ public class NotificationServiceTest {
 
   @Test
   public void notificationSettingsCanBeSaved() {
-    NotificationSetting notification = new NotificationSetting();
     User user = new User("blah", "blah", "blah", "blah", "blah", "blah");
     userService.createUser(user);
 
-    notification.setDailyNotifications(true);
-    notification.setDailyNotifications(true);
-    notification.setDailyNotifications(true);
-    notificationService.save(notification);
+    user.getNotificationSetting().setDailyNotifications(true);
+    user.getNotificationSetting().setTextNotifications(true);
+    user.getNotificationSetting().setEmailNotifications(true);
+    //user.getNotificationSetting().
 
     assertThat(notificationService.getNotificationSettingsFromUserId(user.getId()).getDailyNotifications()).isEqualTo(true);
     assertThat(notificationService.getNotificationSettingsFromUserId(user.getId()).getTextNotifications()).isEqualTo(true);

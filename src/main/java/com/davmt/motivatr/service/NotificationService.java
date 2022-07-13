@@ -30,14 +30,15 @@ public class NotificationService {
   }
 
   public NotificationSetting getNotificationSettingsFromUserId(Long userId) {
-    NotificationSetting notificationSetting = notificationRepository.findByUserId(userId);
+    NotificationSetting notificationSetting = notificationRepository.findByUsersId(userId);
     return notificationSetting;
   }
-  
+  /*
   public NotificationSetting getNotificationSettingsFromPrincipal(Principal principal) {
     User user = userService.getUserFromPrincipal(principal);
     Long userId = user.getId();
-    NotificationSetting notificationSetting = notificationRepository.findByUserId(userId);
+    NotificationSetting notificationSetting = notificationRepository.findByUsersId(userId);
     return notificationSetting;
   }
+   */
 }
