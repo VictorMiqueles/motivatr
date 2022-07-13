@@ -5,6 +5,7 @@ import static java.lang.Boolean.TRUE;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import javax.management.Notification;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -53,6 +54,10 @@ public class User {
   @OneToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "users_data_id", referencedColumnName = "id")
   private UsersData usersData;
+
+  @OneToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "id", referencedColumnName = "id")
+  private NotificationSetting notificationSetting;
 
   public User() {
     this.createdAt = LocalDateTime.now();

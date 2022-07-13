@@ -1,7 +1,5 @@
 package com.davmt.motivatr.model;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +13,7 @@ import lombok.Data;
 @Entity
 @Table(name = "NOTIFICATION_SETTINGS")
 public class NotificationSetting {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long Id;
@@ -22,13 +21,13 @@ public class NotificationSetting {
   private Boolean textNotifications;
   private Boolean emailNotifications;
 
-  @OneToOne(mappedBy = "notificationSettings")
+  @OneToOne(mappedBy = "notificationSetting")
   private User user;
 
   public NotificationSetting() {
-    this.dailyNotifications = true;
-    this.textNotifications = true;
-    this.emailNotifications = false;
+    dailyNotifications = false;
+    textNotifications = false;
+    emailNotifications = false;
   }
 
   public NotificationSetting(Boolean dailyNotifications, Boolean textNotifications, Boolean emailNotifications) {

@@ -11,26 +11,17 @@
   <body>
     <div th:insert="fragments/general :: header"></div>
     <div class="notification_settings">
-      <form class="noticiation_settings_form" action="#" th:action="@{/users/notificatons}" th:object="${notification_settings}" method="post">
+      <form class="noticiation_settings_form" action="#" th:action="@{/users/notifications}" th:object="${notificationSetting}" method="post">
+        <h3 id="blah" th:text="${notificationSetting}"></h3>
         <h2>Notification settings</h2>
-        <label for="dailyNotificationsYes">Daily reminders:</label>
-        <p>Yes</p>
-        <input type="checkbox" id="dailyYes" name="dailyYes" >
-        <p>No</p>
-        <input type="checkbox" id="dailyNo" name="dailyno">
+        <label for="dailyNotifications">Daily reminders:</label>
+        <input type="checkbox" id="dailyNotifications" name="dailyNotifications" th:id="*{dailyNotifications}" th:name="*{dailyNotifications}""  th:checked="${notificationSetting.dailyNotifications}">
         <br>
-        <label for="mobileNotificationsYes">Mobile notifications:</label>
-        <p>Yes</p>
-        <input type="checkbox" id="mobileYes" name="mobileYes" >
-        <p>No</p>
-        <input type="checkbox" id="mobileNo" name="mobileNo" >
-        <br>
+        <label for="textNotifications">text notifications:</label>
+        <input type="checkbox" id="textNotifications" name="textNotifications" th:id="*{textNotifications}" th:name="*{textNotifications}"  th:checked="${notificationSetting.textNotifications}" >
         <br>  
         <label for="emailNotifications">Email notifications:</label>
-        <p>Yes</p>
-        <input type="checkbox" id="dailyYes" name="dailyYes"  >
-        <p>No</p>
-        <input type="checkbox" id="dailyNo" name="dailyno" >
+        <input type="checkbox" id="dailyNotifications" name="dailyNotifications"  th:id="*{emailNotifications}" th:name="*{emailNotifications}"  th:checked="${notificationSetting.emailNotifications}">
         <br>
         <div class="edit_notification_buttons">
           <button class="submit_btn" type="submit" id="submit">Submit</button>
@@ -38,12 +29,3 @@
       </form>
     </div>
   </body>
-
-  <!--
-    th:id="*{dailyNotificationsYes}" th:name="*{dailyNotificationsYes}" 
-    th:id="*{dailyNotificationsNo}" th:name="*{dailyNotificationsNo}" 
-    th:id="*{mobileNotificationsYes}" th:name="*{mobileNotificationsYes}" 
-    th:id="*{mobileNotificationsNo}" th:name="*{mobileNotificationsNo}" 
-    th:id="*{emailNotificationsYes}" th:name="*{emailNotificationsYes}" 
-    th:id="*{emailNotificationsNo}" th:name="*{emailNotificationsNo}" 
-  -->

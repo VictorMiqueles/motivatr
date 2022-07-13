@@ -78,4 +78,20 @@ public class UserService {
   public String getStatusMessage() {
     return statusMessage;
   }
+
+  public void updateUser(User updateUser) {
+    User user = getUserByUsername(updateUser.getUsername());
+    if (updateUser.getPassword() != null) {
+      user.setPassword(updateUser.getPassword());
+    } else if (updateUser.getFirstName() != null) {
+    user.setFirstName(updateUser.getFirstName());
+    } else if (updateUser.getLastName() != null) {
+    user.setLastName(updateUser.getLastName());
+    } else if (updateUser.getImageUrl() != null) {
+    user.setImageUrl(updateUser.getImageUrl());
+    } else if (updateUser.getMobile() != null) {
+    user.setMobile(updateUser.getMobile());
+    }
+    save(user);
+  }
 }
