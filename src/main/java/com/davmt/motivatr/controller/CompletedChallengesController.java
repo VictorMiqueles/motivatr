@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.davmt.motivatr.model.Challenge;
 import com.davmt.motivatr.service.ChallengeService;
 import com.davmt.motivatr.service.CompletedChallengeService;
 
