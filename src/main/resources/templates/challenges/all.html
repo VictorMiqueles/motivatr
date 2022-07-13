@@ -19,6 +19,7 @@
           <h2 th:text="${challenge.title}"></h2>
           <p th:text="${challenge.description}"></p>
           <p th:text="${challenge.isDone} ? 'Completed' : 'Not Done'"></p>
+          <p th:text="${challenge.completedCount}"></p>
         </li>
       </ul>
     </div>

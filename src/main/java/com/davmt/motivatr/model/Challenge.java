@@ -31,6 +31,7 @@ public class Challenge {
   private LocalDateTime updatedAt;
   @Transient
   private Boolean isDone;
+  private Integer completedCount;
 
   @ManyToOne
   @JoinColumn(name = "author_id", nullable = false)
@@ -41,6 +42,7 @@ public class Challenge {
 
   public Challenge() {
     this.isDone = false;
+    this.completedCount = 0;
     this.createdAt = LocalDateTime.now();
     this.updatedAt = LocalDateTime.now();
   }

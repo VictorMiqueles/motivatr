@@ -32,6 +32,7 @@ body {
 .container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   background-color:  #ffffff;
   padding: 3vw;
   border-radius: 2rem;
@@ -57,7 +58,7 @@ body {
 }
 
 .challenge-content {
-  width: 30%;
+  width: auto;
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -112,15 +113,12 @@ body {
 
 .challenge-media {
   border: 1rem;
-  width: 70%;
-  align-items: center;
-  justify-content: center;
+  width: 80%;
+  height: 420px;
+  max-width: 750px;
+  text-align: right;
 }
 
-.media-content {
-  height: 400px;
-  max-width: 750px;
-}
 
 .progression-container-top-player {
   display: flex;
@@ -324,7 +322,6 @@ body {
   display: table-cell;
   vertical-align: middle;
 }
-
 
 
 /* OLD STUFF  */
