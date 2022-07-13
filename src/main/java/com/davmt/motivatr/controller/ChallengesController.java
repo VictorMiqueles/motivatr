@@ -43,6 +43,6 @@ public class ChallengesController {
     User user = userService.getUserFromPrincipal(principal);
     List<Challenge> challenges = challengeService.getPublishedChallengesWithStatus(user);
     model.addAttribute("challenges", challenges);
-    return "challenges/list";
+    return "challenges/all";
   }
 }

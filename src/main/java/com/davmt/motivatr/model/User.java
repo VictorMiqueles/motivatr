@@ -63,4 +63,11 @@ public class User {
     this.updatedAt = LocalDateTime.now();
     this.enabled = TRUE;
   }
+
+  public String getImageUrl() {
+    if (imageUrl == null) {
+      return "/images/no_profile_pick.jpeg";
+    }
+    return imageUrl;
+  }
 }
