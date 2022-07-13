@@ -126,7 +126,7 @@ public class ChallengeServiceTests {
     Challenge challenge = challengeService.getChallengeFromId(3L);
     challenge.setPublishedOn(yesterday);
     challengeService.save(challenge);
-    List<Challenge> challenges = challengeService.getPublishedChallengesWithStatus(user);
+    List<Challenge> challenges = challengeService.getPublishedChallengesWithStatusAndCompleted(user);
 
     assertThat(challenges.get(0).getIsDone()).isFalse();
     assertThat(challenges.get(1).getIsDone()).isFalse();
@@ -140,7 +140,7 @@ public class ChallengeServiceTests {
 
     completedChallengeService.completeChallenge(user, challenge);
 
-    List<Challenge> challenges = challengeService.getPublishedChallengesWithStatus(user);
+    List<Challenge> challenges = challengeService.getPublishedChallengesWithStatusAndCompleted(user);
 
     assertThat(challenges.get(0).getIsDone()).isTrue();
     assertThat(challenges.get(1).getIsDone()).isFalse();
