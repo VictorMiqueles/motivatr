@@ -5,7 +5,6 @@ import static java.lang.Boolean.TRUE;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-import javax.management.Notification;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

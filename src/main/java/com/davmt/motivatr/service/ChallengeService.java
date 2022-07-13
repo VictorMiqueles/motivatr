@@ -26,9 +26,6 @@ public class ChallengeService {
   @Autowired
   private UserRepository userRepository;
 
-  @Autowired
-  private UserService userService;
-
   public Challenge getChallengeFromId(Long challenge_id) {
     Optional<Challenge> challengeOptionsl = challengeRepository.findById(challenge_id);
     Challenge challenge = challengeOptionsl.get();
