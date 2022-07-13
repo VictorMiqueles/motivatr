@@ -23,6 +23,7 @@ import com.davmt.motivatr.model.User;
 import com.davmt.motivatr.service.UserService;
 import com.github.javafaker.Faker;
 
+@SuppressWarnings("unused")
 @ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = MotivatrApplication.class)
