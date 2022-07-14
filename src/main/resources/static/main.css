@@ -450,6 +450,9 @@ p {
   width: 100%;
 }
 
+.profile_edit,
+.notification_settings,
+.profile-content,
 .status-message,
 .login,
 .settings,
@@ -566,6 +569,8 @@ p {
   justify-content: space-between;
 }
 
+.edit_user_buttons,
+.profile-buttons,
 .new-challenge-form-buttons,
 .settings-buttons,
 .edit-details-buttons,
@@ -690,6 +695,8 @@ p {
   background-color: #eee;
 }
 
+.profile_edit_form,
+.user-details,
 .new-challenge-form,
 .user-details,
 .login-form,
@@ -703,6 +710,7 @@ p {
   margin-bottom: 1rem;
 }
 
+
 .new-challenge-form ul,
 .login-form ul,
 .settings-form ul,
@@ -710,6 +718,8 @@ p {
   grid-column: span 2;
 }
 
+
+.profile_edit_form input,
 .new-challenge-form input,
 .login-form input,
 .settings-form input,

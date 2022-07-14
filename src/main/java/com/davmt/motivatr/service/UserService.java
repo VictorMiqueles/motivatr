@@ -96,9 +96,7 @@ public class UserService {
   }
 
   public List<User> notifyUserList() {
-    List<User> users = new ArrayList<User>();
-    userRepository.findByNotificationSetting_TextNotificationsIsTrue().forEach(users::add);
-    return users;
+    return userRepository.findByNotificationSetting_TextNotificationsIsTrue();
   }
 
   public void updateUser(User updateUser, Principal principal) {
@@ -117,6 +115,9 @@ public class UserService {
     }
     if (updateUser.getMobile() != null) {
       user.setMobile(updateUser.getMobile());
+    }
+    if (updateUser.getEmail() != null) {
+      user.setEmail(updateUser.getEmail());
     }
     save(user);
   }

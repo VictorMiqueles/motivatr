@@ -1,5 +1,7 @@
 package com.davmt.motivatr.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +26,10 @@ public class SmsService {
   UserService userService;
 
   // TODO: can change to: @Scheduled(cron="0 0 0 * * ?");
-  @Scheduled(fixedRate = 15000)
+  @Scheduled(fixedRate = 30000)
   public void reportCurrentTime() {
-    for (User user : userService.notifyUserList()) {
+    List<User> users = userService.notifyUserList();
+    for (User user : users) {
       sendSMS(user);
     }
   }

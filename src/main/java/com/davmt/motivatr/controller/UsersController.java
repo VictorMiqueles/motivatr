@@ -35,26 +35,4 @@ public class UsersController {
 
     return new RedirectView("/login");
   }
-
-  // @GetMapping("users/settings")
-  // public String settings(Model model, Principal principal) {
-  // User currentUser = userRepository.findByUsername(principal.getName()).get(0);
-  // model.addAttribute("user", currentUser);
-  // model.addAttribute("image", currentUser.getImageUrl());
-  // return "users/settings";
-  // }
-
-  // @GetMapping("/users/editDetails")
-  // public String showDetails(Model model, Principal principal) {
-  // User currentUser = userRepository.findByUsername(principal.getName()).get(0);
-  // model.addAttribute("user", currentUser);
-  // return "users/editDetails";
-  // }
-
-  // @GetMapping("/users/search")
-  // public String showSearchResults(Model model, String keyword) {
-  // List<User> users = userRepository.findByUsernameContains(keyword);
-  // model.addAttribute("users", users);
-  // return "users/search";
-  // }
 }
