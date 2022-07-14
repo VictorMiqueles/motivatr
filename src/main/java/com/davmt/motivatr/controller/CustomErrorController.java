@@ -27,6 +27,9 @@ public class CustomErrorController implements ErrorController {
       } else if (statusCode == HttpStatus.FORBIDDEN.value()) {
         // handle HTTP 403 Forbidden error
         errorMessage = "Http Error Code: 403. Forbidden!";
+      } else if (statusCode == HttpStatus.METHOD_NOT_ALLOWED.value()) {
+        // handle HTTP 403 Forbidden error
+        errorMessage = "Http Error Code: 405. Method Not Allowed!";
       } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
         // handle HTTP 500 Internal Server error
         errorMessage = "Http Error Code: 500. Server Error!";

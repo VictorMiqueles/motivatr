@@ -11,6 +11,7 @@
   --streak-cold: #0000ff;
   --streak-warm: #bb9900;
   --streak-hot: #ff0000;
+  --purply-color: rgb(144, 78, 242);
 }
 
 body {
@@ -836,7 +837,7 @@ nav ul li button {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(158, 158, 158);
+  color: var(--purply-color);
   transition: .5s;
 }
 
