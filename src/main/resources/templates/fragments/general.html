@@ -23,7 +23,11 @@
           </a>
         </li>
         <li id="space1"></li>
-
+        <li sec:authorize="hasAuthority('ROLE_ADMIN')">
+          <a class="tooltip active" data-tooltip="Add Challenge" th:href="@{/challenges/new}" id="new-challenge">
+            <i class="fa-solid fa-square-plus"></i>
+          </a>
+        </li>
         <li>
           <a th:href="@{/challenges/all}" class="tooltip" data-tooltip="Challenges" id="btn_challenges">
             <i class="fa-solid fa-guitar"></i>

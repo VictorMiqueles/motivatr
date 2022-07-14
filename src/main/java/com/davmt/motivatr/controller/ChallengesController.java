@@ -33,8 +33,9 @@ public class ChallengesController {
   }
 
   @GetMapping("/challenges/new")
-  public String newChallenge(Model model) {
+  public String newChallenge(Model model, Principal principal) {
     model.addAttribute("challenge", new Challenge());
+    model.addAttribute("principal", userService.getUserFromPrincipal(principal));
     return "challenges/new";
   }
 

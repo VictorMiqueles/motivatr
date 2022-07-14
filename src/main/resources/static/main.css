@@ -33,7 +33,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color:  #ffffff;
+  background-color: #ffffff;
   padding: 3vw;
   border-radius: 2rem;
   -moz-box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.212);
@@ -64,7 +64,7 @@ body {
   flex-direction: column;
   padding-right: 2rem;
   justify-content: space-between;
-  
+
 }
 
 .challenge-tital {
@@ -145,7 +145,7 @@ body {
   max-width: 100%;
   position: relative;
   margin: 5rem;
-  background-color:  #d4d4dc;
+  background-color: #d4d4dc;
   border-radius: 3rem;
   -moz-box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.212);
   -webkit-box-shadow: 3px 3px 5px 6px rgb(0, 0, 0, 0.212);
@@ -164,7 +164,7 @@ body {
 .top-player {
   padding: 2rem;
   margin-bottom: 3rem;
-  background-color:  #ffffff;
+  background-color: #ffffff;
   /* background-color:   #feda6a; */
   border-radius: 3rem;
   background-image: cover;
@@ -247,8 +247,8 @@ body {
   width: 8rem;
   border-radius: 50%;
   border: 3px solid rgb(144, 78, 242);
-  margin:auto;
-  animation:spin 4s linear infinite;
+  margin: auto;
+  animation: spin 4s linear infinite;
 }
 
 .center-stats {
@@ -260,23 +260,26 @@ body {
 
 
 
-.stat-circle:before{
-  border:5px solid #aaa;
-  border-bottom:5px solid orange;
-  border-left:5px solid orange;
-  animation:spin1 1s linear infinite;
+.stat-circle:before {
+  border: 5px solid #aaa;
+  border-bottom: 5px solid orange;
+  border-left: 5px solid orange;
+  animation: spin1 1s linear infinite;
 }
 
-.stat-circle:after{
-  border:5px solid #aaa;
-  border-top:5px solid transparent;
-  border-right:5px solid transparent;
-  animation:spin2 1s linear infinite;
+.stat-circle:after {
+  border: 5px solid #aaa;
+  border-top: 5px solid transparent;
+  border-right: 5px solid transparent;
+  animation: spin2 1s linear infinite;
 }
 
 
-@keyframes spin{
-  100%{transform:rotate(360deg);filter:hue-rotate(360deg)}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+    filter: hue-rotate(360deg)
+  }
 }
 
 .streak-cold {
@@ -295,25 +298,60 @@ body {
 
 /* button */
 
-@keyframes spin1{
-  20%{transform:rotate(150deg)}
-  40%{transform:rotate(300deg)}
-  80%{transform:rotate(300deg)}
-  100%{transform:rotate(360deg)}
+@keyframes spin1 {
+  20% {
+    transform: rotate(150deg)
+  }
+
+  40% {
+    transform: rotate(300deg)
+  }
+
+  80% {
+    transform: rotate(300deg)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
 }
 
-@keyframes spin2{
-  0%{transform:rotate(-30deg)}
-  20%{transform:rotate(-30deg);
-      border-color:transparent transparent #aaa #aaa}
-  21%{border-color:orange orange transparent transparent}
-  40%{transform:rotate(-30deg)}
-  60%{transform:rotate(120deg);
-      border-color:orange orange transparent transparent}
-  61%{border-color:transparent transparent #aaa #aaa}
-  80%{transform:rotate(270deg)}
-  100%{transform:rotate(330deg);}
+@keyframes spin2 {
+  0% {
+    transform: rotate(-30deg)
+  }
+
+  20% {
+    transform: rotate(-30deg);
+    border-color: transparent transparent #aaa #aaa
+  }
+
+  21% {
+    border-color: orange orange transparent transparent
+  }
+
+  40% {
+    transform: rotate(-30deg)
+  }
+
+  60% {
+    transform: rotate(120deg);
+    border-color: orange orange transparent transparent
+  }
+
+  61% {
+    border-color: transparent transparent #aaa #aaa
+  }
+
+  80% {
+    transform: rotate(270deg)
+  }
+
+  100% {
+    transform: rotate(330deg);
+  }
 }
+
 /* circle flame finishes: */
 
 .stat-streak {
@@ -528,6 +566,7 @@ p {
   justify-content: space-between;
 }
 
+.new-challenge-form-buttons,
 .settings-buttons,
 .edit-details-buttons,
 .new-user-form-buttons,
@@ -615,6 +654,7 @@ p {
   cursor: pointer;
 }
 
+.new-challenge-form input,
 .custom-profile-upload,
 .custom-file-upload,
 .post-form input,
@@ -641,6 +681,7 @@ p {
   margin-left: 3.4rem;
 }
 
+.new-challenge-form input:hover,
 .login-form input:hover,
 .settings-form input:hover,
 .new-user-form input:hover,
@@ -649,6 +690,7 @@ p {
   background-color: #eee;
 }
 
+.new-challenge-form,
 .user-details,
 .login-form,
 .settings-form,
@@ -661,16 +703,23 @@ p {
   margin-bottom: 1rem;
 }
 
+.new-challenge-form ul,
 .login-form ul,
 .settings-form ul,
 .new-user-form ul {
   grid-column: span 2;
 }
 
+.new-challenge-form input,
 .login-form input,
 .settings-form input,
 .new-user-form input {
   width: 100%;
+}
+
+.new-challenge-form textarea {
+  height: 20rem;
+  width: 30rem;
 }
 
 .fa-ellipsis-vertical {
@@ -747,7 +796,7 @@ nav ul {
   list-style: none;
   display: flex;
   box-shadow: 0 1px 8px rgb(113, 113, 113);
- /* background-color: #b11a21; */
+  /* background-color: #b11a21; */
 }
 
 nav ul li {

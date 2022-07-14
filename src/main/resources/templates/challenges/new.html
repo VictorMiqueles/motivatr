@@ -10,29 +10,31 @@
 
 <body>
   <div th:insert="fragments/general :: header"></div>
-  <div class="container">
-    <p class="status-message" th:if="${message!=null}" th:text="${message}"></p>
-    <div class="new-challenge">
-      <h2>New Challenge</h2>
-      <form class="new-challenge-form" action="#" th:action="@{/challenges}" th:object="${challenge}" method="post">
+  <div class="margin">
+    <div class="container">
+      <p class="status-message" th:if="${message!=null}" th:text="${message}"></p>
+      <div class="new-challenge">
+        <h2>New Challenge</h2>
+        <form class="new-challenge-form" action="#" th:action="@{/challenges}" th:object="${challenge}" method="post">
 
-        <label for="title">Title:</label>
-        <input type="text" id="title" th:field="*{title}" name="title">
+          <label for="title">Title:</label>
+          <input type="text" id="title" th:field="*{title}" name="title">
 
-        <label for="description">Description:</label>
-        <input type="text" id="description" th:field="*{description}" name="description">
+          <label for="description">Description:</label>
+          <textarea type="text" id="description" th:field="*{description}" name="description"></textarea>
 
-        <label for="imageUrl">Image:</label>
-        <input type="text" id="imageUrl" th:field="*{imageUrl}" name="imageUrl">
+          <label for="imageUrl">Image:</label>
+          <input type="text" id="imageUrl" th:field="*{imageUrl}" name="imageUrl">
 
-        <label for="videoUrl">Video:</label>
-        <input type="text" id="videoUrl" th:field="*{videoUrl}" name="videoUrl">
+          <label for="videoUrl">Video:</label>
+          <input type="text" id="videoUrl" th:field="*{videoUrl}" name="videoUrl">
 
-        <ul class="new-user-form-buttons">
-          <li><button class="btn" type="reset" id="reset" value="Reset">Reset</button></li>
-          <li><button class="btn" type="submit" id="submit">Submit</button></li>
-        </ul>
-      </form>
+          <ul class="new-user-form-buttons">
+            <li><button class="btn" type="reset" id="reset" value="Reset">Reset</button></li>
+            <li><button class="btn" type="submit" id="submit">Submit</button></li>
+          </ul>
+        </form>
+      </div>
     </div>
   </div>
 </body>
