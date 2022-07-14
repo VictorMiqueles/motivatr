@@ -19,7 +19,7 @@
           <div class="challenge-list-content">
             <div class="challing-list-content-left">
               <p class="challenge-tital-list" th:text="${challenge.title}"></p>
-              <span th:text="${principal.usersData.totalCompleted}"></span>
+              <span th:text="${challenge.completedCount}"></span>
               <img class="completed-user-icon" th:src="@{/images/user.svg}"></img>
               <p class="challenge-list-description" th:text="${challenge.description}"></p>
               <iframe 2rem; width="100rem" height="60rem" th:src="${challenge.videoUrl}" title="YouTube video player"
