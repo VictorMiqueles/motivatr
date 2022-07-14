@@ -69,15 +69,27 @@ public class CompletedChallengeService {
     userService.save(user);
   }
 
+  public void addToChallengeTotalCount(Challenge challenge) {
+    Integer totalCount = challenge.getCompletedCount();
+    challenge.setCompletedCount(totalCount + 1);
+  }
+
+  public void removeFromChallengeTotalCount(Challenge challenge) {
+    Integer totalCount = challenge.getCompletedCount();
+    challenge.setCompletedCount(totalCount - 1);
+  }
+
   public void toggleChallengeStatus(Principal principal, Long challengeId) {
     Challenge currentChallenge = challengeService.getChallengeFromId(challengeId);
     User user = userService.getUserFromPrincipal(principal);
     if (checkChallengeStatus(principal, currentChallenge)) {
       removeFromDb(user, currentChallenge);
       removeFromStreak(user);
+      removeFromChallengeTotalCount(currentChallenge);
     } else {
       addToDb(user, currentChallenge);
       addToStreak(user);
+      addToChallengeTotalCount(currentChallenge);
     }
   }
 

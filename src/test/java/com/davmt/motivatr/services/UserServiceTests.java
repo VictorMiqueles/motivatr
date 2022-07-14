@@ -164,9 +164,9 @@ public class UserServiceTests {
         "password");
     userService.createUser(newUser);
 
-    assertThat(userService.getUserByUsername("ajones").getUsersData().getLevel()).isEqualTo(0);
+    assertThat(userService.getUserByUsername("ajones").getUsersData().getHighestStreak()).isEqualTo(0);
     assertThat(userService.getUserByUsername("ajones").getUsersData().getStreak()).isEqualTo(0);
-    assertThat(userService.getUserByUsername("ajones").getUsersData().getPoints()).isEqualTo(0);
+    assertThat(userService.getUserByUsername("ajones").getUsersData().getTotalCompleted()).isEqualTo(0);
     assertThat(userService.getUserByUsername("ajones").getFirstName()).isEqualTo("Abel");
     assertThat(userService.getUserByUsername("ajones").getLastName()).isEqualTo("Jones");
     assertThat(userService.getUserByUsername("ajones").getEmail()).isEqualTo("ajones@gmail.com");

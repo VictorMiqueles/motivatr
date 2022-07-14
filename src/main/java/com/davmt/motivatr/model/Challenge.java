@@ -29,6 +29,7 @@ public class Challenge {
   private LocalDateTime publishedOn;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
+  private Integer completedCount;
   @Transient
   private Boolean isDone;
 
@@ -40,6 +41,7 @@ public class Challenge {
   Set<CompletedChallenge> compleatedChallenges;
 
   public Challenge() {
+    this.completedCount = 0;
     this.isDone = false;
     this.createdAt = LocalDateTime.now();
     this.updatedAt = LocalDateTime.now();
