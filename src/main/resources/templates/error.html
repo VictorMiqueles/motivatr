@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en">
+  <link th:href="@{/main.css}" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/5f58b769bf.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+</head>
 
 <body>
-  <h1>Really?!</h1>
-  <h2>Come on dude... sort yourself out will ya?</h2>
-  <a href="/">Go Home</a>
+  <div th:insert="fragments/general :: header-not-logged-in"></div>
+
+  <div class="margin">
+    <h1>Uh oh... Houston we have a problem!!!</h1>
+    <h2 th:text="${errorMsg}"></h2>
+  </div>
 </body>
 
 </html>
