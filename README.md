@@ -1,6 +1,6 @@
 ﻿# Motivatr
 
-The inspiration for the project came from the aspirations of many people to learn guitar but not following through. We wanted to create a platform that could be used as a reminder and motivation as well as some guidance and daily challenges to keep users engaged with the act of playing guitar. We aimed to create a platform that utilized the Kaizen approach:
+The inspiration for the project came from the aspirations of many people to learn guitar but not following through. We wanted to create a platform that could be used as a reminder and motivation as well as offering some guidance and daily challenges to keep users engaged with the act of playing guitar. We aimed to create a platform that utilized the Kaizen approach:
 
 > Kaizen is **an approach to creating continuous improvement based on the idea that small, ongoing positive changes can reap significant improvements**.
 *[techtarget.com](https://www.techtarget.com/searcherp/definition/kaizen-or-continuous-improvement)*
