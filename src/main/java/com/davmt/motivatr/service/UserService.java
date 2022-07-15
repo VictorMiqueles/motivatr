@@ -35,6 +35,14 @@ public class UserService {
     userRepository.save(user);
   }
 
+  public Boolean isAdmin(User user) {
+    Authority authority = authoritiesRepository.findByUsername(user.getUsername()).get(0);
+    if (authority.getAuthority().equals("ROLE_ADMIN")) {
+      return true;
+    }
+    return false;
+  }
+
   public Boolean validateUserDetails(User userForm) {
     if (userRepository.existsByEmail(userForm.getEmail())) {
       statusMessage = "Email already exists!";
@@ -119,5 +127,18 @@ public class UserService {
       user.setEmail(updateUser.getEmail());
     }
     save(user);
+  }
+
+  public List<User> searchUsers(String keyword) {
+    List<User> searchHits = userRepository
+        .findByUsernameContainingIgnoreCaseOrFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(keyword,
+            keyword,
+            keyword);
+    for (User user : searchHits) {
+      if (isAdmin(user)) {
+        user.setIsAdmin(true);
+      }
+    }
+    return searchHits;
   }
 }

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.thymeleaf.util.StringUtils;
 
 import com.davmt.motivatr.model.User;
 import com.twilio.Twilio;
@@ -36,7 +37,8 @@ public class SmsService {
 
   private void sendSMS(User user) {
     Dotenv dotenv = Dotenv.load();
-    String message = "Hey! " + user.getFirstName() + "! It's time to get playing! 🎸🎸🎸";
+    String message = "Hey " + StringUtils.capitalize(user.getFirstName()) + " "
+        + StringUtils.capitalize(user.getLastName()) + "! It's time to get playing! 🎸🎸🎸";
     if (smsEnabled) {
       Twilio.init(dotenv.get("TWILIO_ACCOUNT_SID"), dotenv.get("TWILIO_AUTH_TOKEN"));
 

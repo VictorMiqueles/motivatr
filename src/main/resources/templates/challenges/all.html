@@ -18,7 +18,9 @@
         <li class="top-player" th:each="challenge: ${challenges}">
           <div class="challenge-list-content">
             <div class="challing-list-content-left">
-              <p class="challenge-tital-list" th:text="${challenge.title}"></p>
+              <a th:href="@{/challenges/{id}(id=${challenge.id})}">
+                <p class="challenge-tital-list" th:text="${challenge.title}"></p>
+              </a>
               <span th:text="${challenge.completedCount}"></span>
               <img class="completed-user-icon" th:src="@{/images/user.svg}"></img>
               <p class="challenge-list-description" th:text="${challenge.description}"></p>

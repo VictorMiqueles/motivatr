@@ -37,6 +37,8 @@ public class User {
   private Boolean enabled;
   @Transient
   private String passwordConfirm;
+  @Transient
+  private Boolean isAdmin;
 
   @OneToMany(mappedBy = "author")
   private Set<Challenge> challenges;

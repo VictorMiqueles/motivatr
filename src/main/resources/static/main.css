@@ -78,6 +78,20 @@ body {
   margin-bottom: 1rem;
 }
 
+.challenge-details-description {
+  margin: 3rem 0;
+}
+
+.challenge-details-media {
+  height: 25rem;
+}
+
+.challenge-details-image {
+  width: 40rem;
+  object-fit: cover;
+  box-shadow: 0px 5px 15px #ccc;
+}
+
 .posted-by {
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
@@ -90,12 +104,18 @@ body {
   align-items: center;
 }
 
+.larger-profile-picture,
 .profile-picture {
   width: 2rem;
-  height: 2rem;
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0px 5px 15px #ccc;
+}
+
+.larger-profile-picture {
+  width: 16rem;
+  display: block;
+  margin: 0 auto;
 }
 
 .user-name {
@@ -426,6 +446,7 @@ h1 {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 2rem;
+  line-height: 5rem;
 }
 
 h2 {
@@ -558,7 +579,7 @@ p {
   font-weight: bold;
 }
 
-.post-likes .fa-thumbs-up {
+.post-likes .fa-thumbs-up .fa-solid {
   font-size: 1rem;
   color: rgb(144, 78, 242);
 }
@@ -567,6 +588,10 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+button i {
+  color: rgb(144, 78, 242);
 }
 
 .edit_user_buttons,

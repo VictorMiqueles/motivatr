@@ -12,10 +12,9 @@
   <div th:insert="fragments/general :: header"></div>
 
   <div class="profile">
+    <h1 id="username" th:text="${principal.firstName}"></h1>
     <div class="user-profile-small">
-      <img class="profile-picture" th:src="@{${principal.imageUrl}}"
-        onerror="this.onerror=null;this.src='/images/no_profile_pick.jpeg';">
-      <h1 id="username" th:text="${principal.username}"></h1>
+      <img class="larger-profile-picture" th:src="@{${principal.imageUrl}}">
     </div>
     <div class="profile-content">
       <div class="my_details">

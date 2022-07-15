@@ -23,4 +23,8 @@ public class Authority {
   public String getAuthority() {
     return this.authority;
   }
+
+  public void setAuthority(String userType) {
+    authority = userType;
+  }
 }

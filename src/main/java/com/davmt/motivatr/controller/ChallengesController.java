@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -46,5 +47,13 @@ public class ChallengesController {
     model.addAttribute("challenges", challenges);
     model.addAttribute("principal", userService.getUserFromPrincipal(principal));
     return "challenges/all";
+  }
+
+  @GetMapping("/challenges/{id}")
+  public String profile(Model model, @PathVariable Long id, Principal principal) {
+    Challenge challenge = challengeService.getChallengeFromId(id);
+    model.addAttribute("challenge", challenge);
+    model.addAttribute("principal", userService.getUserFromPrincipal(principal));
+    return "challenges/details";
   }
 }

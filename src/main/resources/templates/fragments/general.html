@@ -10,6 +10,16 @@
             <i class="fas fa-home"></i>
           </a>
         </li>
+        <li>
+          <form class="search-form" th:action="@{/users/search}" method="get">
+            <div class="nav-search-bar">
+              <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+              <input type="text" name="keyword" th:value="${keyword}" class="search-form-text">
+            </div>
+          </form>
+        </li>
         <li id="space1"></li>
         <li>
           <a th:href="@{/users/profile}">
